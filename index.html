@@ -12,6 +12,43 @@
             <h1>⚔ CP Manager <span>Warhammer 40k</span></h1>
         </header>
 
+        <!-- Points selection -->
+        <section class="panel points-panel">
+            <span class="label">Game Size:</span>
+            <div class="btn-group" id="pointsGroup">
+                <button class="btn points-btn" data-points="500">500</button>
+                <button class="btn points-btn" data-points="1000">1000</button>
+                <button class="btn points-btn" data-points="2000">2000</button>
+                <button class="btn points-btn" data-points="3000">3000</button>
+            </div>
+            <span class="info" id="cpInfo">Starting DP: 0</span>
+        </section>
+
+        <!-- Faction & Detachment selection -->
+        <section class="panel selection-panel">
+            <div class="selection-row">
+                <div class="selection-item">
+                    <label for="factionSelect">Faction:</label>
+                    <select id="factionSelect">
+                        <option value="">-- Select Faction --</option>
+                    </select>
+                </div>
+                <div class="selection-item">
+                    <label for="detachmentSelect">Detachment:</label>
+                    <select id="detachmentSelect" multiple size="4">
+                    </select>
+                </div>
+                <button class="btn primary" id="loadStratagemsBtn">Load Stratagems</button>
+            </div>
+        </section>
+
+        <!-- Detachment Info -->
+        <section class="panel detachment-info" id="detachmentInfo">
+            <div class="detachment-name" id="detachmentName">—</div>
+            <div class="detachment-desc" id="detachmentDesc"></div>
+        </section>
+
+        <!-- CP Counter -->
         <section class="cp-panel">
             <div class="cp-display">
                 <span class="cp-label">CP</span>
@@ -27,13 +64,13 @@
             </div>
         </section>
 
+        <!-- Stratagems list -->
         <section id="stratagemsContainer">
-            <!-- сюда рендерится список -->
-            <div class="loader"></div>
+            <div class="empty-state">Select faction and detachment, then click Load.</div>
         </section>
 
         <footer>
-            <span id="stratCount">0</span> stratagems loaded from <code>assets/core.json</code>
+            <span id="stratCount">0</span> stratagems loaded
         </footer>
     </div>
 

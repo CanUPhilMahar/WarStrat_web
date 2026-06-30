@@ -1,0 +1,9 @@
+[
+  {
+    "id": "firestorm_assault_force",
+    "name": "Firestorm Assault Force",
+    "description": "All ranged weapons gain Assault and +1 Strength within 12\".",
+    "cost": 2,
+    "mission": "Purge the Foe"
+  }
+]

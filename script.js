@@ -3,9 +3,16 @@
 
     // --- state ---
     let cp = 0;
+    let dp = 0;
+    let startingDp = 0;
     let doubleTap = false;
     let stratagems = [];
+    let coreStratagems = [];
     let isLoading = true;
+    let selectedFactionId = null;
+    let selectedDetachments = []; // массив выбранных детачментов (объекты)
+    let detachmentsData = [];
+    let allDetachmentsData = []; // все детачменты для текущей фракции
 
     // --- DOM refs ---
     const cpValueEl = document.getElementById('cpValue');
@@ -15,54 +22,16 @@
     const container = document.getElementById('stratagemsContainer');
     const toastContainer = document.getElementById('toastContainer');
     const stratCountEl = document.getElementById('stratCount');
+    const pointsGroup = document.getElementById('pointsGroup');
+    const cpInfo = document.getElementById('cpInfo');
+    const factionSelect = document.getElementById('factionSelect');
+    const detachmentSelect = document.getElementById('detachmentSelect');
+    const loadBtn = document.getElementById('loadStratagemsBtn');
+    const detachmentNameEl = document.getElementById('detachmentName');
+    const detachmentDescEl = document.getElementById('detachmentDesc');
+    const detachmentInfoEl = document.getElementById('detachmentInfo');
 
-    // --- inject minimal styles for collapsing ---
-    (function injectStyles() {
-        const style = document.createElement('style');
-        style.textContent = `
-            .category.collapsed .category-body {
-                display: none;
-            }
-            .category-header {
-                cursor: pointer;
-                user-select: none;
-            }
-            .category-header:hover {
-                background: #2a221c;
-            }
-            .phase-group .phase-content {
-                transition: max-height 0.25s ease, opacity 0.2s ease;
-                overflow: hidden;
-                max-height: 2000px;
-                opacity: 1;
-            }
-            .phase-group.collapsed .phase-content {
-                max-height: 0;
-                opacity: 0;
-                padding: 0;
-            }
-            .phase-title {
-                cursor: pointer;
-                user-select: none;
-                transition: background 0.1s;
-            }
-            .phase-title:hover {
-                background: #2a221c;
-            }
-            .phase-title::before {
-                content: "▼ ";
-                font-size: 0.7rem;
-                display: inline-block;
-                transition: transform 0.2s;
-            }
-            .phase-group.collapsed .phase-title::before {
-                content: "▶ ";
-            }
-        `;
-        document.head.appendChild(style);
-    })();
-
-    // --- helpers (English, with "Command" for always and command) ---
+    // --- helpers ---
     function formatPhase(phase) {
         const map = {
             'always': 'Command',
@@ -93,8 +62,8 @@
         setTimeout(() => { if (el.parentNode) el.remove(); }, 3000);
     }
 
-    // --- update CP UI ---
-    function updateCpDisplay(animate) {
+    // --- update display (only CP) ---
+    function updateCpDisplay() {
         cpValueEl.textContent = cp;
         document.querySelectorAll('.btn-use').forEach(btn => {
             const cost = parseInt(btn.dataset.cost, 10);
@@ -102,14 +71,42 @@
         });
     }
 
-    // --- actions ---
+    // --- update DP info ---
+    function updateDpInfo() {
+        // Показываем общую стоимость выбранных детачментов и остаток DP
+        const totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
+        const remaining = startingDp - totalCost;
+        cpInfo.textContent = `DP: ${dp} | Selected: ${totalCost} | Remaining: ${remaining}`;
+    }
+
+    // --- update detachment info display ---
+    function updateDetachmentInfo() {
+        if (selectedDetachments.length === 0) {
+            detachmentNameEl.textContent = '—';
+            detachmentDescEl.textContent = 'No detachments selected';
+            detachmentInfoEl.classList.add('empty');
+            return;
+        }
+        // Показываем все выбранные детачменты с их описаниями
+        let html = '';
+        selectedDetachments.forEach(d => {
+            html += `<div><strong>${d.name}</strong> (${d.cost || 0} DP): ${d.description || 'No description'}</div>`;
+        });
+        const totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
+        detachmentNameEl.innerHTML = `Selected: ${selectedDetachments.map(d => d.name).join(', ')}`;
+        detachmentDescEl.innerHTML = html;
+        detachmentInfoEl.classList.remove('empty');
+    }
+
+    // --- actions (work only with cp) ---
     function addCp() {
         cp += doubleTap ? 2 : 1;
-        updateCpDisplay(true);
+        updateCpDisplay();
+        showToast(`+${doubleTap ? 2 : 1} CP`, 'success');
     }
     function resetCp() {
         cp = 0;
-        updateCpDisplay(true);
+        updateCpDisplay();
         showToast('CP reset to 0', 'info');
     }
     function useStratagem(cost, name) {
@@ -118,11 +115,11 @@
             return;
         }
         cp -= cost;
-        updateCpDisplay(true);
+        updateCpDisplay();
         showToast(`✅ ${name} (${cost} CP)`, 'success');
     }
 
-    // --- grouping: now command phase includes always + command ---
+    // --- grouping ---
     function groupByPhase(list) {
         const phases = ['command', 'movement', 'shooting', 'charge', 'fight'];
         const grouped = {};
@@ -130,21 +127,14 @@
 
         list.forEach(s => {
             if (s.whe === 'always') {
-                // add to every phase
                 phases.forEach(p => grouped[p].push(s));
             } else if (s.whe === 'command') {
-                // add only to command phase
                 if (grouped['command']) grouped['command'].push(s);
             } else {
-                // add only to its own phase if it exists in phases
-                if (grouped[s.whe]) {
-                    grouped[s.whe].push(s);
-                }
-                // else ignore (should not happen with valid data)
+                if (grouped[s.whe]) grouped[s.whe].push(s);
             }
         });
 
-        // remove empty phases
         const result = {};
         phases.forEach(p => {
             if (grouped[p].length) result[p] = grouped[p];
@@ -171,7 +161,7 @@
             container.innerHTML = `
                 <div class="category">
                     <div class="category-header"><h2>📜 Stratagems</h2></div>
-                    <div class="empty-state">No stratagems loaded.<br />Place <code>assets/core.json</code></div>
+                    <div class="empty-state">No stratagems loaded for this selection.</div>
                 </div>
             `;
             stratCountEl.textContent = '0';
@@ -230,7 +220,7 @@
             renderCategory('⚔️ Your Turn', grouped.yourTurn) +
             renderCategory('👹 Enemy Turn', grouped.enemyTurn);
 
-        // --- attach events ---
+        // attach events
         container.querySelectorAll('.btn-use').forEach(btn => {
             btn.addEventListener('click', function() {
                 const cost = parseInt(this.dataset.cost, 10);
@@ -254,44 +244,350 @@
             });
         });
 
-        updateCpDisplay(false);
+        updateCpDisplay();
     }
 
-    // --- load data ---
-    function loadData() {
+    // --- load stratagems from asset files for multiple detachments ---
+    function loadStrategemsForDetachments(detachmentIds) {
+        if (!detachmentIds || detachmentIds.length === 0) {
+            showToast('No detachments selected', 'error');
+            return;
+        }
+
         isLoading = true;
         render();
-        fetch('assets/core.json')
+
+        const fetchPromises = detachmentIds.map(id => {
+            const url = `assets/${id}.json`;
+            console.log('[DEBUG] Fetching stratagems from:', url);
+            return fetch(url)
+                .then(res => {
+                    if (!res.ok) throw new Error(`HTTP ${res.status} for ${id}`);
+                    return res.json();
+                })
+                .then(data => {
+                    if (!Array.isArray(data)) {
+                        throw new Error(`Invalid JSON format for ${id}`);
+                    }
+                    return data;
+                });
+        });
+
+        Promise.all(fetchPromises)
+            .then(results => {
+                // Объединяем все стратегемы
+                let allStratagems = [];
+                results.forEach(data => {
+                    allStratagems = allStratagems.concat(data);
+                });
+                stratagems = [...coreStratagems, ...allStratagems];
+
+                // Обновляем информацию о детачментах
+                const totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
+                dp = Math.max(0, startingDp - totalCost);
+                updateDpInfo();
+                updateDetachmentInfo();
+
+                isLoading = false;
+                updateCpDisplay();
+                render();
+                showToast(`Loaded ${stratagems.length} stratagems (${coreStratagems.length} core + ${allStratagems.length} from ${detachmentIds.length} detachment(s))`, 'success');
+            })
+            .catch(err => {
+                console.warn('[DEBUG] Failed to load stratagems:', err.message);
+                stratagems = [...coreStratagems];
+                isLoading = false;
+                render();
+                showToast('❌ Failed to load stratagems for one or more detachments', 'error');
+            });
+    }
+
+    // --- load detachments for selected faction (factions/[id].json) ---
+    function loadDetachments(factionId) {
+        console.log('[DEBUG] loadDetachments called for faction:', factionId);
+        detachmentSelect.disabled = true;
+        loadBtn.disabled = true;
+        selectedDetachments = [];
+        detachmentsData = [];
+        allDetachmentsData = [];
+        stratagems = [...coreStratagems];
+        detachmentNameEl.textContent = '—';
+        detachmentDescEl.textContent = '';
+        detachmentInfoEl.classList.add('empty');
+        render();
+
+        if (!factionId) {
+            loadBtn.disabled = true;
+            return Promise.resolve();
+        }
+
+        const url = `factions/${factionId}.json`;
+        console.log('[DEBUG] Fetching detachments from:', url);
+        return fetch(url)
             .then(res => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.json();
             })
             .then(data => {
+                console.log('[DEBUG] Detachments loaded:', data);
                 if (Array.isArray(data) && data.length) {
-                    stratagems = data;
+                    allDetachmentsData = data;
+                    detachmentsData = data;
+                    data.forEach(item => {
+                        const opt = document.createElement('option');
+                        opt.value = item.id;
+                        opt.textContent = item.name;
+                        // Если DP не хватает для этого детачмента, делаем опцию недоступной
+                        if (startingDp < (item.cost || 0)) {
+                            opt.disabled = true;
+                            opt.style.color = '#5a4a3a';
+                            opt.style.backgroundColor = '#1a1614';
+                        }
+                        detachmentSelect.appendChild(opt);
+                    });
+                    detachmentSelect.disabled = false;
+                    console.log('[DEBUG] Detachment select is now enabled. Options:', detachmentSelect.options.length);
+
+                    // Сбрасываем выбор
+                    detachmentSelect.value = '';
+                    selectedDetachments = [];
+                    updateDetachmentInfo();
+                    updateDpInfo();
+                    loadBtn.disabled = true;
                 } else {
-                    throw new Error('Invalid JSON format');
+                    throw new Error('Invalid detachments data');
                 }
-                isLoading = false;
-                render();
-                showToast(`Loaded ${stratagems.length} stratagems`, 'success');
             })
             .catch(err => {
-                console.warn('Failed to load core.json:', err.message);
+                console.warn('[DEBUG] Failed to load detachments:', err.message);
+                showToast('❌ Failed to load detachments for this faction', 'error');
+                detachmentSelect.disabled = true;
+                loadBtn.disabled = true;
+                throw err;
+            });
+    }
+
+    // --- load factions list from core/list.json ---
+    function loadFactions() {
+        console.log('[DEBUG] loadFactions called');
+        return fetch('core/list.json')
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
+            .then(data => {
+                console.log('[DEBUG] Factions loaded:', data);
+                if (Array.isArray(data) && data.length) {
+                    data.forEach(item => {
+                        const opt = document.createElement('option');
+                        opt.value = item.id;
+                        opt.textContent = item.name;
+                        factionSelect.appendChild(opt);
+                    });
+                    console.log('[DEBUG] Faction options added:', factionSelect.options.length);
+                } else {
+                    throw new Error('Invalid factions list');
+                }
+            })
+            .catch(err => {
+                console.warn('[DEBUG] Failed to load factions:', err.message);
+                showToast('❌ Failed to load factions list', 'error');
+            });
+    }
+
+    // --- load core stratagems from core/core.json (ВСЕГДА ПРИ ЗАПУСКЕ) ---
+    function loadCoreData() {
+        console.log('[DEBUG] loadCoreData called');
+        return fetch('core/core.json')
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
+            .then(data => {
+                console.log('[DEBUG] Core stratagems loaded:', data.length);
+                if (Array.isArray(data) && data.length) {
+                    coreStratagems = data;
+                    stratagems = [...coreStratagems];
+                    isLoading = false;
+                    render();
+                    showToast(`Loaded ${coreStratagems.length} core stratagems`, 'success');
+                } else {
+                    throw new Error('Invalid core.json');
+                }
+            })
+            .catch(err => {
+                console.warn('[DEBUG] Failed to load core.json:', err.message);
+                showToast('⚠️ Core stratagems not loaded', 'info');
+                coreStratagems = [];
                 stratagems = [];
                 isLoading = false;
                 render();
-                showToast('❌ Failed to load stratagems. Check assets/core.json', 'error');
             });
+    }
+
+    // --- update starting DP based on points ---
+    function updatestartingDp(points) {
+        if (points === 500 || points === 1000) {
+            startingDp = 2;
+        } else if (points === 2000 || points === 3000) {
+            startingDp = 3;
+        } else {
+            startingDp = 0;
+        }
+
+        // Пересчитываем dp с учётом выбранных детачментов
+        const totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
+        dp = Math.max(0, startingDp - totalCost);
+        updateDpInfo();
+
+        // Обновляем доступность опций в select
+        if (detachmentsData.length) {
+            const options = detachmentSelect.querySelectorAll('option');
+            options.forEach(opt => {
+                if (opt.value === '') return;
+                const det = detachmentsData.find(d => d.id === opt.value);
+                if (det) {
+                    const cost = det.cost || 0;
+                    if (startingDp < cost) {
+                        opt.disabled = true;
+                        opt.style.color = '#5a4a3a';
+                    } else {
+                        opt.disabled = false;
+                        opt.style.color = '';
+                    }
+                }
+            });
+            // Если выбранный детачмент стал недоступен, снимаем выбор
+            const selectedValues = Array.from(detachmentSelect.selectedOptions).map(o => o.value).filter(v => v !== '');
+            let changed = false;
+            selectedValues.forEach(val => {
+                const opt = detachmentSelect.querySelector(`option[value="${val}"]`);
+                if (opt && opt.disabled) {
+                    opt.selected = false;
+                    changed = true;
+                }
+            });
+            if (changed) {
+                // Пересчитываем выбранные
+                updateSelectedDetachments();
+            }
+        }
+        // cp НЕ ТРОГАЕМ!
+    }
+
+    // --- обновление списка выбранных детачментов ---
+    function updateSelectedDetachments() {
+        const selectedOptions = detachmentSelect.selectedOptions;
+        const selectedIds = Array.from(selectedOptions).map(opt => opt.value).filter(v => v !== '');
+        selectedDetachments = detachmentsData.filter(d => selectedIds.includes(d.id));
+
+        // Проверка DP
+        const totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
+        if (totalCost > startingDp) {
+            showToast(`Total detachment cost (${totalCost}) exceeds available DP (${startingDp})!`, 'error');
+            // Снимаем последний выбранный
+            const lastSelected = selectedIds[selectedIds.length - 1];
+            if (lastSelected) {
+                const opt = detachmentSelect.querySelector(`option[value="${lastSelected}"]`);
+                if (opt) opt.selected = false;
+            }
+            // Пересчитываем заново
+            const newSelectedOptions = detachmentSelect.selectedOptions;
+            const newSelectedIds = Array.from(newSelectedOptions).map(opt => opt.value).filter(v => v !== '');
+            selectedDetachments = detachmentsData.filter(d => newSelectedIds.includes(d.id));
+        }
+
+        const totalCostFinal = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
+        dp = Math.max(0, startingDp - totalCostFinal);
+        updateDpInfo();
+        updateDetachmentInfo();
+        loadBtn.disabled = (selectedDetachments.length === 0);
+        console.log('[DEBUG] Selected detachments:', selectedDetachments.map(d => d.name));
+    }
+
+    // --- event handlers ---
+    function onPointsChange(points) {
+        document.querySelectorAll('.points-btn').forEach(btn => {
+            btn.classList.toggle('active', parseInt(btn.dataset.points) === points);
+        });
+        updatestartingDp(points);
+    }
+
+    function onFactionChange() {
+        const factionId = factionSelect.value;
+        console.log('[DEBUG] onFactionChange called, factionId:', factionId);
+        selectedFactionId = factionId;
+        selectedDetachments = [];
+        detachmentsData = [];
+        allDetachmentsData = [];
+        stratagems = [...coreStratagems];
+        render();
+        detachmentNameEl.textContent = '—';
+        detachmentDescEl.textContent = '';
+        detachmentInfoEl.classList.add('empty');
+        loadBtn.disabled = true;
+
+        if (factionId) {
+            loadDetachments(factionId).catch(err => {
+                console.error('[DEBUG] Error in loadDetachments:', err);
+                showToast('Error loading detachments for this faction', 'error');
+                detachmentSelect.disabled = true;
+                loadBtn.disabled = true;
+            });
+        } else {
+            detachmentSelect.innerHTML = '<option value="">-- Select Detachment --</option>';
+            detachmentSelect.disabled = true;
+            loadBtn.disabled = true;
+        }
+    }
+
+    function onDetachmentChange() {
+        updateSelectedDetachments();
+    }
+
+    function onLoadClick() {
+        if (selectedFactionId && selectedDetachments.length > 0) {
+            const ids = selectedDetachments.map(d => d.id);
+            loadStrategemsForDetachments(ids);
+        } else {
+            showToast('Please select faction and at least one detachment', 'error');
+        }
     }
 
     // --- init ---
     function init() {
+        console.log('[DEBUG] init started');
+        pointsGroup.querySelectorAll('.points-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const points = parseInt(this.dataset.points);
+                onPointsChange(points);
+            });
+        });
+
+        factionSelect.addEventListener('change', onFactionChange);
+        detachmentSelect.addEventListener('change', onDetachmentChange);
+        loadBtn.addEventListener('click', onLoadClick);
+
         chkDoubleCp.addEventListener('change', function() { doubleTap = this.checked; });
         btnAddCp.addEventListener('click', addCp);
         btnResetCp.addEventListener('click', resetCp);
-        loadData();
-        updateCpDisplay(false);
+
+        // Загружаем только factions и core, без авто-выбора
+        Promise.all([loadFactions(), loadCoreData()]).then(() => {
+            console.log('[DEBUG] Both factions and core loaded');
+        });
+
+        cp = 0;
+        dp = 0;
+        startingDp = 0;
+        updateCpDisplay();
+        updateDpInfo();
+        detachmentSelect.disabled = true;
+        loadBtn.disabled = true;
+        detachmentInfoEl.classList.add('empty');
+        detachmentNameEl.textContent = '—';
+        detachmentDescEl.textContent = '';
+        console.log('[DEBUG] init finished');
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
