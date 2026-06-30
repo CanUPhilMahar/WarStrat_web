@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Death Begets Vengeance",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When: Any phase, when a friendly Death Company unit is destroyed by an enemy unit. Target: That enemy unit. Effect: That enemy unit is hated until the end of the battle. While a unit is hated, friendly Death Company units' attacks that target that unit have +1 to Wound rolls."
+  },
+  {
+    "name": "No Barrier to Retribution",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When: Your Movement or your Charge phase, when a friendly Death Company Dreadnought unit is selected to make a normal/advance/charge move. Target: That Death Company Dreadnought unit. Effect: Your unit has Mobile."
+  },
+  {
+    "name": "Rage-fuelled Response",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "e",
+    "description": "When: Your opponent's Shooting phase, when an enemy unit that targeted a friendly unengaged Death Company unit has shot. Target: That Death Company unit. Effect: Your unit can make a surge move of up to D6'."
+  }
+]

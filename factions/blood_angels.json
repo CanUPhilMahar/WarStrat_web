@@ -5,5 +5,19 @@
     "description": "All ranged weapons gain Assault and +1 Strength within 12\".",
     "cost": 2,
     "mission": "Purge the Foe"
+  },
+  {
+    "id": "ironstorm_spearhead",
+    "name": "Ironstorm Spearhead",
+    "description": "Armoured Wrath: Once per phase for each Adeptus Astartes unit in your army, you can re-roll one Hit roll, one Wound roll or one Damage roll made for a model in that unit.",
+    "cost": 2,
+    "mission": "Purge the Foe"
+  },
+  {
+    "id": "wrath_of_the_doomed",
+    "name": "Wrath of The Doomed",
+    "description": "Fanatical Celerity: When a friendly Death Company unit is selected to make an Advance move, it suffers D3+1 mortal wounds but remains eligible to declare a charge. This detachment has the DOOMED tag and cannot be taken with another DOOMED detachment.",
+    "cost": 1,
+    "mission": "Purge the Foe"
   }
 ]

@@ -424,3 +424,53 @@ footer code { background: #1a1614; padding: 0.1rem 0.4rem; border-radius: 4px; }
     background: #1a1614;
     cursor: not-allowed;
 }
+
+/* список детачментов */
+.detachment-list {
+    min-height: 100px;
+    max-height: 180px;
+    overflow-y: auto;
+    background: #1a1614;
+    border: 1px solid #3a322a;
+    border-radius: 6px;
+    padding: 0.2rem;
+    width: 100%;
+    min-width: 200px;
+}
+.detachment-list .detachment-item {
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s;
+    color: #b0a08a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.detachment-list .detachment-item:hover:not(.disabled) {
+    background: #2a221c;
+}
+.detachment-list .detachment-item.selected {
+    background: #b8963c;
+    color: #1a1410;
+    font-weight: 600;
+}
+.detachment-list .detachment-item.selected .detachment-cost {
+    color: #1a1410;
+}
+.detachment-list .detachment-item.disabled {
+    color: #5a4a3a;
+    cursor: not-allowed;
+    background: #14100e;
+}
+.detachment-list .detachment-item .detachment-cost {
+    font-size: 0.75rem;
+    color: #7a6a5a;
+    margin-left: 0.5rem;
+}
+.detachment-list .detachment-empty {
+    color: #5a4a3a;
+    padding: 0.5rem;
+    text-align: center;
+    font-style: italic;
+}
