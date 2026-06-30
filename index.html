@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WH40k CP Manager</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>⚔ CP Manager <span>Warhammer 40k</span></h1>
+        </header>
+
+        <section class="cp-panel">
+            <div class="cp-display">
+                <span class="cp-label">CP</span>
+                <span class="cp-value" id="cpValue">0</span>
+            </div>
+            <div class="cp-actions">
+                <button class="btn primary" id="btnAddCp">+ CP</button>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="chkDoubleCp" />
+                    +2 CP per tap
+                </label>
+                <button class="btn danger" id="btnResetCp">✕ Reset</button>
+            </div>
+        </section>
+
+        <section id="stratagemsContainer">
+            <!-- сюда рендерится список -->
+            <div class="loader"></div>
+        </section>
+
+        <footer>
+            <span id="stratCount">0</span> stratagems loaded from <code>assets/core.json</code>
+        </footer>
+    </div>
+
+    <div id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Command Re-roll",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "Re-roll a single dice roll (except charge rolls). Cannot be used on the same unit more than once per phase."
+  },
+  {
+    "name": "Fire Overwatch",
+    "cost": 1,
+    "whe": "movement",
+    "who": "e",
+    "description": "At the end of the enemy Movement phase, one of your units can shoot at an enemy unit that moved. Hits only on unmodified 6s (Snap Shooting)."
+  },
+  {
+    "name": "Heroic Intervention",
+    "cost": 1,
+    "whe": "charge",
+    "who": "e",
+    "description": "At the end of the enemy Charge phase, a Character unit within 12\" can heroically intervene (must end within 1\" of an enemy)."
+  },
+  {
+    "name": "Heroic Intervention (Extended)",
+    "cost": 2,
+    "whe": "charge",
+    "who": "e",
+    "description": "Instead of the above, you can charge any enemy unit within 6\" (not just the one that charged)."
+  },
+  {
+    "name": "Rapid Ingress",
+    "cost": 1,
+    "whe": "movement",
+    "who": "e",
+    "description": "Set up one unit from Reserves at the end of the enemy Movement phase, more than 6\" away from enemies. Cannot be used on Aircraft or in the first battle round."
+  },
+  {
+    "name": "Smokescreen",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "e",
+    "description": "At the start of the enemy Shooting phase, select one of your units. It gains Benefit of Cover and becomes a smokescreen (enemies targeting it suffer -1 to hit)."
+  },
+  {
+    "name": "Explosives",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "Instead of shooting, one unit can use grenades. Roll 6 dice; each 4+ causes 1 mortal wound (max 6 MW)."
+  },
+  {
+    "name": "Crushing Impact",
+    "cost": 1,
+    "whe": "charge",
+    "who": "y",
+    "description": "When a Vehicle or Monster makes a charge, roll a number of dice equal to its Toughness. Each 4+ inflicts 1 mortal wound on the charged unit (max 6)."
+  },
+  {
+    "name": "Counter-offensive",
+    "cost": 2,
+    "whe": "fight",
+    "who": "a",
+    "description": "After an enemy unit has fought in the Fight phase, select one of your units that has not fought yet – it fights next."
+  },
+  {
+    "name": "Epic Challenge",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "In the Fight phase, a Character from your army can issue a challenge. If they kill an enemy Character, gain 1 VP. If they are killed, your opponent gains 1 VP."
+  },
+  {
+    "name": "Insane Bravery",
+    "cost": 2,
+    "whe": "command",
+    "who": "y",
+    "description": "Automatically pass a Morale or Battleshock test for one unit. Can be used only once per game."
+  }
+]
