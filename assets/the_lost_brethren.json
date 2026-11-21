@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Glorious Sacrifice",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When any phase, target one Death Company unit from your army that was just destroyed while it was within range of an objective marker you controlled. That objective marker remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of a turn."
+  },
+  {
+    "name": "Armour of Contempt",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting or Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army that was selected as the target of one or more of that unit's attacks. Until the attacking unit has finished making its attacks, worsen the Armour Penetration characteristic of attacks that target your unit by 1."
+  },
+  {
+    "name": "Final Retribution",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, just after an enemy unit has selected its targets, target one Death Company unit from your army that was selected as the target of one or more of its attacks. Until the end of the phase, each time a model in your unit is destroyed, if it has not fought, roll one D6, adding 1 if your unit is within 12\" of a friendly Chaplain. On a 4+, do not remove that model from play; it can fight after the attacking unit has finished making its attacks, then is removed."
+  },
+  {
+    "name": "Furious Onslaught",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, just before a Death Company unit from your army Piles-in, target that unit. Until the end of the phase, each model can Pile-in up to D3+3\" instead of 3\". If the unit is within 12\" of a friendly Chaplain or is below Starting Strength, it can Pile-in up to 6\" instead."
+  },
+  {
+    "name": "Lost to Rage",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Death Company unit from your army that is below Starting Strength and has not been selected to fight. Until the end of the phase, improve the Attacks, Strength and Armour Penetration characteristics of its melee weapons by 1. Unless the unit is within 12\" of a friendly Chaplain, those weapons gain [HAZARDOUS]."
+  },
+  {
+    "name": "Wrathful Rampage",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, just after a Death Company unit from your army Advances, target that unit. Until the end of the turn, it is eligible to declare a charge. If it is within 12\" of a friendly Chaplain or below Starting Strength, it is also eligible to shoot."
+  }
+]

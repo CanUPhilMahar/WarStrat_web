@@ -19,5 +19,40 @@
     "description": "Fanatical Celerity: When a friendly Death Company unit is selected to make an Advance move, it suffers D3+1 mortal wounds but remains eligible to declare a charge. This detachment has the DOOMED tag and cannot be taken with another DOOMED detachment.",
     "cost": 1,
     "mission": "Purge the Foe"
+  },
+  {
+    "id": "liberator_assault_group",
+    "name": "Liberator Assault Group",
+    "description": "Red Thirst: When an Adeptus Astartes unit from your army that made a Charge move is selected to fight, its melee weapons gain +1 Attacks and +2 Strength until the end of the phase.",
+    "cost": 3,
+    "mission": "Take and Hold"
+  },
+  {
+    "id": "the_lost_brethren",
+    "name": "The Lost Brethren",
+    "description": "A Noble Death in Combat: Death Company melee attacks can re-roll Wound rolls of 1, or the Wound roll if the unit is Below Half-strength. Death Company Marines gain the Battleline keyword.",
+    "cost": 2,
+    "mission": "Purge the Foe"
+  },
+  {
+    "id": "the_angelic_host",
+    "name": "The Angelic Host",
+    "description": "Upon Wings of Fire: At the end of your opponent's turn, up to 1/2/3 Jump Pack units can be placed into Strategic Reserves and arrive via Deep Strike next turn, depending on battle size.",
+    "cost": 2,
+    "mission": "Disruption"
+  },
+  {
+    "id": "angelic_inheritors",
+    "name": "Angelic Inheritors",
+    "description": "Legacy of the Angel: At the start of the first battle round, select two Angelic Legacy abilities (Sanguinary Grace, Carmine Wrath, Their Appointed Hour) to apply to Adeptus Astartes Character units.",
+    "cost": 3,
+    "mission": "Priority Assets"
+  },
+  {
+    "id": "rage_cursed_onslaught",
+    "name": "Rage-cursed Onslaught",
+    "description": "Maddened Ferocity: Melee attacks re-roll Wound rolls of 1, and units that made a Charge move gain +1 Attacks when selected to fight (+2 if Battle-shocked).",
+    "cost": 3,
+    "mission": "Purge the Foe"
   }
 ]

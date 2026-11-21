@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Drag It Down",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Beast Snagga unit from your army that has not been selected to fight. Until the end of the phase, its melee weapons have [SUSTAINED HITS 1], and Critical Hits against your Prey are scored on an unmodified Hit roll of 5+."
+  },
+  {
+    "name": "Unstoppable Momentum",
+    "cost": 1,
+    "whe": "charge",
+    "who": "y",
+    "description": "When your Charge phase, just after a Beast Snagga Mounted unit from your army ends a Charge move, target that unit. Select one enemy unit within Engagement Range and roll one D6 for each model in your unit: each 4+ inflicts 1 mortal wound, to a maximum of 6. If that enemy is your Prey, roll three additional D6."
+  },
+  {
+    "name": "Dat One's Even Bigga!",
+    "cost": 1,
+    "whe": "charge",
+    "who": "y",
+    "description": "When your Charge phase, target one Beast Snagga unit from your army. Until the end of the phase, it is eligible to charge even if it Advanced or Fell Back, and you can re-roll its Charge roll if one of the charge targets is your Prey."
+  },
+  {
+    "name": "Where D'ya Fink You're Going?",
+    "cost": 1,
+    "whe": "movement",
+    "who": "e",
+    "description": "When your opponent's Movement phase, just after an enemy unit ends a Fall Back move, target one Beast Snagga Infantry or Beast Snagga Mounted unit from your army that was within Engagement Range of that enemy at the start of the phase. If your unit is not within Engagement Range of any enemy, it can make a Normal move of up to 6\"."
+  },
+  {
+    "name": "Stalkin' Taktiks",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "e",
+    "description": "When your opponent's Shooting phase, just after an enemy unit has selected its targets, target one Beast Snagga Infantry or Beast Snagga Mounted unit from your army that was selected as a target. Until the end of the phase, models in your unit have the Benefit of Cover against those attacks; if the unit is Infantry, it also has Stealth."
+  },
+  {
+    "name": "Instinctive Hunters",
+    "cost": 1,
+    "whe": "fight",
+    "who": "e",
+    "description": "When the end of your opponent's Fight phase, target one Beast Snagga unit from your army that is not within Engagement Range of any enemy unit. Remove it from the battlefield and place it into Strategic Reserves."
+  }
+]

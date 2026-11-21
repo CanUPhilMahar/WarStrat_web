@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Careen!",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When any phase, just after an Orks Vehicle unit with the Deadly Demise ability is destroyed and you roll a 6 for that ability, target that unit. It can make a Normal or Fall Back move before its Deadly Demise is resolved, moving over enemy units (excluding Monsters and Vehicles) as if they were not there."
+  },
+  {
+    "name": "Orks Is Never Beaten",
+    "cost": 2,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, just after an enemy unit has selected its targets, target one Orks unit from your army that was selected as a target. Until the end of the phase, each time a model in your unit is destroyed, if it has not fought, do not remove it from play; it can fight after the attacking unit has finished making its attacks, then is removed."
+  },
+  {
+    "name": "Unbridled Carnage",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Orks unit from your army that has not been selected to fight. Until the end of the phase, each time a model in your unit makes a melee attack, an unmodified Hit roll of 5+ scores a Critical Hit."
+  },
+  {
+    "name": "'Ard as Nails",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting or Fight phase, just after an enemy unit has selected its targets, target one Orks unit from your army (excluding Grots, Monster and Vehicle units) that was selected as a target. Until the end of the phase, each time an attack targets your unit, subtract 1 from the Wound roll."
+  },
+  {
+    "name": "Mob Rule",
+    "cost": 1,
+    "whe": "command",
+    "who": "y",
+    "description": "When the end of your Command phase, target one Mob unit from your army that contains 10 or more models and is not Below Half-strength. Select one friendly Battle-shocked Orks Infantry unit within 6\" of it; that unit is no longer Battle-shocked."
+  },
+  {
+    "name": "Ere We Go",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When the start of your Movement phase, target one Orks Infantry unit from your army. Until the end of the turn, add 2 to Advance and Charge rolls made for it."
+  }
+]

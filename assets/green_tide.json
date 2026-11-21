@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Competitive Streak",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Boyz unit from your army that has not been selected to fight. Until the end of the phase, re-roll Wound rolls of 1. If the unit contains 10 or more models, re-roll the Wound roll instead."
+  },
+  {
+    "name": "Bulldozer Brutality",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Boyz unit from your army that has not been selected to fight and is within Engagement Range. Until the end of the phase, when selecting which models can fight, any model within 3\" of an enemy is eligible and can target an enemy within 3\" of it and within Engagement Range of its unit."
+  },
+  {
+    "name": "Braggin' Rights",
+    "cost": 1,
+    "whe": "command",
+    "who": "y",
+    "description": "When your Command phase, target two Boyz units from your army within 6\" of each other. Until your next Command phase, while they remain within 6\" of each other, both count as containing 10 or more models for your Detachment rule, Enhancements and Stratagems."
+  },
+  {
+    "name": "Come On Ladz!",
+    "cost": 1,
+    "whe": "command",
+    "who": "y",
+    "description": "When your Command phase, target one Boyz unit from your army. Return up to D3+2 destroyed models to that unit, excluding Character models."
+  },
+  {
+    "name": "Tide of Muscle",
+    "cost": 1,
+    "whe": "charge",
+    "who": "y",
+    "description": "When your Charge phase, target one Boyz unit from your army that has not declared a charge this phase. Until the end of the phase, add 1 to its Charge rolls, and if it contains 10 or more models, you can re-roll the Charge roll."
+  },
+  {
+    "name": "Go Get 'Em!",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "e",
+    "description": "When your opponent's Shooting phase, just after an enemy unit has selected its targets, target one Boyz unit from your army that was selected as a target. After the attacking unit has shot, your unit can make a Go Get 'Em! move: roll one D6 and move each model up to that many inches, ending as close as possible to the closest enemy unit. Models can move within Engagement Range of that enemy. If your unit contains 10 or more models, you can re-roll the D6."
+  }
+]

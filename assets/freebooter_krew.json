@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Bash and Grab",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Orks unit from your army that has not been selected to fight. Until the end of the phase, each time it attacks an enemy within range of your loot objective, you can re-roll the Wound roll."
+  },
+  {
+    "name": "Grab and Bash",
+    "cost": 1,
+    "whe": "command",
+    "who": "y",
+    "description": "When your Command phase, target one Orks unit from your army (excluding Gretchin) within range of your loot objective. Until your next Command phase, the Waaagh! is active for it, even if you have already called it this battle."
+  },
+  {
+    "name": "Boardin' Rush",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, target one Orks unit from your army that has not been selected to move. Until the end of the phase, when it Advances, do not roll; add 6\" to the Move characteristic of its models instead."
+  },
+  {
+    "name": "Deck Fraggers",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Orks unit from your army that has not been selected to shoot. Until the end of the phase, its ranged weapons have the [BLAST] ability when targeting Infantry units."
+  },
+  {
+    "name": "Rolling Loot-Heap",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Flash Gitz unit from your army that has not been selected to shoot. Until the end of the phase, its ranged weapons have [ANTI-VEHICLE 4+]."
+  },
+  {
+    "name": "Krump and Run",
+    "cost": 1,
+    "whe": "movement",
+    "who": "e",
+    "description": "When your opponent's Movement phase, just after an enemy unit Falls Back, target one Orks unit from your army that was within Engagement Range of it at the start of the phase and is not within Engagement Range now. It can make a Normal move of up to 6\"."
+  }
+]

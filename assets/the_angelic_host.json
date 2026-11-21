@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Unbridled Ardour",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When any phase, target one Adeptus Astartes unit from your army that was just destroyed. Until the end of the battle, each time a friendly Sanguinary Guard unit attacks the enemy unit that destroyed it, you can re-roll the Hit roll and the Wound roll."
+  },
+  {
+    "name": "Armour of Contempt",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting or Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army that was selected as the target of one or more of that unit's attacks. Until the attacking unit has finished making its attacks, worsen the Armour Penetration characteristic of attacks that target your unit by 1."
+  },
+  {
+    "name": "Angel's Sacrifice",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the start of the Fight phase, target one Adeptus Astartes Jump Pack unit from your army. Until the end of the phase, each time an enemy model within Engagement Range of your unit selects its targets, it must target your unit with all of its attacks."
+  },
+  {
+    "name": "Martial Exemplars",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Adeptus Astartes Jump Pack unit from your army that has not been selected to fight. Until the end of the phase, its melee weapons have the [LETHAL HITS] and [PRECISION] abilities."
+  },
+  {
+    "name": "Descent of Angels",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, target one Adeptus Astartes Jump Pack unit from your army that is arriving using the Deep Strike ability this phase. It can be set up anywhere more than 6\" horizontally from all enemy units. It cannot declare a charge this turn."
+  },
+  {
+    "name": "Death from the Skies",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, just after an Adeptus Astartes Jump Pack unit from your army Advances or Falls Back, target that unit. Until the end of the turn, it is eligible to shoot and declare a charge."
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Orks Is Still Orks",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Orks unit from your army that has not been selected to fight. Until the end of the phase, re-roll Wound rolls of 1. If the target enemy is within range of an objective marker, re-roll the Wound roll instead."
+  },
+  {
+    "name": "Get Stuck In, Ladz!",
+    "cost": 2,
+    "whe": "command",
+    "who": "y",
+    "description": "When your Command phase, target one Orks unit from your army (excluding Gretchin). Until your next Command phase, the Waaagh! is active for it, even if you have already called it this battle."
+  },
+  {
+    "name": "Huge Show-Offs",
+    "cost": 1,
+    "whe": "command",
+    "who": "y",
+    "description": "When your Command phase, target one Orks Walker unit (excluding Killa Kans). Until your next Command phase, improve its Move, Leadership and Objective Control characteristics by 1, and add 1 to its Hit rolls."
+  },
+  {
+    "name": "Long, Uncontrolled Bursts",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Orks unit from your army that has not been selected to shoot. Until the end of the phase, its ranged weapons have [IGNORES COVER]."
+  },
+  {
+    "name": "Speshul Shells",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Orks unit from your army that has not been selected to shoot. Until the end of the phase, each time a model in it attacks the closest eligible target within 18\", improve the Armour Penetration characteristic of its ranged weapons by 1."
+  },
+  {
+    "name": "Call Dat Dakka?",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "e",
+    "description": "When your opponent's Shooting phase, just after an enemy unit has shot, target one Orks unit from your army that had one or more models destroyed by those attacks. It can shoot as if it were your Shooting phase, but must target only that enemy unit and only if it is eligible."
+  }
+]

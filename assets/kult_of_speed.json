@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Speediest Freeks",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting or Fight phase, just after an enemy unit has selected its targets, target one Speed Freeks or Trukk unit from your army that was selected as a target. Until the end of the phase, models in your unit have a 5+ invulnerable save, or a 4+ invulnerable save if the unit is a Vehicle with Toughness 8 or less."
+  },
+  {
+    "name": "Squig Flingin'",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, just after a Speed Freeks or Trukk unit from your army ends a Normal, Advance or Fall Back move, target that unit. Select one enemy unit within 9\" of it; that enemy must take a Battle-shock test, subtracting 1 from the result."
+  },
+  {
+    "name": "Dakkastorm",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Speed Freeks unit from your army that has not been selected to shoot. Until the end of the phase, its ranged weapons have [SUSTAINED HITS 1], or [SUSTAINED HITS 2] when targeting a unit within 9\"."
+  },
+  {
+    "name": "Blitza Fire",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Speed Freeks unit from your army that has not been selected to shoot. Until the end of the phase, its ranged weapons have [LETHAL HITS], and attacks against a unit within 9\" score Critical Hits on an unmodified Hit roll of 5+."
+  },
+  {
+    "name": "Full Throttle!",
+    "cost": 1,
+    "whe": "charge",
+    "who": "y",
+    "description": "When your Charge phase, just after a Speed Freeks unit from your army ends a Charge move, target that unit. Until the end of the turn, each time a model in it makes a melee attack, add 1 to the Wound roll."
+  },
+  {
+    "name": "More Gitz Over 'Ere!",
+    "cost": 1,
+    "whe": "movement",
+    "who": "e",
+    "description": "When your opponent's Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move, target one Speed Freeks unit from your army within 9\" of that enemy and not within Engagement Range. It can make a Normal move of up to 6\"."
+  }
+]

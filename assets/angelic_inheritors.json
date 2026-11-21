@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Armour of Contempt",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting or Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army that was selected as the target of one or more of that unit's attacks. Until the attacking unit has finished making its attacks, worsen the Armour Penetration characteristic of attacks that target your unit by 1."
+  },
+  {
+    "name": "Focused Fury",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Adeptus Astartes unit from your army that has not been selected to fight. Until the end of the phase, its melee weapons have [LETHAL HITS]. If the unit is a Character unit, those weapons also have [LANCE]."
+  },
+  {
+    "name": "Instant of Grace",
+    "cost": 1,
+    "whe": "command",
+    "who": "y",
+    "description": "When your Command phase, target one Adeptus Astartes Infantry unit from your army. Select one non-Character model in that unit; until the start of your next Command phase, that model has the Character keyword."
+  },
+  {
+    "name": "Strike Now for Glory",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Adeptus Astartes unit from your army that has not been selected to shoot. Until the end of the phase, its ranged weapons have [SUSTAINED HITS 1]."
+  },
+  {
+    "name": "In the Shadow of Great Wings",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "e",
+    "description": "When your opponent's Shooting phase, just after an enemy unit has selected its targets, target one Adeptus Astartes Character unit from your army that was selected as a target. Until the end of the phase, your unit can only be selected as the target of a ranged attack if the attacking model is within 18\"."
+  },
+  {
+    "name": "Unto the Burning Skies",
+    "cost": 1,
+    "whe": "fight",
+    "who": "e",
+    "description": "When the end of your opponent's Fight phase, target one Adeptus Astartes Jump Pack unit from your army that is not within Engagement Range (unless it is The Sanguinor). Remove it from the battlefield and place it into Strategic Reserves."
+  }
+]

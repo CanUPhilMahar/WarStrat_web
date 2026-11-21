@@ -1,0 +1,44 @@
+[
+  {
+    "name": "A Grim Warning",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When any phase, target one Blood Angels unit from your army that was just destroyed while it was within range of an objective marker you controlled at the end of the previous phase. That objective marker remains under your control until your opponent's Level of Control over it is greater than yours at the end of a phase."
+  },
+  {
+    "name": "Armour of Contempt",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting or Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army that was selected as the target of one or more of that unit's attacks. Until the attacking unit has finished making its attacks, worsen the Armour Penetration characteristic of attacks that target your unit by 1."
+  },
+  {
+    "name": "Insensate Rampage",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting or Fight phase, just after an enemy unit has selected its targets, target one Death Company unit from your army that was selected as a target. Until the end of the phase, models in that unit have the Feel No Pain 5+ ability."
+  },
+  {
+    "name": "Limb from Limb",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Adeptus Astartes unit from your army that made a Charge move this turn. Until the end of the phase, add 1 to the Strength or Armour Penetration characteristic of its melee weapons. Alternatively, give in to the Red Thirst: the unit becomes Battle-shocked, but both characteristics are increased by 1."
+  },
+  {
+    "name": "Deathless Duty",
+    "cost": 2,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, just after an enemy unit has selected its targets, target one Death Company unit from your army that was selected as a target. Until the end of the phase, each time a model in your unit is destroyed, if it has not fought, do not remove it from play; it can fight after the attacking unit has finished making its attacks, then is removed."
+  },
+  {
+    "name": "Red Wrath",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, just after an Adeptus Astartes unit from your army Advances, target that unit. Until the end of the turn, it is eligible to shoot or declare a charge. Alternatively, give in to the Red Thirst: it becomes Battle-shocked, but is eligible to both shoot and declare a charge."
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Armed to Da Teef",
+    "cost": 1,
+    "whe": "always",
+    "who": "y",
+    "description": "When your Shooting or Fight phase, target one Nobz or Meganobz unit from your army that has not been selected to shoot or fight. Until the end of the phase, re-roll Hit rolls of 1. If a Waaagh! is active for your unit, re-roll the Hit roll instead."
+  },
+  {
+    "name": "Too Arrogant to Die",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting or Fight phase, just after an enemy unit has selected its targets, target one Nobz or Meganobz unit from your army that was selected as a target. Until the end of the phase, each time a model in your unit is destroyed, if it has not shot or fought, roll one D6, adding 2 if a Waaagh! is active. On a 5+, it can shoot or fight after the attack, then is removed."
+  },
+  {
+    "name": "Always Lookin' Fer a Fight",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, just after an enemy unit is destroyed, target one Nobz or Meganobz unit from your army that destroyed it. Until the end of the phase, its Consolidation moves can be up to D3+3\" instead of 3\", or up to 6\" if a Waaagh! is active for it."
+  },
+  {
+    "name": "Crushing Impact",
+    "cost": 1,
+    "whe": "charge",
+    "who": "y",
+    "description": "When your Charge phase, just after a Nobz or Meganobz unit from your army ends a Charge move, target that unit. Select one enemy within Engagement Range and roll one D6 for each model in your unit within Engagement Range of it: each 5+ inflicts 1 mortal wound, to a maximum of 6. If a Waaagh! is active, each 4+ inflicts a mortal wound instead."
+  },
+  {
+    "name": "Cut 'Em Down",
+    "cost": 1,
+    "whe": "movement",
+    "who": "e",
+    "description": "When your opponent's Movement phase, just after an enemy unit is selected to Fall Back, target one Nobz or Meganobz unit from your army within Engagement Range of it. That enemy must take Desperate Escape tests, subtracting 1 from each test if a Waaagh! is active for your unit."
+  },
+  {
+    "name": "Hulking Brutes",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "e",
+    "description": "When your opponent's Shooting phase, just after an enemy unit has selected its targets, target one Nobz or Meganobz unit from your army that was selected as a target. Until the attacking unit has finished making its attacks, worsen the Armour Penetration characteristic of attacks that target your unit by 1."
+  }
+]

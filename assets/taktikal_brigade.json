@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Dat's Ours",
+    "cost": 1,
+    "whe": "command",
+    "who": "y",
+    "description": "When the Command phase, target one Orks unit from your army that is within Engagement Range of an enemy unit. Until the start of the next Command phase, add 1 to the Objective Control characteristic of models in your unit."
+  },
+  {
+    "name": "Fight Proppa",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Orks Infantry or Orks Mounted unit from your army that has not been selected to fight. Until the end of the phase, its melee weapons have [SUSTAINED HITS 1] or [LETHAL HITS] (your choice)."
+  },
+  {
+    "name": "Taktikal Retreat",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, just after an Orks unit from your army Falls Back, target that unit. Until the end of the turn, it is eligible to shoot and declare a charge."
+  },
+  {
+    "name": "Krunchin' Descent",
+    "cost": 1,
+    "whe": "charge",
+    "who": "y",
+    "description": "When your Charge phase, just after a Stormboyz unit from your army ends a Charge move, target that unit. Select one enemy within Engagement Range and roll one D6 for each model in your unit within Engagement Range of it: each 4+ inflicts 1 mortal wound, to a maximum of 6."
+  },
+  {
+    "name": "On to da Next",
+    "cost": 1,
+    "whe": "movement",
+    "who": "e",
+    "description": "When your opponent's Movement phase, just after an enemy unit Falls Back, target one Orks unit from your army that was within Engagement Range of it at the start of the phase. It can make a Normal move of up to 6\"."
+  },
+  {
+    "name": "Ded Sneaky",
+    "cost": 1,
+    "whe": "fight",
+    "who": "e",
+    "description": "When the end of your opponent's Fight phase, target one Kommandos or Stormboyz unit from your army that is not within Engagement Range. Remove it from the battlefield and place it into Strategic Reserves."
+  }
+]

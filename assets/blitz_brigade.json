@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Mount Up, Ladz",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the end of the Fight phase, target one Orks Infantry unit from your army that is not within Engagement Range and one friendly Transport it can embark within. If the Infantry unit is wholly within 6\" of that Transport, it can embark."
+  },
+  {
+    "name": "Mekanised Brutality",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, target one Battlewagon, Kill Rig or Hunta Rig unit from your army that has not been selected to move. Until the end of the turn, units that disembark from it after it makes a Normal move are still eligible to declare a charge."
+  },
+  {
+    "name": "Run 'Em Down",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, target one Battlewagon, Kill Rig or Hunta Rig unit from your army that has not been selected to move. Select up to two other friendly Orks Vehicle or Orks Monster units within 6\"; until the end of the turn, your unit and those units are eligible to declare a charge even if they Advanced."
+  },
+  {
+    "name": "Armoured Duellists",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Orks Vehicle unit from your army that has not been selected to shoot. Until the end of the phase, each time it attacks a Monster or Vehicle unit, add 1 to the Hit roll and 1 to the Wound roll."
+  },
+  {
+    "name": "Impervious",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "e",
+    "description": "When your opponent's Shooting phase, just after an enemy unit has selected its targets, target one Battlewagon, Kill Rig or Hunta Rig unit from your army that was selected as a target. Until the end of the phase, if an attack's Strength is greater than your unit's Toughness, subtract 1 from the Wound roll."
+  },
+  {
+    "name": "Yooz in Trouble Now",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "e",
+    "description": "When your opponent's Shooting phase, just after an enemy unit has shot, target one Battlewagon, Hunta Rig or Kill Rig model from your army that was hit by those attacks. One Orks Infantry unit embarked within it can disembark and make a Surge move: roll one D6 and move each model up to that many inches, ending as close as possible to the closest enemy (excluding Aircraft). Models can move within Engagement Range."
+  }
+]

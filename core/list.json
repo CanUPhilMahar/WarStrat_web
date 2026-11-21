@@ -1,3 +1,10 @@
 [
-  { "id": "blood_angels", "name": "Blood Angels" }
+  {
+    "id": "blood_angels",
+    "name": "Blood Angels"
+  },
+  {
+    "id": "orks",
+    "name": "Orks"
+  }
 ]

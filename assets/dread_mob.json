@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Klankin' Klaws",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Orks Walker unit from your army that has not been selected to fight. Until the end of the phase, add 2 to the Strength characteristic of its melee weapons. You can push it: also add 1 to their Damage characteristic, but they gain [HAZARDOUS]."
+  },
+  {
+    "name": "Superfuelled Boiler",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, just after an Orks Walker unit from your army is selected to Advance, target that unit. Until the end of the turn, you can re-roll its Advance rolls and its ranged weapons have [ASSAULT]."
+  },
+  {
+    "name": "Bigger Shells for Bigger Gitz",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Mek, Orks Walker or Grots Vehicle unit from your army that has not been selected to shoot. Until the end of the phase, its attacks against Monster or Vehicle units add 1 to the Wound roll. You can push it: also add 1 to the Damage characteristic, but its ranged weapons gain [HAZARDOUS]."
+  },
+  {
+    "name": "Dakka! Dakka! Dakka!",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Orks Walker or Grots Vehicle unit from your army that has not been selected to shoot. Until the end of the phase, re-roll Hit rolls of 1. You can push it: re-roll the Hit roll instead, but its ranged weapons gain [HAZARDOUS]."
+  },
+  {
+    "name": "Conniving Runts",
+    "cost": 1,
+    "whe": "movement",
+    "who": "e",
+    "description": "When your opponent's Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move, target one Gretchin unit from your army within 9\" of it and not within Engagement Range. Roll one D6: on a 4+, that enemy suffers D3+1 mortal wounds. Your unit can then make a Normal move."
+  },
+  {
+    "name": "Extra Gubbinz",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "e",
+    "description": "When your opponent's Shooting phase, just after an enemy unit has selected its targets, target one Orks Walker or Grots Vehicle unit from your army (excluding Titanic) that was selected as a target. Until the end of the phase, subtract 1 from the Damage characteristic of attacks allocated to models in your unit."
+  }
+]

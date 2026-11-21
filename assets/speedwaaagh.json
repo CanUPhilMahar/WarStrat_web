@@ -1,0 +1,44 @@
+[
+  {
+    "name": "On da Move",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, target one Orks unit from your army that has not been selected to move. Until the end of the turn, it is eligible to shoot and declare a charge even if it Fell Back or Advanced (unless it used its turbo this turn)."
+  },
+  {
+    "name": "Mobile Dakkastorm",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, just after a Speed Freeks or Trukk unit from your army has shot, select one enemy unit hit by those attacks. Until the end of the phase, Speed Freeks and Trukk units from your army add 2 to the Strength of attacks that target it."
+  },
+  {
+    "name": "Speshul Ammo",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Orks unit from your army that has not been selected to shoot. Until the end of the phase, its ranged weapons (excluding Torrent) have [ANTI-MONSTER 4+] and [ANTI-VEHICLE 4+]."
+  },
+  {
+    "name": "Ded Killy Construction",
+    "cost": 1,
+    "whe": "fight",
+    "who": "y",
+    "description": "When your Fight phase, target one Speed Freeks or Trukk unit from your army that has not been selected to fight. Until the end of the phase, its melee weapons have [LANCE], and if it made a Charge move this turn, add 1 to their Damage characteristic."
+  },
+  {
+    "name": "Dust Trails",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "e",
+    "description": "When your opponent's Shooting phase, just after an enemy unit has selected its targets, target one Orks unit from your army that was selected as a target. Until the end of the phase, your unit has the Benefit of Cover."
+  },
+  {
+    "name": "Evasive Manoova",
+    "cost": 1,
+    "whe": "fight",
+    "who": "e",
+    "description": "When the end of your opponent's Fight phase, target one Speed Freeks or Trukk unit from your army that is not within Engagement Range. Remove it from the battlefield and place it into Strategic Reserves."
+  }
+]
