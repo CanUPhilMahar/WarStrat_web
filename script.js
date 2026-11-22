@@ -200,23 +200,19 @@
     }
 
     function updateDetachmentInfo() {
-        if (!selectedDetachments.length) {
+        const detachment = selectedDetachments[0];
+        if (!detachment) {
             detachmentNameEl.textContent = '—';
             detachmentDescEl.innerHTML = '';
             detachmentInfoEl.classList.add('empty');
             return;
         }
 
-        const names = selectedDetachments.map(d => localizedDetachment(d).name).join(', ');
-        detachmentNameEl.textContent = t('selected', { names });
+        const tr = localizedDetachment(detachment);
+        detachmentNameEl.textContent = t('selected', { names: tr.name });
 
-        let descHtml = '';
-        selectedDetachments.forEach(detachment => {
-            const tr = localizedDetachment(detachment);
-            const description = tr.description || t('noDescription');
-            descHtml += `<div class="detachment-item"><strong>${escapeHtml(tr.name)}</strong>: <span class="detachment-rule">${linkGlossaryTerms(description, currentLang)}</span></div>`;
-        });
-        detachmentDescEl.innerHTML = descHtml;
+        const description = tr.description || t('noDescription');
+        detachmentDescEl.innerHTML = `<div class="detachment-item"><strong>${escapeHtml(tr.name)}</strong>: <span class="detachment-rule">${linkGlossaryTerms(description, currentLang)}</span></div>`;
 
         detachmentInfoEl.classList.remove('empty');
     }
@@ -411,7 +407,9 @@
             const tr = localizedDetachment(item);
             div.innerHTML = `<span class="detachment-name">${escapeHtml(tr.name)}</span>`;
             div.addEventListener('click', function() {
-                this.classList.toggle('selected');
+                const wasSelected = this.classList.contains('selected');
+                detachmentList.querySelectorAll('.detachment-item.selected').forEach(el => el.classList.remove('selected'));
+                if (!wasSelected) this.classList.add('selected');
                 updateSelectedDetachments();
             });
             detachmentList.appendChild(div);
@@ -525,8 +523,9 @@
     }
 
     function updateSelectedDetachments() {
-        const selectedIds = Array.from(detachmentList.querySelectorAll('.detachment-item.selected')).map(el => el.dataset.id);
-        selectedDetachments = detachmentsData.filter(d => selectedIds.includes(d.id));
+        const selectedEl = detachmentList.querySelector('.detachment-item.selected');
+        const selectedId = selectedEl ? selectedEl.dataset.id : null;
+        selectedDetachments = selectedId ? detachmentsData.filter(d => d.id === selectedId) : [];
         updateDetachmentInfo();
         reloadStratagems();
     }
