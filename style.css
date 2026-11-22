@@ -50,21 +50,6 @@ header h1 .title-sub {
     align-items: center;
     gap: .8rem 1.5rem;
 }
-.panel .label {
-    font-weight: 500;
-    color: #b0a08a;
-}
-.panel .info {
-    color: #c9a84c;
-    font-weight: 600;
-    margin-left: auto;
-}
-.btn-group {
-    display: flex;
-    gap: .4rem;
-    flex-wrap: wrap;
-}
-.points-btn,
 .btn {
     border: 1px solid #4a3a2e;
     border-radius: 30px;
@@ -73,24 +58,11 @@ header h1 .title-sub {
     cursor: pointer;
     font-weight: 600;
     transition: .1s ease;
-}
-.points-btn {
-    padding: .3rem 1rem;
-    font-size: .85rem;
-}
-.btn {
     padding: .4rem 1.2rem;
     font-size: .9rem;
 }
-.points-btn:hover,
 .btn:hover {
     background: #3a322a;
-}
-.points-btn.active {
-    background: #b8963c;
-    border-color: #d4b05a;
-    color: #1a1410;
-    font-weight: 600;
 }
 .btn.primary {
     background: #b8963c;
@@ -461,9 +433,6 @@ footer code {
         flex-direction: column;
         align-items: stretch;
     }
-    .points-panel .btn-group {
-        justify-content: center;
-    }
 }
 @media (max-width: 480px) {
     header h1 {
@@ -524,26 +493,13 @@ footer code {
     justify-content: space-between;
     align-items: center;
 }
-.detachment-list .detachment-item:hover:not(.disabled) {
+.detachment-list .detachment-item:hover {
     background: #2a221c;
 }
 .detachment-list .detachment-item.selected {
     background: #b8963c;
     color: #1a1410;
     font-weight: 600;
-}
-.detachment-list .detachment-item.selected .detachment-cost {
-    color: #1a1410;
-}
-.detachment-list .detachment-item.disabled {
-    color: #5a4a3a;
-    cursor: not-allowed;
-    background: #14100e;
-}
-.detachment-list .detachment-item .detachment-cost {
-    font-size: .75rem;
-    color: #7a6a5a;
-    margin-left: .5rem;
 }
 .detachment-list .detachment-empty {
     color: #5a4a3a;

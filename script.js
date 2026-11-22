@@ -15,8 +15,6 @@
 
     // state
     let cp = 0,
-        dp = 0,
-        startingDp = 0,
         doubleTap = false,
         isLoading = true,
         selectedFactionId = null,
@@ -43,14 +41,11 @@
     const container = $('stratagemsContainer');
     const toastContainer = $('toastContainer');
     const footerTextEl = $('footerText');
-    const pointsGroup = $('pointsGroup');
-    const cpInfo = $('cpInfo');
     const factionSelect = $('factionSelect');
     const detachmentList = $('detachmentList');
     const detachmentNameEl = $('detachmentName');
     const detachmentDescEl = $('detachmentDesc');
     const detachmentInfoEl = $('detachmentInfo');
-    const detachmentCostDisplay = $('detachmentCostDisplay');
     const langSwitch = $('langSwitch');
     const glossaryToggle = $('glossaryToggle');
     const glossaryPanel = $('glossaryPanel');
@@ -180,7 +175,6 @@
         document.documentElement.lang = lang;
         applyUiText();
         updateLangButtons();
-        updateDpInfo();
         renderFactionOptions();
         if (isDetachmentsLoading) {
             setDetachmentMessage(t('loading'));
@@ -205,17 +199,10 @@
         });
     }
 
-    function updateDpInfo() {
-        const totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
-        const remaining = startingDp - totalCost;
-        cpInfo.textContent = t('dpInfo', { dp, selected: totalCost, remaining });
-    }
-
     function updateDetachmentInfo() {
         if (!selectedDetachments.length) {
             detachmentNameEl.textContent = '—';
             detachmentDescEl.innerHTML = '';
-            if (detachmentCostDisplay) detachmentCostDisplay.textContent = '';
             detachmentInfoEl.classList.add('empty');
             return;
         }
@@ -227,15 +214,10 @@
         selectedDetachments.forEach(detachment => {
             const tr = localizedDetachment(detachment);
             const description = tr.description || t('noDescription');
-            descHtml += `<div class="detachment-item"><strong>${escapeHtml(tr.name)}</strong> (${detachment.cost || 0} DP): <span class="detachment-rule">${linkGlossaryTerms(description, currentLang)}</span></div>`;
+            descHtml += `<div class="detachment-item"><strong>${escapeHtml(tr.name)}</strong>: <span class="detachment-rule">${linkGlossaryTerms(description, currentLang)}</span></div>`;
         });
         detachmentDescEl.innerHTML = descHtml;
 
-        const totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
-        const remaining = startingDp - totalCost;
-        if (detachmentCostDisplay) {
-            detachmentCostDisplay.textContent = t('totalCost', { total: totalCost, remaining });
-        }
         detachmentInfoEl.classList.remove('empty');
     }
 
@@ -376,7 +358,6 @@
             stratagems = [...coreStratagems];
             isLoading = false;
             render();
-            updateDpInfo();
             updateDetachmentInfo();
             return;
         }
@@ -400,9 +381,6 @@
             stratagems = [...coreStratagems, ...allStratagems];
             isLoading = false;
             render();
-            const totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
-            dp = Math.max(0, startingDp - totalCost);
-            updateDpInfo();
             updateDetachmentInfo();
             showToast(t('toastLoaded', {
                 count: stratagems.length,
@@ -428,13 +406,11 @@
         data.forEach(item => {
             const div = document.createElement('div');
             div.className = 'detachment-item';
-            if (startingDp < (item.cost || 0)) div.classList.add('disabled');
             if (selectedIds.has(item.id)) div.classList.add('selected');
             div.dataset.id = item.id;
             const tr = localizedDetachment(item);
-            div.innerHTML = `<span class="detachment-name">${escapeHtml(tr.name)}</span><span class="detachment-cost">${item.cost || 0} DP</span>`;
+            div.innerHTML = `<span class="detachment-name">${escapeHtml(tr.name)}</span>`;
             div.addEventListener('click', function() {
-                if (this.classList.contains('disabled')) return;
                 this.classList.toggle('selected');
                 updateSelectedDetachments();
             });
@@ -451,7 +427,6 @@
         lastLoadedIds = [];
         detachmentNameEl.textContent = '—';
         detachmentDescEl.innerHTML = '';
-        if (detachmentCostDisplay) detachmentCostDisplay.textContent = '';
         detachmentInfoEl.classList.add('empty');
         render();
 
@@ -550,50 +525,10 @@
     }
 
     function updateSelectedDetachments() {
-        const selectedElements = detachmentList.querySelectorAll('.detachment-item.selected');
-        const selectedIds = Array.from(selectedElements).map(el => el.dataset.id);
+        const selectedIds = Array.from(detachmentList.querySelectorAll('.detachment-item.selected')).map(el => el.dataset.id);
         selectedDetachments = detachmentsData.filter(d => selectedIds.includes(d.id));
-
-        let totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
-        if (totalCost > startingDp) {
-            showToast(t('toastExceedsDp', { total: totalCost, dp: startingDp }), 'error');
-            const last = selectedElements[selectedElements.length - 1];
-            if (last) last.classList.remove('selected');
-            const newSelected = detachmentList.querySelectorAll('.detachment-item.selected');
-            const newIds = Array.from(newSelected).map(el => el.dataset.id);
-            selectedDetachments = detachmentsData.filter(d => newIds.includes(d.id));
-        }
-
-        totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
-        dp = Math.max(0, startingDp - totalCost);
-        updateDpInfo();
         updateDetachmentInfo();
         reloadStratagems();
-    }
-
-    function updatestartingDp(points) {
-        startingDp = (points === 500 || points === 1000) ? 2 : (points === 2000 || points === 3000) ? 3 : 0;
-
-        detachmentList.querySelectorAll('.detachment-item').forEach(el => {
-            const det = detachmentsData.find(d => d.id === el.dataset.id);
-            if (det) {
-                if (startingDp < (det.cost || 0)) el.classList.add('disabled');
-                else el.classList.remove('disabled');
-            }
-        });
-
-        detachmentList.querySelectorAll('.detachment-item.selected').forEach(el => {
-            if (el.classList.contains('disabled')) el.classList.remove('selected');
-        });
-
-        updateSelectedDetachments();
-    }
-
-    function onPointsChange(points) {
-        document.querySelectorAll('.points-btn').forEach(btn => {
-            btn.classList.toggle('active', parseInt(btn.dataset.points, 10) === points);
-        });
-        updatestartingDp(points);
     }
 
     function onFactionChange() {
@@ -766,12 +701,6 @@
     }
 
     function bindUi() {
-        pointsGroup.querySelectorAll('.points-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                onPointsChange(parseInt(this.dataset.points, 10));
-            });
-        });
-
         factionSelect.addEventListener('change', onFactionChange);
 
         chkDoubleCp.addEventListener('change', function() { doubleTap = this.checked; });
@@ -822,7 +751,6 @@
         setLanguage(getInitialLang(), false);
         bindUi();
         updateCpDisplay();
-        updateDpInfo();
 
         Promise.all([loadRuData(), loadGlossary()])
             .then(() => {

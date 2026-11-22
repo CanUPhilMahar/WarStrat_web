@@ -3,49 +3,42 @@
     "id": "firestorm_assault_force",
     "name": "Firestorm Assault Force",
     "description": "All ranged weapons gain Assault and +1 Strength within 12\".",
-    "cost": 2,
     "mission": "Purge the Foe"
   },
   {
     "id": "ironstorm_spearhead",
     "name": "Ironstorm Spearhead",
     "description": "Armoured Wrath: Once per phase for each Adeptus Astartes unit in your army, you can re-roll one Hit roll, one Wound roll or one Damage roll made for a model in that unit.",
-    "cost": 2,
     "mission": "Purge the Foe"
   },
   {
     "id": "liberator_assault_group",
     "name": "Liberator Assault Group",
     "description": "Red Thirst: When an Adeptus Astartes unit from your army that made a Charge move is selected to fight, its melee weapons gain +1 Attacks and +2 Strength until the end of the phase.",
-    "cost": 3,
     "mission": "Take and Hold"
   },
   {
     "id": "the_lost_brethren",
     "name": "The Lost Brethren",
     "description": "A Noble Death in Combat: Death Company melee attacks can re-roll Wound rolls of 1, or the Wound roll if the unit is Below Half-strength. Death Company Marines gain the Battleline keyword.",
-    "cost": 2,
     "mission": "Purge the Foe"
   },
   {
     "id": "the_angelic_host",
     "name": "The Angelic Host",
     "description": "Upon Wings of Fire: At the end of your opponent's turn, up to 1/2/3 Jump Pack units can be placed into Strategic Reserves and arrive via Deep Strike next turn, depending on battle size.",
-    "cost": 2,
     "mission": "Disruption"
   },
   {
     "id": "angelic_inheritors",
     "name": "Angelic Inheritors",
     "description": "Legacy of the Angel: At the start of the first battle round, select two Angelic Legacy abilities (Sanguinary Grace, Carmine Wrath, Their Appointed Hour) to apply to Adeptus Astartes Character units.",
-    "cost": 3,
     "mission": "Priority Assets"
   },
   {
     "id": "rage_cursed_onslaught",
     "name": "Rage-cursed Onslaught",
     "description": "Maddened Ferocity: Melee attacks re-roll Wound rolls of 1, and units that made a Charge move gain +1 Attacks when selected to fight (+2 if Battle-shocked).",
-    "cost": 3,
     "mission": "Purge the Foe"
   }
 ]
