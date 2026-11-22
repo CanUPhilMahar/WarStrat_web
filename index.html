@@ -9,12 +9,35 @@
 <body>
     <div id="app">
         <header>
-            <h1>⚔ CP Manager <span>Warhammer 40k</span></h1>
+            <h1>⚔ <span data-ui="siteTitle">CP Manager</span> <span class="title-sub" data-ui="siteSubtitle">Warhammer 40k</span></h1>
+            <div class="header-actions">
+                <button class="btn glossary-btn" id="glossaryToggle" type="button" aria-expanded="false" aria-controls="glossaryPanel">
+                    <span aria-hidden="true">📖</span> <span data-ui="glossary">Glossary</span>
+                </button>
+                <div class="lang-switch" id="langSwitch" role="group" aria-label="Language">
+                    <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+                    <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false">RU</button>
+                </div>
+            </div>
+
+            <div id="glossaryPanel" class="glossary-panel" role="dialog" aria-labelledby="glossaryTitle" tabindex="-1" hidden>
+                <div class="glossary-head">
+                    <h2 id="glossaryTitle" data-ui="glossary">Glossary</h2>
+                    <button class="glossary-close" id="glossaryClose" type="button" aria-label="Close">×</button>
+                </div>
+                <input type="search" id="glossarySearch" class="glossary-search" placeholder="Search terms..." autocomplete="off" />
+                <div id="glossaryList" class="glossary-list" aria-live="polite"></div>
+                <div id="glossaryDetail" class="glossary-detail" hidden>
+                    <button class="glossary-back" id="glossaryBack" type="button" data-ui="back">← All terms</button>
+                    <h3 id="glossaryTerm"></h3>
+                    <p id="glossaryDefinition"></p>
+                </div>
+            </div>
         </header>
 
         <!-- Points selection -->
         <section class="panel points-panel">
-            <span class="label">Game Size:</span>
+            <span class="label" data-ui="gameSize">Game Size:</span>
             <div class="btn-group" id="pointsGroup">
                 <button class="btn points-btn" data-points="500">500</button>
                 <button class="btn points-btn" data-points="1000">1000</button>
@@ -28,13 +51,13 @@
         <section class="panel selection-panel">
             <div class="selection-row">
                 <div class="selection-item">
-                    <label for="factionSelect">Faction:</label>
+                    <label for="factionSelect" data-ui="faction">Faction:</label>
                     <select id="factionSelect">
                         <option value="">-- Select Faction --</option>
                     </select>
                 </div>
                 <div class="selection-item">
-                    <label for="detachmentList">Detachment:</label>
+                    <label for="detachmentList" data-ui="detachment">Detachment:</label>
                     <div id="detachmentList" class="detachment-list">
                         <div class="detachment-empty">Select a faction first</div>
                     </div>
@@ -51,31 +74,32 @@
         <!-- CP Counter -->
         <section class="cp-panel">
             <div class="cp-display">
-                <span class="cp-label">CP</span>
+                <span class="cp-label" data-ui="cp">CP</span>
                 <span class="cp-value" id="cpValue">0</span>
             </div>
             <div class="cp-actions">
-                <button class="btn primary" id="btnAddCp">+ CP</button>
+                <button class="btn primary" id="btnAddCp" type="button"><span data-ui="addCp">+ CP</span></button>
                 <label class="checkbox-label">
                     <input type="checkbox" id="chkDoubleCp" />
-                    +2 CP per tap
+                    <span data-ui="doubleCp">+2 CP per tap</span>
                 </label>
-                <button class="btn danger" id="btnResetCp">✕ Reset</button>
+                <button class="btn danger" id="btnResetCp" type="button"><span data-ui="reset">✕ Reset</span></button>
             </div>
         </section>
 
         <!-- Stratagems list -->
         <section id="stratagemsContainer">
-            <div class="empty-state">Select faction and detachment, then click Load.</div>
+            <div class="empty-state">Select a faction and detachment to view stratagems.</div>
         </section>
 
         <footer>
-            <span id="stratCount">0</span> stratagems loaded
+            <span id="footerText">0 stratagems loaded</span>
         </footer>
     </div>
 
     <div id="toastContainer"></div>
 
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

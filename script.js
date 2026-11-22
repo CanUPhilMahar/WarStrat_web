@@ -1,6 +1,18 @@
 (function() {
     'use strict';
 
+    const UI = window.WARSTRAT_UI || { en: {}, ru: {} };
+    const PHASES = ['command', 'movement', 'shooting', 'charge', 'fight'];
+    const PHASE_KEYS = {
+        always: 'phaseAny',
+        command: 'phaseCommand',
+        movement: 'phaseMovement',
+        shooting: 'phaseShooting',
+        charge: 'phaseCharge',
+        fight: 'phaseFight'
+    };
+    const WHO_KEYS = { y: 'whoYour', e: 'whoEnemy', a: 'whoAny' };
+
     // state
     let cp = 0,
         dp = 0,
@@ -12,7 +24,15 @@
         coreStratagems = [],
         selectedDetachments = [],
         detachmentsData = [],
-        lastLoadedIds = [];
+        factionsData = [],
+        lastLoadedIds = [],
+        ruData = null,
+        glossary = [],
+        glossaryMatcherCache = {},
+        glossaryOpen = false,
+        activeGlossaryId = null,
+        isDetachmentsLoading = false,
+        currentLang = getInitialLang();
 
     // DOM refs
     const $ = id => document.getElementById(id);
@@ -22,7 +42,7 @@
     const btnResetCp = $('btnResetCp');
     const container = $('stratagemsContainer');
     const toastContainer = $('toastContainer');
-    const stratCountEl = $('stratCount');
+    const footerTextEl = $('footerText');
     const pointsGroup = $('pointsGroup');
     const cpInfo = $('cpInfo');
     const factionSelect = $('factionSelect');
@@ -31,13 +51,59 @@
     const detachmentDescEl = $('detachmentDesc');
     const detachmentInfoEl = $('detachmentInfo');
     const detachmentCostDisplay = $('detachmentCostDisplay');
+    const langSwitch = $('langSwitch');
+    const glossaryToggle = $('glossaryToggle');
+    const glossaryPanel = $('glossaryPanel');
+    const glossaryClose = $('glossaryClose');
+    const glossarySearch = $('glossarySearch');
+    const glossaryList = $('glossaryList');
+    const glossaryDetail = $('glossaryDetail');
+    const glossaryBack = $('glossaryBack');
+    const glossaryTerm = $('glossaryTerm');
+    const glossaryDefinition = $('glossaryDefinition');
 
     // helpers
-    const phaseMap = { always: 'Command', command: 'Command', movement: 'Movement', shooting: 'Shooting', charge: 'Charge', fight: 'Fight' };
-    const whoMap = { y: 'Your turn', e: 'Enemy turn', a: 'Any' };
-    const formatPhase = p => phaseMap[p] || p;
-    const formatWho = w => whoMap[w] || w;
-    const whoClass = w => 'who-' + w;
+    const ESCAPE_MAP = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+    const escapeHtml = value => String(value == null ? '' : value).replace(/[&<>"']/g, c => ESCAPE_MAP[c]);
+    const escapeAttr = escapeHtml;
+    const escapeRegExp = value => String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const WORD_CHAR = /[\p{L}\p{N}]/u;
+    const isWordChar = ch => !!ch && WORD_CHAR.test(ch);
+
+    function t(key, vars) {
+        const dict = UI[currentLang] || UI.en || {};
+        let value = dict[key];
+        if (value == null) value = (UI.en && UI.en[key]) || key;
+        return String(value).replace(/\{(\w+)\}/g, (match, name) => {
+            return vars && vars[name] != null ? String(vars[name]) : match;
+        });
+    }
+
+    function getInitialLang() {
+        try {
+            const saved = localStorage.getItem('warstrat_lang');
+            if (saved === 'en' || saved === 'ru') return saved;
+        } catch (e) { /* ignore */ }
+        const nav = String(navigator.language || navigator.userLanguage || 'en').toLowerCase();
+        return nav.indexOf('ru') === 0 ? 'ru' : 'en';
+    }
+
+    function footerKey(count) {
+        if (currentLang !== 'ru') return count === 1 ? 'footerOne' : 'footerFew';
+        const mod10 = count % 10,
+            mod100 = count % 100;
+        if (mod10 === 1 && mod100 !== 11) return 'footerOne';
+        if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'footerFew';
+        return 'footerMany';
+    }
+
+    function footerLabel(count) {
+        return t(footerKey(count), { n: count });
+    }
+
+    function setDetachmentMessage(message) {
+        detachmentList.innerHTML = `<div class="detachment-empty">${escapeHtml(message)}</div>`;
+    }
 
     function showToast(msg, type) {
         const el = document.createElement('div');
@@ -45,6 +111,90 @@
         el.textContent = msg;
         toastContainer.appendChild(el);
         setTimeout(() => el.remove(), 3000);
+    }
+
+    function localizedFactionName(item) {
+        if (currentLang === 'ru' && ruData && ruData.factions && ruData.factions[item.id]) {
+            return ruData.factions[item.id];
+        }
+        return item.name;
+    }
+
+    function localizedDetachment(detachment) {
+        const tr = currentLang === 'ru' && ruData && ruData.detachments
+            ? ruData.detachments[detachment.id]
+            : null;
+        return {
+            name: (tr && tr.name) || detachment.name,
+            description: (tr && tr.description) || detachment.description
+        };
+    }
+
+    function localizedStratagem(stratagem) {
+        const tr = currentLang === 'ru' && ruData && ruData.stratagems && ruData.stratagems[stratagem._sourceId]
+            ? ruData.stratagems[stratagem._sourceId][stratagem.name]
+            : null;
+        return {
+            name: (tr && tr.name) || stratagem.name,
+            description: (tr && tr.description) || stratagem.description
+        };
+    }
+
+    function formatPhase(phase) {
+        return t(PHASE_KEYS[phase] || phase);
+    }
+
+    function formatWho(who) {
+        return t(WHO_KEYS[who] || who);
+    }
+
+    function whoClass(who) {
+        return 'who-' + who;
+    }
+
+    function applyUiText() {
+        document.querySelectorAll('[data-ui]').forEach(el => {
+            el.textContent = t(el.getAttribute('data-ui'));
+        });
+        if (glossarySearch) glossarySearch.placeholder = t('searchGlossary');
+        if (glossaryClose) glossaryClose.setAttribute('aria-label', t('close'));
+        if (langSwitch) langSwitch.setAttribute('aria-label', t('language'));
+        document.title = t('pageTitle');
+    }
+
+    function updateLangButtons() {
+        if (!langSwitch) return;
+        langSwitch.querySelectorAll('.lang-btn').forEach(btn => {
+            const active = btn.dataset.lang === currentLang;
+            btn.classList.toggle('active', active);
+            btn.setAttribute('aria-pressed', String(active));
+        });
+    }
+
+    function setLanguage(lang, persist) {
+        if (lang !== 'en' && lang !== 'ru') return;
+        currentLang = lang;
+        if (persist) {
+            try { localStorage.setItem('warstrat_lang', lang); } catch (e) { /* ignore */ }
+        }
+        document.documentElement.lang = lang;
+        applyUiText();
+        updateLangButtons();
+        updateDpInfo();
+        renderFactionOptions();
+        if (isDetachmentsLoading) {
+            setDetachmentMessage(t('loading'));
+        } else if (detachmentsData.length) {
+            renderDetachmentList(detachmentsData);
+        } else {
+            setDetachmentMessage(selectedFactionId ? t('noDetachments') : t('selectFactionFirst'));
+        }
+        updateDetachmentInfo();
+        render();
+        if (glossaryOpen) {
+            if (activeGlossaryId && !glossaryDetail.hidden) showGlossaryTerm(activeGlossaryId);
+            else renderGlossaryList();
+        }
     }
 
     function updateCpDisplay() {
@@ -56,9 +206,9 @@
     }
 
     function updateDpInfo() {
-        const totalCost = selectedDetachments.reduce((s, d) => s + (d.cost || 0), 0);
+        const totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
         const remaining = startingDp - totalCost;
-        cpInfo.textContent = `DP: ${dp} | Selected: ${totalCost} | Remaining: ${remaining}`;
+        cpInfo.textContent = t('dpInfo', { dp, selected: totalCost, remaining });
     }
 
     function updateDetachmentInfo() {
@@ -69,56 +219,61 @@
             detachmentInfoEl.classList.add('empty');
             return;
         }
-        const names = selectedDetachments.map(d => d.name).join(', ');
-        detachmentNameEl.textContent = 'Selected: ' + names;
+
+        const names = selectedDetachments.map(d => localizedDetachment(d).name).join(', ');
+        detachmentNameEl.textContent = t('selected', { names });
+
         let descHtml = '';
-        selectedDetachments.forEach(d => {
-            descHtml += `<div class="detachment-item"><strong>${d.name}</strong> (${d.cost||0} DP): <span class="detachment-rule">${d.description||'No description'}</span></div>`;
+        selectedDetachments.forEach(detachment => {
+            const tr = localizedDetachment(detachment);
+            const description = tr.description || t('noDescription');
+            descHtml += `<div class="detachment-item"><strong>${escapeHtml(tr.name)}</strong> (${detachment.cost || 0} DP): <span class="detachment-rule">${linkGlossaryTerms(description, currentLang)}</span></div>`;
         });
         detachmentDescEl.innerHTML = descHtml;
-        const totalCost = selectedDetachments.reduce((s, d) => s + (d.cost || 0), 0);
+
+        const totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
         const remaining = startingDp - totalCost;
-        if (detachmentCostDisplay) detachmentCostDisplay.textContent = `Total cost: ${totalCost} DP | Remaining: ${remaining} DP`;
+        if (detachmentCostDisplay) {
+            detachmentCostDisplay.textContent = t('totalCost', { total: totalCost, remaining });
+        }
         detachmentInfoEl.classList.remove('empty');
     }
 
     function addCp() {
-        cp += doubleTap ? 2 : 1;
+        const amount = doubleTap ? 2 : 1;
+        cp += amount;
         updateCpDisplay();
-        showToast('+' + (doubleTap ? 2 : 1) + ' CP', 'success');
+        showToast('+' + amount + ' CP', 'success');
     }
 
     function resetCp() {
         cp = 0;
         updateCpDisplay();
-        showToast('CP reset to 0', 'info');
+        showToast(t('toastCpReset'), 'info');
     }
 
     function useStratagem(cost, name) {
         if (cp < cost) {
-            showToast(`Not enough CP! Need ${cost}, have ${cp}`, 'error');
+            showToast(t('toastNotEnoughCp', { cost, cp }), 'error');
             return;
         }
         cp -= cost;
         updateCpDisplay();
-        showToast(name + ' (' + cost + ' CP)', 'success');
+        showToast(t('toastUse', { name, cost }), 'success');
     }
 
     function groupByPhase(list) {
-        const phases = ['command', 'movement', 'shooting', 'charge', 'fight'];
         const grouped = {};
-        phases.forEach(p => grouped[p] = []);
-        list.forEach(s => {
-            if (s.whe === 'always') {
-                phases.forEach(p => grouped[p].push(s));
-            } else if (s.whe === 'command') {
-                if (grouped.command) grouped.command.push(s);
-            } else {
-                if (grouped[s.whe]) grouped[s.whe].push(s);
+        PHASES.forEach(phase => grouped[phase] = []);
+        list.forEach(stratagem => {
+            if (stratagem.whe === 'always') {
+                PHASES.forEach(phase => grouped[phase].push(stratagem));
+            } else if (grouped[stratagem.whe]) {
+                grouped[stratagem.whe].push(stratagem);
             }
         });
         const result = {};
-        phases.forEach(p => { if (grouped[p].length) result[p] = grouped[p]; });
+        PHASES.forEach(phase => { if (grouped[phase].length) result[phase] = grouped[phase]; });
         return result;
     }
 
@@ -131,49 +286,50 @@
     function render() {
         if (isLoading) {
             container.innerHTML = '<div class="loader"></div><div class="loader"></div>';
+            footerTextEl.textContent = footerLabel(0);
             return;
         }
         if (!stratagems.length) {
             container.innerHTML = `
                 <div class="category">
-                    <div class="category-header"><h2>Stratagems</h2></div>
-                    <div class="empty-state">No stratagems loaded for this selection.</div>
+                    <div class="category-header"><h2>${escapeHtml(t('stratagems'))}</h2></div>
+                    <div class="empty-state">${escapeHtml(t('noStratagemsLoaded'))}</div>
                 </div>
             `;
-            stratCountEl.textContent = '0';
+            footerTextEl.textContent = footerLabel(0);
             return;
         }
 
-        stratCountEl.textContent = stratagems.length;
+        footerTextEl.textContent = footerLabel(stratagems.length);
         const grouped = groupStratagems(stratagems);
 
         const renderCategory = (title, phaseGroups) => {
             const phaseKeys = Object.keys(phaseGroups);
             if (!phaseKeys.length) {
-                return `<div class="category"><div class="category-header"><h2>${title}</h2><span class="badge">0</span></div><div class="empty-state">No stratagems</div></div>`;
+                return `<div class="category"><div class="category-header"><h2>${escapeHtml(title)}</h2><span class="badge">0</span></div><div class="empty-state">${escapeHtml(t('noStratagems'))}</div></div>`;
             }
             let total = 0;
-            phaseKeys.forEach(p => total += phaseGroups[p].length);
-            let html = `<div class="category"><div class="category-header"><h2>${title}</h2><span class="badge">${total}</span></div><div class="category-body">`;
-            const phaseOrder = ['command', 'movement', 'shooting', 'charge', 'fight'];
-            phaseOrder.forEach(phase => {
+            phaseKeys.forEach(phase => total += phaseGroups[phase].length);
+            let html = `<div class="category"><div class="category-header"><h2>${escapeHtml(title)}</h2><span class="badge">${total}</span></div><div class="category-body">`;
+            PHASES.forEach(phase => {
                 const items = phaseGroups[phase];
                 if (!items || !items.length) return;
-                html += `<div class="phase-group" data-phase="${phase}"><div class="phase-title">▸ ${formatPhase(phase)}</div><div class="phase-content">`;
-                items.forEach(s => {
+                html += `<div class="phase-group" data-phase="${phase}"><div class="phase-title">${escapeHtml(formatPhase(phase))}</div><div class="phase-content">`;
+                items.forEach(stratagem => {
+                    const tr = localizedStratagem(stratagem);
                     html += `
                         <div class="strat-card">
                             <div class="strat-info">
-                                <div class="strat-name">${s.name} <span class="cost-badge">${s.cost} CP</span></div>
-                                <div class="strat-desc">${s.description||''}</div>
+                                <div class="strat-name">${escapeHtml(tr.name)} <span class="cost-badge">${stratagem.cost} CP</span></div>
+                                <div class="strat-desc">${linkGlossaryTerms(tr.description || '', currentLang)}</div>
                                 <div class="strat-meta">
-                                    <span class="tag">${formatPhase(s.whe)}</span>
-                                    <span class="tag ${whoClass(s.who)}">${formatWho(s.who)}</span>
+                                    <span class="tag">${escapeHtml(formatPhase(stratagem.whe))}</span>
+                                    <span class="tag ${whoClass(stratagem.who)}">${escapeHtml(formatWho(stratagem.who))}</span>
                                 </div>
                             </div>
                             <div class="strat-action">
-                                <button class="btn btn-use" data-cost="${s.cost}" data-name="${s.name}" ${cp < s.cost ? 'disabled' : ''}>
-                                    Use <span class="cp-cost">${s.cost} CP</span>
+                                <button class="btn btn-use" data-cost="${stratagem.cost}" data-name="${escapeAttr(tr.name)}" ${cp < stratagem.cost ? 'disabled' : ''}>
+                                    ${escapeHtml(t('use'))} <span class="cp-cost">${stratagem.cost} CP</span>
                                 </button>
                             </div>
                         </div>
@@ -185,7 +341,7 @@
             return html;
         };
 
-        container.innerHTML = renderCategory('Your Turn', grouped.yourTurn) + renderCategory('Enemy Turn', grouped.enemyTurn);
+        container.innerHTML = renderCategory(t('yourTurn'), grouped.yourTurn) + renderCategory(t('enemyTurn'), grouped.enemyTurn);
 
         container.querySelectorAll('.btn-use').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -198,15 +354,13 @@
         container.querySelectorAll('.phase-title').forEach(title => {
             title.addEventListener('click', function(e) {
                 e.stopPropagation();
-                const group = this.parentElement;
-                group.classList.toggle('collapsed');
+                this.parentElement.classList.toggle('collapsed');
             });
         });
 
         container.querySelectorAll('.category-header').forEach(header => {
             header.addEventListener('click', function() {
-                const category = this.parentElement;
-                category.classList.toggle('collapsed');
+                this.parentElement.classList.toggle('collapsed');
             });
         });
 
@@ -232,40 +386,53 @@
 
         Promise.all(ids.map(id =>
             fetch(`assets/${id}.json`)
-                .then(res => { if (!res.ok) throw new Error(`HTTP ${res.status} for ${id}`); return res.json(); })
-                .then(data => { if (!Array.isArray(data)) throw new Error(`Invalid JSON for ${id}`); return data; })
+                .then(res => {
+                    if (!res.ok) throw new Error(`HTTP ${res.status} for ${id}`);
+                    return res.json();
+                })
+                .then(data => {
+                    if (!Array.isArray(data)) throw new Error(`Invalid JSON for ${id}`);
+                    return data.map(stratagem => Object.assign({}, stratagem, { _sourceId: id }));
+                })
         )).then(results => {
             let allStratagems = [];
             results.forEach(data => allStratagems = allStratagems.concat(data));
             stratagems = [...coreStratagems, ...allStratagems];
             isLoading = false;
             render();
-            const totalCost = selectedDetachments.reduce((s, d) => s + (d.cost || 0), 0);
+            const totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
             dp = Math.max(0, startingDp - totalCost);
             updateDpInfo();
             updateDetachmentInfo();
-            showToast(`Loaded ${stratagems.length} stratagems (${coreStratagems.length} core + ${allStratagems.length} from ${ids.length} detachment(s))`, 'success');
+            showToast(t('toastLoaded', {
+                count: stratagems.length,
+                core: coreStratagems.length,
+                asset: allStratagems.length
+            }), 'success');
         }).catch(err => {
             console.warn('Failed to load stratagems:', err.message);
             stratagems = [...coreStratagems];
             isLoading = false;
             render();
-            showToast('Failed to load stratagems for one or more detachments', 'error');
+            showToast(t('toastLoadFailed'), 'error');
         });
     }
 
     function renderDetachmentList(data) {
         detachmentList.innerHTML = '';
         if (!data || !data.length) {
-            detachmentList.innerHTML = '<div class="detachment-empty">No detachments available</div>';
+            setDetachmentMessage(t('noDetachments'));
             return;
         }
+        const selectedIds = new Set(selectedDetachments.map(d => d.id));
         data.forEach(item => {
             const div = document.createElement('div');
             div.className = 'detachment-item';
             if (startingDp < (item.cost || 0)) div.classList.add('disabled');
+            if (selectedIds.has(item.id)) div.classList.add('selected');
             div.dataset.id = item.id;
-            div.innerHTML = `<span class="detachment-name">${item.name}</span><span class="detachment-cost">${item.cost||0} DP</span>`;
+            const tr = localizedDetachment(item);
+            div.innerHTML = `<span class="detachment-name">${escapeHtml(tr.name)}</span><span class="detachment-cost">${item.cost || 0} DP</span>`;
             div.addEventListener('click', function() {
                 if (this.classList.contains('disabled')) return;
                 this.classList.toggle('selected');
@@ -276,7 +443,8 @@
     }
 
     function loadDetachments(factionId) {
-        detachmentList.innerHTML = '<div class="detachment-empty">Loading...</div>';
+        isDetachmentsLoading = true;
+        setDetachmentMessage(t('loading'));
         selectedDetachments = [];
         detachmentsData = [];
         stratagems = [...coreStratagems];
@@ -288,60 +456,92 @@
         render();
 
         if (!factionId) {
-            detachmentList.innerHTML = '<div class="detachment-empty">Select a faction first</div>';
+            isDetachmentsLoading = false;
+            setDetachmentMessage(t('selectFactionFirst'));
             return Promise.resolve();
         }
 
         return fetch(`factions/${factionId}.json`)
-            .then(res => { if (!res.ok) throw new Error(`HTTP ${res.status}`); return res.json(); })
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
             .then(data => {
                 if (Array.isArray(data) && data.length) {
                     detachmentsData = data;
                     renderDetachmentList(data);
-                } else throw new Error('Invalid detachments data');
+                } else {
+                    throw new Error('Invalid detachments data');
+                }
             })
             .catch(err => {
                 console.warn('Failed to load detachments:', err.message);
-                showToast('Failed to load detachments for this faction', 'error');
-                detachmentList.innerHTML = '<div class="detachment-empty">Error loading detachments</div>';
+                setDetachmentMessage(t('errorLoadingDetachments'));
+                showToast(t('toastDetachmentLoadFailed'), 'error');
                 throw err;
+            })
+            .finally(() => {
+                isDetachmentsLoading = false;
             });
+    }
+
+    function renderFactionOptions() {
+        if (!factionSelect) return;
+        const wanted = selectedFactionId || '';
+        factionSelect.innerHTML = '';
+        const placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.textContent = t('selectFaction');
+        factionSelect.appendChild(placeholder);
+        factionsData.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.id;
+            option.textContent = localizedFactionName(item);
+            factionSelect.appendChild(option);
+        });
+        factionSelect.value = factionsData.some(f => f.id === wanted) ? wanted : '';
     }
 
     function loadFactions() {
         return fetch('core/list.json')
-            .then(res => { if (!res.ok) throw new Error(`HTTP ${res.status}`); return res.json(); })
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
             .then(data => {
                 if (Array.isArray(data) && data.length) {
-                    data.forEach(item => {
-                        const opt = document.createElement('option');
-                        opt.value = item.id;
-                        opt.textContent = item.name;
-                        factionSelect.appendChild(opt);
-                    });
-                } else throw new Error('Invalid factions list');
+                    factionsData = data;
+                    renderFactionOptions();
+                } else {
+                    throw new Error('Invalid factions list');
+                }
             })
             .catch(err => {
                 console.warn('Failed to load factions:', err.message);
-                showToast('Failed to load factions list', 'error');
+                showToast(t('toastFactionsLoadFailed'), 'error');
             });
     }
 
     function loadCoreData() {
         return fetch('core/core.json')
-            .then(res => { if (!res.ok) throw new Error(`HTTP ${res.status}`); return res.json(); })
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
             .then(data => {
                 if (Array.isArray(data) && data.length) {
-                    coreStratagems = data;
+                    coreStratagems = data.map(stratagem => Object.assign({}, stratagem, { _sourceId: 'core' }));
                     stratagems = [...coreStratagems];
                     isLoading = false;
                     render();
-                    showToast(`Loaded ${coreStratagems.length} core stratagems`, 'success');
-                } else throw new Error('Invalid core.json');
+                    showToast(t('toastLoadedCore', { count: coreStratagems.length }), 'success');
+                } else {
+                    throw new Error('Invalid core.json');
+                }
             })
             .catch(err => {
                 console.warn('Failed to load core.json:', err.message);
-                showToast('Core stratagems not loaded', 'info');
+                showToast(t('toastCoreNotLoaded'), 'info');
                 coreStratagems = [];
                 stratagems = [];
                 isLoading = false;
@@ -354,9 +554,9 @@
         const selectedIds = Array.from(selectedElements).map(el => el.dataset.id);
         selectedDetachments = detachmentsData.filter(d => selectedIds.includes(d.id));
 
-        let totalCost = selectedDetachments.reduce((s, d) => s + (d.cost || 0), 0);
+        let totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
         if (totalCost > startingDp) {
-            showToast(`Total cost (${totalCost}) exceeds available DP (${startingDp})!`, 'error');
+            showToast(t('toastExceedsDp', { total: totalCost, dp: startingDp }), 'error');
             const last = selectedElements[selectedElements.length - 1];
             if (last) last.classList.remove('selected');
             const newSelected = detachmentList.querySelectorAll('.detachment-item.selected');
@@ -364,7 +564,7 @@
             selectedDetachments = detachmentsData.filter(d => newIds.includes(d.id));
         }
 
-        totalCost = selectedDetachments.reduce((s, d) => s + (d.cost || 0), 0);
+        totalCost = selectedDetachments.reduce((sum, d) => sum + (d.cost || 0), 0);
         dp = Math.max(0, startingDp - totalCost);
         updateDpInfo();
         updateDetachmentInfo();
@@ -377,8 +577,7 @@
         detachmentList.querySelectorAll('.detachment-item').forEach(el => {
             const det = detachmentsData.find(d => d.id === el.dataset.id);
             if (det) {
-                const cost = det.cost || 0;
-                if (startingDp < cost) el.classList.add('disabled');
+                if (startingDp < (det.cost || 0)) el.classList.add('disabled');
                 else el.classList.remove('disabled');
             }
         });
@@ -392,39 +591,184 @@
 
     function onPointsChange(points) {
         document.querySelectorAll('.points-btn').forEach(btn => {
-            btn.classList.toggle('active', parseInt(btn.dataset.points) === points);
+            btn.classList.toggle('active', parseInt(btn.dataset.points, 10) === points);
         });
         updatestartingDp(points);
     }
 
     function onFactionChange() {
-        const factionId = factionSelect.value;
-        selectedFactionId = factionId;
+        selectedFactionId = factionSelect.value;
         selectedDetachments = [];
         detachmentsData = [];
         lastLoadedIds = [];
         stratagems = [...coreStratagems];
         render();
-        detachmentNameEl.textContent = '—';
-        detachmentDescEl.innerHTML = '';
-        if (detachmentCostDisplay) detachmentCostDisplay.textContent = '';
-        detachmentInfoEl.classList.add('empty');
+        loadDetachments(selectedFactionId).catch(err => console.error(err));
+    }
 
-        if (factionId) {
-            loadDetachments(factionId).catch(err => {
-                console.error(err);
-                showToast('Error loading detachments for this faction', 'error');
-                detachmentList.innerHTML = '<div class="detachment-empty">Error loading</div>';
+    function getGlossaryMatchers(lang) {
+        if (glossaryMatcherCache[lang]) return glossaryMatcherCache[lang];
+        const matchers = [];
+        glossary.forEach(entry => {
+            if (!entry.autoLink) return;
+            const base = lang === 'ru'
+                ? [entry.term_ru].concat(entry.aliases_ru || [])
+                : [entry.term].concat(entry.aliases || []);
+            const seen = new Set();
+            base.forEach(form => {
+                if (!form || form.length < 2 || seen.has(form)) return;
+                if (/[()[\]\/]/.test(form)) return;
+                seen.add(form);
+                matchers.push({
+                    entry,
+                    form,
+                    regex: new RegExp(escapeRegExp(form), 'giu')
+                });
             });
+        });
+        matchers.sort((a, b) => b.form.length - a.form.length);
+        glossaryMatcherCache[lang] = matchers;
+        return matchers;
+    }
+
+    function linkGlossaryTerms(text, lang) {
+        const source = String(text == null ? '' : text);
+        if (!source || !glossary.length) return escapeHtml(source);
+        const ranges = [];
+        getGlossaryMatchers(lang).forEach(matcher => {
+            if (ranges.some(range => range.id === matcher.entry.id)) return;
+            matcher.regex.lastIndex = 0;
+            for (const match of source.matchAll(matcher.regex)) {
+                const start = match.index;
+                const end = start + match[0].length;
+                if (start > 0 && isWordChar(source[start - 1]) && isWordChar(match[0][0])) continue;
+                if (end < source.length && isWordChar(source[end]) && isWordChar(match[0][match[0].length - 1])) continue;
+                if (ranges.some(range => start < range.end && end > range.start)) continue;
+                ranges.push({ start, end, id: matcher.entry.id, label: match[0] });
+                break;
+            }
+        });
+        ranges.sort((a, b) => a.start - b.start);
+        let html = '';
+        let position = 0;
+        ranges.forEach(range => {
+            html += escapeHtml(source.slice(position, range.start));
+            const title = t('glossaryLinkTitle', { term: range.label });
+            html += `<a href="#" class="glossary-link" data-glossary="${escapeAttr(range.id)}" title="${escapeAttr(title)}">${escapeHtml(range.label)}</a>`;
+            position = range.end;
+        });
+        html += escapeHtml(source.slice(position));
+        return html;
+    }
+
+    function glossaryDisplayTerm(entry) {
+        return currentLang === 'ru' ? entry.term_ru : entry.term;
+    }
+
+    function glossaryDisplayDefinition(entry) {
+        return currentLang === 'ru' ? entry.definition_ru : entry.definition;
+    }
+
+    function renderGlossaryList() {
+        if (!glossary.length) {
+            glossaryList.innerHTML = `<div class="glossary-empty">${escapeHtml(t('glossaryUnavailable'))}</div>`;
+            return;
+        }
+        const query = glossarySearch.value.trim().toLocaleLowerCase(currentLang);
+        const items = glossary.filter(entry => {
+            if (!query) return true;
+            const haystack = [entry.term, entry.term_ru, entry.definition, entry.definition_ru]
+                .concat(entry.aliases || [], entry.aliases_ru || [])
+                .join(' ')
+                .toLocaleLowerCase(currentLang);
+            return haystack.indexOf(query) !== -1;
+        });
+        items.sort((a, b) => glossaryDisplayTerm(a).localeCompare(glossaryDisplayTerm(b), currentLang));
+        if (!items.length) {
+            glossaryList.innerHTML = `<div class="glossary-empty">${escapeHtml(t('noGlossaryResults'))}</div>`;
+            return;
+        }
+        glossaryList.innerHTML = items.map(entry => (
+            `<button type="button" class="glossary-item" data-term="${escapeAttr(entry.id)}">${escapeHtml(glossaryDisplayTerm(entry))}</button>`
+        )).join('');
+    }
+
+    function showGlossaryTerm(termId) {
+        const entry = glossary.find(item => item.id === termId);
+        if (!entry) return;
+        activeGlossaryId = termId;
+        glossaryList.hidden = true;
+        glossaryDetail.hidden = false;
+        glossaryTerm.textContent = glossaryDisplayTerm(entry);
+        glossaryDefinition.textContent = glossaryDisplayDefinition(entry);
+    }
+
+    function showGlossaryList() {
+        activeGlossaryId = null;
+        glossaryDetail.hidden = true;
+        glossaryList.hidden = false;
+        renderGlossaryList();
+        glossarySearch.focus();
+    }
+
+    function openGlossary(termId) {
+        glossaryOpen = true;
+        glossaryPanel.hidden = false;
+        glossaryToggle.setAttribute('aria-expanded', 'true');
+        if (termId) {
+            showGlossaryTerm(termId);
+            glossaryPanel.focus();
         } else {
-            detachmentList.innerHTML = '<div class="detachment-empty">Select a faction first</div>';
+            glossarySearch.value = '';
+            showGlossaryList();
         }
     }
 
-    function init() {
+    function closeGlossary(returnFocus) {
+        glossaryOpen = false;
+        activeGlossaryId = null;
+        glossaryPanel.hidden = true;
+        glossaryToggle.setAttribute('aria-expanded', 'false');
+        if (returnFocus) glossaryToggle.focus();
+    }
+
+    function loadRuData() {
+        return fetch('lang/ru.json')
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
+            .then(data => {
+                ruData = data;
+            })
+            .catch(err => {
+                console.warn('Failed to load Russian translations:', err.message);
+                if (currentLang === 'ru') showToast(t('toastTranslationsFailed'), 'error');
+            });
+    }
+
+    function loadGlossary() {
+        return fetch('core/glossary.json')
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
+            .then(data => {
+                if (!Array.isArray(data)) throw new Error('Invalid glossary data');
+                glossary = data;
+                glossaryMatcherCache = {};
+            })
+            .catch(err => {
+                console.warn('Failed to load glossary:', err.message);
+                glossary = [];
+                glossaryMatcherCache = {};
+            });
+    }
+
+    function bindUi() {
         pointsGroup.querySelectorAll('.points-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                onPointsChange(parseInt(this.dataset.points));
+                onPointsChange(parseInt(this.dataset.points, 10));
             });
         });
 
@@ -434,15 +778,58 @@
         btnAddCp.addEventListener('click', addCp);
         btnResetCp.addEventListener('click', resetCp);
 
-        Promise.all([loadFactions(), loadCoreData()]);
+        langSwitch.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.dataset.lang !== currentLang) setLanguage(this.dataset.lang, true);
+            });
+        });
 
+        glossaryToggle.addEventListener('click', function() {
+            if (glossaryOpen) closeGlossary(true);
+            else openGlossary(null);
+        });
+        glossaryClose.addEventListener('click', function() { closeGlossary(true); });
+        glossaryBack.addEventListener('click', showGlossaryList);
+        glossarySearch.addEventListener('input', function() {
+            activeGlossaryId = null;
+            glossaryDetail.hidden = true;
+            glossaryList.hidden = false;
+            renderGlossaryList();
+        });
+        glossaryList.addEventListener('click', function(e) {
+            const btn = e.target.closest('.glossary-item');
+            if (btn) showGlossaryTerm(btn.dataset.term);
+        });
+
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('.glossary-link');
+            if (link) {
+                e.preventDefault();
+                openGlossary(link.dataset.glossary);
+                return;
+            }
+            if (glossaryOpen && !e.target.closest('#glossaryPanel') && !e.target.closest('#glossaryToggle')) {
+                closeGlossary(false);
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && glossaryOpen) closeGlossary(true);
+        });
+    }
+
+    function init() {
+        setLanguage(getInitialLang(), false);
+        bindUi();
         updateCpDisplay();
         updateDpInfo();
-        detachmentList.innerHTML = '<div class="detachment-empty">Select a faction first</div>';
-        detachmentInfoEl.classList.add('empty');
-        detachmentNameEl.textContent = '—';
-        detachmentDescEl.innerHTML = '';
-        if (detachmentCostDisplay) detachmentCostDisplay.textContent = '';
+
+        Promise.all([loadRuData(), loadGlossary()])
+            .then(() => {
+                setLanguage(currentLang, false);
+                return Promise.all([loadFactions(), loadCoreData()]);
+            })
+            .catch(err => console.error(err));
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

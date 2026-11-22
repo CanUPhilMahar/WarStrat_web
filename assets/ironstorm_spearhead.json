@@ -11,7 +11,7 @@
     "cost": 1,
     "whe": "shooting",
     "who": "e",
-    "description": "When: Your opponent's Shooting phase, just after an enemy unit has resolved its attacks. Target: One Adeptus Astartes Vehicle unit from your army that was reduced to Below Half-strength as a result of the attacking unit's attacks. Effect: Your unit can shoot as if it were your Shooting phase, but must target only that enemy unit when doing so, and can only do so if that enemy unit is an eligible target."
+    "description": "When: Your opponent's Shooting phase or the Fight phase, just after an enemy unit has selected its targets. Target: One Adeptus Astartes unit from your army that was selected as the target of one or more of the attacking unit's attacks. Effect: Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1."
   },
   {
     "name": "Mercy is Weakness",
@@ -23,22 +23,22 @@
   {
     "name": "Vengeful Animus",
     "cost": 1,
-    "whe": "charge",
+    "whe": "always",
     "who": "a",
-    "description": "When: Your Charge phase or opponent's Charge phase. Target: One Adeptus Astartes Walker model from your army. Effect: Until the start of your next Command phase, improve your model's Move, Toughness, Leadership and Objective Control characteristics by 1 and each time your model makes an attack, add 1 to the Hit roll."
+    "description": "When: Any phase, just after an Adeptus Astartes Vehicle model from your army with the Deadly Demise ability is destroyed. Target: That Adeptus Astartes Vehicle model. You can use this Stratagem on that model even though it was just destroyed. Effect: Do not roll one D6 to determine whether mortal wounds are inflicted by your model's Deadly Demise ability. Instead, mortal wounds are automatically inflicted."
   },
   {
     "name": "Ancient Fury",
     "cost": 1,
-    "whe": "fight",
-    "who": "a",
-    "description": "Ironstorm Spearhead - Epic Deed Stratagem."
+    "whe": "command",
+    "who": "y",
+    "description": "When: Your Command phase. Target: One Adeptus Astartes Walker model from your army. Effect: Until the start of your next Command phase, improve your model's Move, Toughness, Leadership and Objective Control characteristics by 1 and each time your model makes an attack, add 1 to the Hit roll."
   },
   {
     "name": "Power of the Machine Spirit",
     "cost": 1,
-    "whe": "command",
-    "who": "a",
-    "description": "Ironstorm Spearhead - Epic Deed Stratagem."
+    "whe": "shooting",
+    "who": "e",
+    "description": "When: Your opponent's Shooting phase, just after an enemy unit has resolved its attacks. Target: One Adeptus Astartes Vehicle unit from your army that was reduced to Below Half-strength as a result of the attacking unit's attacks. Effect: Your unit can shoot as if it were your Shooting phase, but must target only that enemy unit when doing so, and can only do so if that enemy unit is an eligible target."
   }
 ]

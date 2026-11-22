@@ -14,13 +14,6 @@
     "mission": "Purge the Foe"
   },
   {
-    "id": "wrath_of_the_doomed",
-    "name": "Wrath of The Doomed",
-    "description": "Fanatical Celerity: When a friendly Death Company unit is selected to make an Advance move, it suffers D3+1 mortal wounds but remains eligible to declare a charge. This detachment has the DOOMED tag and cannot be taken with another DOOMED detachment.",
-    "cost": 1,
-    "mission": "Purge the Foe"
-  },
-  {
     "id": "liberator_assault_group",
     "name": "Liberator Assault Group",
     "description": "Red Thirst: When an Adeptus Astartes unit from your army that made a Charge move is selected to fight, its melee weapons gain +1 Attacks and +2 Strength until the end of the phase.",

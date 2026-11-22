@@ -1,0 +1,1706 @@
+[
+  {
+    "id": "cp",
+    "term": "CP (Command Points)",
+    "term_ru": "CP (очки командования)",
+    "aliases": [
+      "CP",
+      "Command Points",
+      "Command Point"
+    ],
+    "aliases_ru": [
+      "CP",
+      "ОЧ",
+      "очки командования",
+      "очко командования"
+    ],
+    "definition": "Command Points are the resource spent to use Stratagems. Each player gains 1 CP at the start of their Command phase.",
+    "definition_ru": "Очки командования — ресурс, который тратится на использование стратагем. В начале каждой своей фазы командования игрок получает 1 CP.",
+    "autoLink": false
+  },
+  {
+    "id": "dp",
+    "term": "DP (Detachment Points)",
+    "term_ru": "DP (очки детачментов)",
+    "aliases": [
+      "DP",
+      "Detachment Points",
+      "Detachment Point"
+    ],
+    "aliases_ru": [
+      "DP",
+      "очки детачментов",
+      "очко детачментов"
+    ],
+    "definition": "A site-specific budget used to limit how many detachments you can select for a game. Each detachment has a DP cost.",
+    "definition_ru": "Бюджет, используемый на этом сайте для ограничения числа выбранных детачментов. У каждого детачмента есть стоимость в DP.",
+    "autoLink": false
+  },
+  {
+    "id": "stratagem",
+    "term": "Stratagem",
+    "term_ru": "Стратагема",
+    "aliases": [
+      "Stratagems"
+    ],
+    "aliases_ru": [
+      "стратагема",
+      "стратагемы",
+      "стратагем",
+      "стратагему",
+      "стратагемой"
+    ],
+    "definition": "A special tactical rule paid for with CP and used at the timing stated on its card.",
+    "definition_ru": "Особое тактическое правило, которое оплачивается CP и используется в момент, указанный в его описании.",
+    "autoLink": false
+  },
+  {
+    "id": "detachment",
+    "term": "Detachment",
+    "term_ru": "Детачмент",
+    "aliases": [
+      "Detachments"
+    ],
+    "aliases_ru": [
+      "детачмент",
+      "детачмента",
+      "детачменты",
+      "детачментов"
+    ],
+    "definition": "An army configuration that grants a detachment rule and access to its own Stratagems and Enhancements.",
+    "definition_ru": "Конфигурация армии, которая даёт правило детачмента и доступ к его стратагемам и улучшениям.",
+    "autoLink": false
+  },
+  {
+    "id": "enhancement",
+    "term": "Enhancement",
+    "term_ru": "Улучшение",
+    "aliases": [
+      "Enhancements"
+    ],
+    "aliases_ru": [
+      "улучшение",
+      "улучшения",
+      "улучшений",
+      "улучшением"
+    ],
+    "definition": "A paid upgrade given to a Character in a detachment.",
+    "definition_ru": "Платное улучшение, которое получает персонаж в детачменте.",
+    "autoLink": false
+  },
+  {
+    "id": "battle-round",
+    "term": "Battle round",
+    "term_ru": "Боевой раунд",
+    "aliases": [
+      "Battle rounds"
+    ],
+    "aliases_ru": [
+      "боевой раунд",
+      "боевого раунда",
+      "боевом раунде",
+      "боевые раунды",
+      "боевых раундов"
+    ],
+    "definition": "A pair of turns: one player's turn followed by the opponent's. Most missions last five battle rounds.",
+    "definition_ru": "Пара ходов: ход одного игрока, затем ход противника. Большинство миссий длится пять боевых раундов.",
+    "autoLink": true
+  },
+  {
+    "id": "turn",
+    "term": "Turn",
+    "term_ru": "Ход",
+    "aliases": [
+      "Turns"
+    ],
+    "aliases_ru": [
+      "ход",
+      "хода",
+      "ходу",
+      "ходы",
+      "ходов"
+    ],
+    "definition": "One player's portion of a battle round, consisting of the Command, Movement, Shooting, Charge and Fight phases.",
+    "definition_ru": "Часть боевого раунда, принадлежащая одному игроку: фазы командования, движения, стрельбы, заряда и боя.",
+    "autoLink": false
+  },
+  {
+    "id": "phase",
+    "term": "Phase",
+    "term_ru": "Фаза",
+    "aliases": [
+      "Phases"
+    ],
+    "aliases_ru": [
+      "фаза",
+      "фазы",
+      "фазе",
+      "фазу",
+      "фаз"
+    ],
+    "definition": "A step within a turn. The five main phases are Command, Movement, Shooting, Charge and Fight.",
+    "definition_ru": "Этап хода. Пять основных фаз: командование, движение, стрельба, заряд и бой.",
+    "autoLink": false
+  },
+  {
+    "id": "command-phase",
+    "term": "Command phase",
+    "term_ru": "Фаза командования",
+    "aliases": [
+      "Command phases",
+      "Command"
+    ],
+    "aliases_ru": [
+      "фаза командования",
+      "фазы командования",
+      "фазе командования",
+      "фазу командования"
+    ],
+    "definition": "The first phase of a turn. Players gain CP, take Battle-shock tests, and resolve start-of-turn abilities.",
+    "definition_ru": "Первая фаза хода. Игроки получают CP, проходят проверки боевого шока и разрешают способности начала хода.",
+    "autoLink": true
+  },
+  {
+    "id": "movement-phase",
+    "term": "Movement phase",
+    "term_ru": "Фаза движения",
+    "aliases": [
+      "Movement phases",
+      "Movement"
+    ],
+    "aliases_ru": [
+      "фаза движения",
+      "фазы движения",
+      "фазе движения",
+      "фазу движения"
+    ],
+    "definition": "The phase in which units move, Advance, Fall Back, arrive from Reserves, or embark and disembark.",
+    "definition_ru": "Фаза, в которой отряды двигаются, совершают продвижение, отступают, прибывают из резервов, погружаются и высаживаются.",
+    "autoLink": true
+  },
+  {
+    "id": "shooting-phase",
+    "term": "Shooting phase",
+    "term_ru": "Фаза стрельбы",
+    "aliases": [
+      "Shooting phases",
+      "Shooting"
+    ],
+    "aliases_ru": [
+      "фаза стрельбы",
+      "фазы стрельбы",
+      "фазе стрельбы",
+      "фазу стрельбы"
+    ],
+    "definition": "The phase in which units make ranged attacks.",
+    "definition_ru": "Фаза, в которой отряды совершают дистанционные атаки.",
+    "autoLink": true
+  },
+  {
+    "id": "charge-phase",
+    "term": "Charge phase",
+    "term_ru": "Фаза заряда",
+    "aliases": [
+      "Charge phases",
+      "Charge"
+    ],
+    "aliases_ru": [
+      "фаза заряда",
+      "фазы заряда",
+      "фазе заряда",
+      "фазу заряда"
+    ],
+    "definition": "The phase in which units declare charges, roll charge distance, and make Charge moves into Engagement Range.",
+    "definition_ru": "Фаза, в которой отряды объявляют заряды, бросают дистанцию заряда и совершают движения заряда в зону контакта.",
+    "autoLink": true
+  },
+  {
+    "id": "fight-phase",
+    "term": "Fight phase",
+    "term_ru": "Фаза боя",
+    "aliases": [
+      "Fight phases",
+      "Fight"
+    ],
+    "aliases_ru": [
+      "фаза боя",
+      "фазы боя",
+      "фазе боя",
+      "фазу боя"
+    ],
+    "definition": "The phase in which units Pile-in, make melee attacks, and Consolidate.",
+    "definition_ru": "Фаза, в которой отряды совершают сближение, наносят атаки ближнего боя и консолидируются.",
+    "autoLink": true
+  },
+  {
+    "id": "engagement-range",
+    "term": "Engagement Range",
+    "term_ru": "Зона контакта",
+    "aliases": [
+      "Engagement Ranges"
+    ],
+    "aliases_ru": [
+      "зона контакта",
+      "зоны контакта",
+      "зоне контакта",
+      "зону контакта",
+      "зоне контакта"
+    ],
+    "definition": "Within 1\" horizontally and 5\" vertically of an enemy model. Units within Engagement Range are locked in combat.",
+    "definition_ru": "В пределах 1\" по горизонтали и 5\" по вертикали от вражеской модели. Отряды в зоне контакта связаны боем.",
+    "autoLink": true
+  },
+  {
+    "id": "normal-move",
+    "term": "Normal move",
+    "term_ru": "Обычное перемещение",
+    "aliases": [
+      "Normal moves",
+      "Normal Move"
+    ],
+    "aliases_ru": [
+      "обычное перемещение",
+      "обычного перемещения",
+      "обычном перемещении",
+      "обычные перемещения",
+      "обычное движение"
+    ],
+    "definition": "A move of up to the unit's Move characteristic, made in the Movement phase.",
+    "definition_ru": "Перемещение на расстояние до характеристики движения отряда, совершаемое в фазе движения.",
+    "autoLink": true
+  },
+  {
+    "id": "advance",
+    "term": "Advance",
+    "term_ru": "Рывок",
+    "aliases": [
+      "Advances",
+      "Advanced",
+      "Advancing"
+    ],
+    "aliases_ru": [
+      "рывок",
+      "рывка",
+      "рывке",
+      "рывки",
+      "рывков",
+      "совершил рывок",
+      "совершить рывок",
+      "броски рывка",
+      "броска рывка"
+    ],
+    "definition": "A move made instead of a Normal move: add D6\" to the unit's Move. The unit usually cannot shoot or charge afterwards unless a rule says otherwise.",
+    "definition_ru": "Перемещение вместо обычного: добавьте D6\" к движению отряда. Обычно после него нельзя стрелять или объявлять заряд, если правило не разрешает обратное.",
+    "autoLink": true
+  },
+  {
+    "id": "fall-back",
+    "term": "Fall Back",
+    "term_ru": "Отступление",
+    "aliases": [
+      "Falls Back",
+      "Fell Back",
+      "Falling Back",
+      "Fall Back move"
+    ],
+    "aliases_ru": [
+      "отступление",
+      "отступления",
+      "отступлении",
+      "отступил",
+      "отступила",
+      "отступили",
+      "отступает"
+    ],
+    "definition": "A move of up to 6\" used to leave Engagement Range. The unit cannot shoot or charge this turn unless a rule says otherwise.",
+    "definition_ru": "Перемещение до 6\", позволяющее выйти из зоны контакта. Обычно после него нельзя стрелять или объявлять заряд в этом ходу, если правило не разрешает обратное.",
+    "autoLink": true
+  },
+  {
+    "id": "charge-move",
+    "term": "Charge move",
+    "term_ru": "Движение заряда",
+    "aliases": [
+      "Charge moves"
+    ],
+    "aliases_ru": [
+      "движение заряда",
+      "движения заряда",
+      "движении заряда",
+      "движения зарядов"
+    ],
+    "definition": "The move made after a successful charge roll, ending within Engagement Range of the target.",
+    "definition_ru": "Перемещение после успешного броска заряда, которое заканчивается в зоне контакта с целью.",
+    "autoLink": true
+  },
+  {
+    "id": "charge-roll",
+    "term": "Charge roll",
+    "term_ru": "Бросок заряда",
+    "aliases": [
+      "Charge rolls"
+    ],
+    "aliases_ru": [
+      "бросок заряда",
+      "броска заряда",
+      "броске заряда",
+      "броски заряда",
+      "бросков заряда"
+    ],
+    "definition": "2D6 rolled when declaring a charge; the result must be enough to reach Engagement Range.",
+    "definition_ru": "2D6, бросаемые при объявлении заряда; результата должно хватить, чтобы достичь зоны контакта.",
+    "autoLink": true
+  },
+  {
+    "id": "pile-in",
+    "term": "Pile-in",
+    "term_ru": "Сближение",
+    "aliases": [
+      "Piles-in",
+      "Pile in",
+      "Pile-in move"
+    ],
+    "aliases_ru": [
+      "сближение",
+      "сближения",
+      "сближении",
+      "сближаются",
+      "совершает сближение"
+    ],
+    "definition": "A 3\" move made at the start of the Fight phase, before melee attacks, to get closer to enemies.",
+    "definition_ru": "Перемещение на 3\" в начале фазы боя, перед атаками ближнего боя, чтобы приблизиться к врагам.",
+    "autoLink": true
+  },
+  {
+    "id": "consolidation",
+    "term": "Consolidation",
+    "term_ru": "Консолидация",
+    "aliases": [
+      "Consolidation move",
+      "Consolidation moves",
+      "Consolidate",
+      "Consolidates"
+    ],
+    "aliases_ru": [
+      "консолидация",
+      "консолидации",
+      "консолидацию",
+      "консолидируются",
+      "движение консолидации"
+    ],
+    "definition": "A 3\" move made at the end of the Fight phase after a unit has fought.",
+    "definition_ru": "Перемещение на 3\" в конце фазы боя после того, как отряд сразился.",
+    "autoLink": true
+  },
+  {
+    "id": "surge-move",
+    "term": "Surge move",
+    "term_ru": "Стремительное движение",
+    "aliases": [
+      "Surge moves"
+    ],
+    "aliases_ru": [
+      "стремительное движение",
+      "стремительного движения",
+      "стремительном движении",
+      "стремительные движения"
+    ],
+    "definition": "A special move made outside the normal phases, usually after an enemy attack, as specified by the rule.",
+    "definition_ru": "Особое перемещение вне обычных фаз, обычно после вражеской атаки, как указано в правиле.",
+    "autoLink": true
+  },
+  {
+    "id": "desperate-escape",
+    "term": "Desperate Escape test",
+    "term_ru": "Проверка отчаянного побега",
+    "aliases": [
+      "Desperate Escape tests",
+      "Desperate Escape"
+    ],
+    "aliases_ru": [
+      "проверка отчаянного побега",
+      "проверки отчаянного побега",
+      "проверку отчаянного побега",
+      "отчаянный побег"
+    ],
+    "definition": "A test taken by a unit that Falls Back while within Engagement Range; failed tests cause mortal wounds.",
+    "definition_ru": "Проверка отряда, который отступает, находясь в зоне контакта; провал наносит смертельные раны.",
+    "autoLink": true
+  },
+  {
+    "id": "reserves",
+    "term": "Reserves",
+    "term_ru": "Резервы",
+    "aliases": [
+      "Reserve"
+    ],
+    "aliases_ru": [
+      "резервы",
+      "резервов",
+      "резервам",
+      "резерва",
+      "резерве"
+    ],
+    "definition": "Units that start the battle off the battlefield and arrive later.",
+    "definition_ru": "Отряды, которые начинают бой вне поля боя и прибывают позже.",
+    "autoLink": true
+  },
+  {
+    "id": "strategic-reserves",
+    "term": "Strategic Reserves",
+    "term_ru": "Стратегический резерв",
+    "aliases": [
+      "Strategic Reserve"
+    ],
+    "aliases_ru": [
+      "стратегический резерв",
+      "стратегического резерва",
+      "стратегическом резерве",
+      "стратегические резервы",
+      "в стратегический резерв"
+    ],
+    "definition": "Units kept off the battlefield and brought in later from a table edge, following the Reserves rules.",
+    "definition_ru": "Отряды, которые держат вне поля боя и вводят позже с края стола по правилам резервов.",
+    "autoLink": true
+  },
+  {
+    "id": "deep-strike",
+    "term": "Deep Strike",
+    "term_ru": "Глубокий удар",
+    "aliases": [
+      "Deep Strikes"
+    ],
+    "aliases_ru": [
+      "глубокий удар",
+      "глубокого удара",
+      "глубоком ударе",
+      "глубокие удары"
+    ],
+    "definition": "An ability that lets a unit arrive from Reserves anywhere more than 9\" from enemy models.",
+    "definition_ru": "Способность, позволяющая отряду прибыть из резервов в любом месте на расстоянии более 9\" от вражеских моделей.",
+    "autoLink": true
+  },
+  {
+    "id": "embark",
+    "term": "Embark",
+    "term_ru": "Погрузка",
+    "aliases": [
+      "Embarks",
+      "Embarked",
+      "Embarking"
+    ],
+    "aliases_ru": [
+      "погрузка",
+      "погрузиться",
+      "погружается",
+      "погрузился",
+      "погрузившиеся"
+    ],
+    "definition": "To place a unit inside a Transport.",
+    "definition_ru": "Поместить отряд внутрь транспорта.",
+    "autoLink": true
+  },
+  {
+    "id": "disembark",
+    "term": "Disembark",
+    "term_ru": "Высадка",
+    "aliases": [
+      "Disembarks",
+      "Disembarked",
+      "Disembarking"
+    ],
+    "aliases_ru": [
+      "высадка",
+      "высадиться",
+      "высаживается",
+      "высадился",
+      "высадившиеся"
+    ],
+    "definition": "To place a unit out of a Transport.",
+    "definition_ru": "Вывести отряд из транспорта.",
+    "autoLink": true
+  },
+  {
+    "id": "attack",
+    "term": "Attack",
+    "term_ru": "Атака",
+    "aliases": [
+      "Attacks",
+      "Attacking"
+    ],
+    "aliases_ru": [
+      "атака",
+      "атаки",
+      "атак",
+      "атаку",
+      "атакой",
+      "атакующий"
+    ],
+    "definition": "A single ranged or melee attack made by a model.",
+    "definition_ru": "Отдельная дистанционная или ближняя атака, совершаемая моделью.",
+    "autoLink": false
+  },
+  {
+    "id": "hit-roll",
+    "term": "Hit roll",
+    "term_ru": "Бросок попадания",
+    "aliases": [
+      "Hit rolls"
+    ],
+    "aliases_ru": [
+      "бросок попадания",
+      "броска попадания",
+      "броске попадания",
+      "броски попадания",
+      "бросков попадания"
+    ],
+    "definition": "The D6 roll used to see whether an attack hits.",
+    "definition_ru": "Бросок D6, определяющий, попала ли атака.",
+    "autoLink": true
+  },
+  {
+    "id": "wound-roll",
+    "term": "Wound roll",
+    "term_ru": "Бросок ранения",
+    "aliases": [
+      "Wound rolls"
+    ],
+    "aliases_ru": [
+      "бросок ранения",
+      "броска ранения",
+      "броске ранения",
+      "броски ранения",
+      "бросков ранения"
+    ],
+    "definition": "The D6 roll used to see whether a hit wounds.",
+    "definition_ru": "Бросок D6, определяющий, ранила ли атака цель.",
+    "autoLink": true
+  },
+  {
+    "id": "damage-roll",
+    "term": "Damage roll",
+    "term_ru": "Бросок урона",
+    "aliases": [
+      "Damage rolls"
+    ],
+    "aliases_ru": [
+      "бросок урона",
+      "броска урона",
+      "броске урона",
+      "броски урона",
+      "бросков урона"
+    ],
+    "definition": "A roll made to determine the Damage of an attack when the weapon has a random Damage characteristic.",
+    "definition_ru": "Бросок для определения урона атаки, если у оружия случайная характеристика урона.",
+    "autoLink": true
+  },
+  {
+    "id": "saving-throw",
+    "term": "Saving throw",
+    "term_ru": "Спас-бросок",
+    "aliases": [
+      "Saving throws",
+      "Save",
+      "Saves"
+    ],
+    "aliases_ru": [
+      "спас-бросок",
+      "спас-броска",
+      "спас-броски",
+      "спас-бросков",
+      "спас-броскам",
+      "спасение"
+    ],
+    "definition": "The roll made to avoid an attack after it has wounded.",
+    "definition_ru": "Бросок, позволяющий избежать атаки после того, как она ранила цель.",
+    "autoLink": true
+  },
+  {
+    "id": "invulnerable-save",
+    "term": "Invulnerable save",
+    "term_ru": "Инвульнерабельный сейв",
+    "aliases": [
+      "Invulnerable saves",
+      "Invulnerable"
+    ],
+    "aliases_ru": [
+      "инвульнерабельный сейв",
+      "инвульнерабельного сейва",
+      "инвульнерабельные сейвы",
+      "инвульнерабельный сейв 5+",
+      "инвульнерабельный сейв 4+"
+    ],
+    "definition": "A save that cannot be modified by Armour Penetration.",
+    "definition_ru": "Сейв, который нельзя ухудшить бронепробитием.",
+    "autoLink": true
+  },
+  {
+    "id": "feel-no-pain",
+    "term": "Feel No Pain",
+    "term_ru": "Боль не чувствуется",
+    "aliases": [
+      "Feel No Pain 5+",
+      "Feel No Pain 6+"
+    ],
+    "aliases_ru": [
+      "боль не чувствуется",
+      "боль не чувствуется 5+",
+      "боль не чувствуется 6+"
+    ],
+    "definition": "A rule that lets a model ignore a wound or mortal wound on a specified dice result.",
+    "definition_ru": "Правило, позволяющее модели игнорировать рану или смертельную рану при указанном результате кубика.",
+    "autoLink": true
+  },
+  {
+    "id": "armour-penetration",
+    "term": "Armour Penetration (AP)",
+    "term_ru": "Бронепробитие (AP)",
+    "aliases": [
+      "Armour Penetration",
+      "AP"
+    ],
+    "aliases_ru": [
+      "бронепробитие",
+      "бронепробития",
+      "бронепробитию",
+      "AP"
+    ],
+    "definition": "The characteristic that worsens the target's saving throw. AP -1 worsens the save by 1.",
+    "definition_ru": "Характеристика, ухудшающая спас-бросок цели. AP -1 ухудшает сейв на 1.",
+    "autoLink": true
+  },
+  {
+    "id": "mortal-wounds",
+    "term": "Mortal wound",
+    "term_ru": "Смертельная рана",
+    "aliases": [
+      "Mortal wounds",
+      "MW"
+    ],
+    "aliases_ru": [
+      "смертельная рана",
+      "смертельной раны",
+      "смертельную рану",
+      "смертельные раны",
+      "смертельных ран"
+    ],
+    "definition": "Damage applied without Hit, Wound or saving throws, except for Feel No Pain.",
+    "definition_ru": "Урон, наносимый без бросков попадания, ранения и спас-бросков, кроме «Боль не чувствуется».",
+    "autoLink": true
+  },
+  {
+    "id": "critical-hit",
+    "term": "Critical Hit",
+    "term_ru": "Критическое попадание",
+    "aliases": [
+      "Critical Hits"
+    ],
+    "aliases_ru": [
+      "критическое попадание",
+      "критического попадания",
+      "критические попадания",
+      "критических попаданий"
+    ],
+    "definition": "An unmodified Hit roll of 6, or another result specified by a rule.",
+    "definition_ru": "Натуральный бросок попадания 6 или иной результат, указанный правилом.",
+    "autoLink": true
+  },
+  {
+    "id": "critical-wound",
+    "term": "Critical Wound",
+    "term_ru": "Критическое ранение",
+    "aliases": [
+      "Critical Wounds"
+    ],
+    "aliases_ru": [
+      "критическое ранение",
+      "критического ранения",
+      "критические ранения",
+      "критических ранений"
+    ],
+    "definition": "An unmodified Wound roll of 6, or another result specified by a rule.",
+    "definition_ru": "Натуральный бросок ранения 6 или иной результат, указанный правилом.",
+    "autoLink": true
+  },
+  {
+    "id": "re-roll",
+    "term": "Re-roll",
+    "term_ru": "Переброс",
+    "aliases": [
+      "Re-rolls",
+      "Reroll",
+      "Rerolls"
+    ],
+    "aliases_ru": [
+      "переброс",
+      "переброса",
+      "перебросы",
+      "перебросить",
+      "перебрасывайте",
+      "перебрасывать",
+      "перебрасывает"
+    ],
+    "definition": "Roll the dice again and use the new result. A die can only be re-rolled once.",
+    "definition_ru": "Бросьте кубик заново и используйте новый результат. Один кубик можно перебрасывать только один раз.",
+    "autoLink": true
+  },
+  {
+    "id": "unmodified-roll",
+    "term": "Unmodified roll",
+    "term_ru": "Натуральный бросок",
+    "aliases": [
+      "Unmodified rolls",
+      "Unmodified"
+    ],
+    "aliases_ru": [
+      "натуральный бросок",
+      "натурального броска",
+      "натуральные броски",
+      "натуральный",
+      "натуральные"
+    ],
+    "definition": "A dice result before any modifiers are applied.",
+    "definition_ru": "Результат кубика до применения каких-либо модификаторов.",
+    "autoLink": true
+  },
+  {
+    "id": "strength",
+    "term": "Strength",
+    "term_ru": "Сила",
+    "aliases": [
+      "Strength characteristic"
+    ],
+    "aliases_ru": [
+      "сила",
+      "силы",
+      "силе",
+      "силу"
+    ],
+    "definition": "The characteristic compared with Toughness to determine the Wound roll.",
+    "definition_ru": "Характеристика, сравниваемая со стойкостью для определения броска ранения.",
+    "autoLink": false
+  },
+  {
+    "id": "toughness",
+    "term": "Toughness",
+    "term_ru": "Стойкость",
+    "aliases": [
+      "Toughness characteristic"
+    ],
+    "aliases_ru": [
+      "стойкость",
+      "стойкости",
+      "стойкостью"
+    ],
+    "definition": "The characteristic compared with Strength to determine the Wound roll.",
+    "definition_ru": "Характеристика, сравниваемая с силой для определения броска ранения.",
+    "autoLink": false
+  },
+  {
+    "id": "attacks",
+    "term": "Attacks",
+    "term_ru": "Атаки",
+    "aliases": [
+      "Attacks characteristic",
+      "Attack characteristic"
+    ],
+    "aliases_ru": [
+      "атаки",
+      "атак",
+      "атакам"
+    ],
+    "definition": "The number of attacks a weapon makes.",
+    "definition_ru": "Количество атак, которое совершает оружие.",
+    "autoLink": false
+  },
+  {
+    "id": "damage",
+    "term": "Damage",
+    "term_ru": "Урон",
+    "aliases": [
+      "Damage characteristic"
+    ],
+    "aliases_ru": [
+      "урон",
+      "урона",
+      "урону"
+    ],
+    "definition": "The amount of damage an attack inflicts.",
+    "definition_ru": "Количество урона, наносимого атакой.",
+    "autoLink": false
+  },
+  {
+    "id": "move",
+    "term": "Move",
+    "term_ru": "Движение",
+    "aliases": [
+      "Move characteristic"
+    ],
+    "aliases_ru": [
+      "движение",
+      "движения",
+      "движению"
+    ],
+    "definition": "The distance in inches a model can move with a Normal move.",
+    "definition_ru": "Расстояние в дюймах, на которое модель может переместиться обычным перемещением.",
+    "autoLink": false
+  },
+  {
+    "id": "leadership",
+    "term": "Leadership",
+    "term_ru": "Лидерство",
+    "aliases": [
+      "Leadership characteristic"
+    ],
+    "aliases_ru": [
+      "лидерство",
+      "лидерства",
+      "лидерству"
+    ],
+    "definition": "The characteristic used for Battle-shock tests: roll 2D6 and compare the result to Leadership.",
+    "definition_ru": "Характеристика для проверок боевого шока: бросьте 2D6 и сравните результат с лидерством.",
+    "autoLink": false
+  },
+  {
+    "id": "objective-control",
+    "term": "Objective Control (OC)",
+    "term_ru": "Контроль целей (OC)",
+    "aliases": [
+      "Objective Control",
+      "OC"
+    ],
+    "aliases_ru": [
+      "контроль целей",
+      "контроля целей",
+      "контролю целей",
+      "OC"
+    ],
+    "definition": "The characteristic used to determine control of an objective marker. Add up the OC of models within range; the higher total controls it.",
+    "definition_ru": "Характеристика для определения контроля над маркером цели. Сложите OC моделей в пределах действия; большая сумма контролирует маркер.",
+    "autoLink": true
+  },
+  {
+    "id": "dice",
+    "term": "Dice (D3, D6)",
+    "term_ru": "Кости (D3, D6)",
+    "aliases": [
+      "D3",
+      "D6",
+      "2D6",
+      "D3+1",
+      "D3+2",
+      "D3+3"
+    ],
+    "aliases_ru": [
+      "D3",
+      "D6",
+      "2D6",
+      "D3+1",
+      "D3+2",
+      "D3+3"
+    ],
+    "definition": "D6 is a six-sided die. D3 is rolled as D6: 1-2 = 1, 3-4 = 2, 5-6 = 3.",
+    "definition_ru": "D6 — шестигранный кубик. D3 бросается как D6: 1-2 = 1, 3-4 = 2, 5-6 = 3.",
+    "autoLink": true
+  },
+  {
+    "id": "battle-shock",
+    "term": "Battle-shock",
+    "term_ru": "Боевой шок",
+    "aliases": [
+      "Battle-shock test",
+      "Battle-shock tests",
+      "Battle-shocked",
+      "Battleshock"
+    ],
+    "aliases_ru": [
+      "боевой шок",
+      "боевого шока",
+      "боевом шоке",
+      "проверка боевого шока",
+      "проверку боевого шока",
+      "в состоянии боевого шока"
+    ],
+    "definition": "A test taken when a unit is below Starting Strength. If failed, the unit is Battle-shocked: its OC drops to 0 and it cannot use Stratagems.",
+    "definition_ru": "Проверка отряда, который ниже начальной численности. При провале отряд получает боевой шок: его OC становится 0, и он не может использовать стратагемы.",
+    "autoLink": true
+  },
+  {
+    "id": "starting-strength",
+    "term": "Starting Strength",
+    "term_ru": "Начальная численность",
+    "aliases": [
+      "Starting Strengths"
+    ],
+    "aliases_ru": [
+      "начальная численность",
+      "начальной численности",
+      "начальную численность",
+      "ниже начальной численности"
+    ],
+    "definition": "The number of models in a unit at the start of the battle.",
+    "definition_ru": "Количество моделей в отряде в начале боя.",
+    "autoLink": true
+  },
+  {
+    "id": "below-half-strength",
+    "term": "Below Half-strength",
+    "term_ru": "Ниже половины численности",
+    "aliases": [
+      "Below Half Strength",
+      "Half-strength"
+    ],
+    "aliases_ru": [
+      "ниже половины численности",
+      "ниже половины",
+      "половины численности"
+    ],
+    "definition": "A unit with half or fewer of its Starting Strength models remaining, or a single-model unit below half its starting wounds.",
+    "definition_ru": "Отряд, у которого осталось половина или меньше моделей от начальной численности, либо одиночная модель с половиной или меньше начальных ран.",
+    "autoLink": true
+  },
+  {
+    "id": "objective-marker",
+    "term": "Objective marker",
+    "term_ru": "Маркер цели",
+    "aliases": [
+      "Objective markers"
+    ],
+    "aliases_ru": [
+      "маркер цели",
+      "маркера цели",
+      "маркере цели",
+      "маркеры цели",
+      "маркеров цели"
+    ],
+    "definition": "A marker placed on the battlefield that units contest to score objectives.",
+    "definition_ru": "Маркер на поле боя, который отряды оспаривают для выполнения задач.",
+    "autoLink": true
+  },
+  {
+    "id": "level-of-control",
+    "term": "Level of Control",
+    "term_ru": "Уровень контроля",
+    "aliases": [
+      "Levels of Control"
+    ],
+    "aliases_ru": [
+      "уровень контроля",
+      "уровня контроля",
+      "уровне контроля",
+      "уровни контроля"
+    ],
+    "definition": "The total Objective Control of a player's models within range of an objective marker; the higher level controls it.",
+    "definition_ru": "Суммарный контроль целей моделей игрока в пределах действия маркера цели; больший уровень контролирует маркер.",
+    "autoLink": true
+  },
+  {
+    "id": "vp",
+    "term": "VP (Victory Points)",
+    "term_ru": "VP (очки победы)",
+    "aliases": [
+      "VP",
+      "Victory Points",
+      "Victory Point"
+    ],
+    "aliases_ru": [
+      "VP",
+      "очки победы",
+      "очко победы",
+      "очков победы"
+    ],
+    "definition": "Victory Points determine the winner; missions award them for objectives and secondary goals.",
+    "definition_ru": "Очки победы определяют победителя; миссии начисляют их за цели и дополнительные задачи.",
+    "autoLink": false
+  },
+  {
+    "id": "unit",
+    "term": "Unit",
+    "term_ru": "Отряд",
+    "aliases": [
+      "Units"
+    ],
+    "aliases_ru": [
+      "отряд",
+      "отряда",
+      "отряде",
+      "отряды",
+      "отрядов",
+      "отряду"
+    ],
+    "definition": "A group of models that acts together.",
+    "definition_ru": "Группа моделей, действующих вместе.",
+    "autoLink": false
+  },
+  {
+    "id": "model",
+    "term": "Model",
+    "term_ru": "Модель",
+    "aliases": [
+      "Models"
+    ],
+    "aliases_ru": [
+      "модель",
+      "модели",
+      "моделей",
+      "моделью",
+      "моделям"
+    ],
+    "definition": "An individual miniature in a unit.",
+    "definition_ru": "Отдельная миниатюра в отряде.",
+    "autoLink": false
+  },
+  {
+    "id": "infantry",
+    "term": "Infantry",
+    "term_ru": "Пехота",
+    "aliases": [
+      "INFANTRY"
+    ],
+    "aliases_ru": [
+      "пехота",
+      "пехоты",
+      "пехоте",
+      "пехотный",
+      "пехотные",
+      "пехотного"
+    ],
+    "definition": "A keyword for foot soldiers; many rules and transports refer to Infantry.",
+    "definition_ru": "Ключевое слово для пеших бойцов; многие правила и транспорты ссылаются на пехоту.",
+    "autoLink": true
+  },
+  {
+    "id": "vehicle",
+    "term": "Vehicle",
+    "term_ru": "Техника",
+    "aliases": [
+      "Vehicles",
+      "VEHICLE"
+    ],
+    "aliases_ru": [
+      "техника",
+      "техники",
+      "технике",
+      "технику",
+      "техникой"
+    ],
+    "definition": "A keyword for vehicles and tanks; Vehicles have special rules for movement, cover and damage.",
+    "definition_ru": "Ключевое слово для машин и танков; техника имеет особые правила движения, укрытия и урона.",
+    "autoLink": true
+  },
+  {
+    "id": "monster",
+    "term": "Monster",
+    "term_ru": "Монстр",
+    "aliases": [
+      "Monsters",
+      "MONSTER"
+    ],
+    "aliases_ru": [
+      "монстр",
+      "монстра",
+      "монстре",
+      "монстры",
+      "монстров"
+    ],
+    "definition": "A keyword for large creatures; Monsters are treated similarly to Vehicles for many rules.",
+    "definition_ru": "Ключевое слово для крупных существ; для многих правил монстры обрабатываются подобно технике.",
+    "autoLink": true
+  },
+  {
+    "id": "walker",
+    "term": "Walker",
+    "term_ru": "Шагоход",
+    "aliases": [
+      "Walkers",
+      "WALKER"
+    ],
+    "aliases_ru": [
+      "шагоход",
+      "шагохода",
+      "шагоходы",
+      "шагоходов",
+      "шагоходам"
+    ],
+    "definition": "A keyword for walkers such as Dreadnoughts and Killa Kans.",
+    "definition_ru": "Ключевое слово для шагоходов, таких как дредноуты и килла-каны.",
+    "autoLink": true
+  },
+  {
+    "id": "mounted",
+    "term": "Mounted",
+    "term_ru": "Конный",
+    "aliases": [
+      "MOUNTED"
+    ],
+    "aliases_ru": [
+      "конный",
+      "конные",
+      "конных",
+      "конного"
+    ],
+    "definition": "A keyword for cavalry and bike-style units.",
+    "definition_ru": "Ключевое слово для кавалерии и отрядов на байках.",
+    "autoLink": true
+  },
+  {
+    "id": "jump-pack",
+    "term": "Jump Pack",
+    "term_ru": "Реактивные ранцы",
+    "aliases": [
+      "Jump Packs",
+      "JUMP PACK"
+    ],
+    "aliases_ru": [
+      "реактивные ранцы",
+      "реактивных ранцев",
+      "реактивными ранцами",
+      "реактивный ранец"
+    ],
+    "definition": "A keyword for units with jump packs; often used with Deep Strike and mobility rules.",
+    "definition_ru": "Ключевое слово для отрядов с реактивными ранцами; часто связано с «Глубоким ударом» и правилами мобильности.",
+    "autoLink": true
+  },
+  {
+    "id": "transport",
+    "term": "Transport",
+    "term_ru": "Транспорт",
+    "aliases": [
+      "Transports",
+      "TRANSPORT"
+    ],
+    "aliases_ru": [
+      "транспорт",
+      "транспорта",
+      "транспорте",
+      "транспорты",
+      "транспортов"
+    ],
+    "definition": "A keyword for units that can carry other units.",
+    "definition_ru": "Ключевое слово для отрядов, способных перевозить другие отряды.",
+    "autoLink": true
+  },
+  {
+    "id": "aircraft",
+    "term": "Aircraft",
+    "term_ru": "Самолёт",
+    "aliases": [
+      "AIRCRAFT"
+    ],
+    "aliases_ru": [
+      "самолёт",
+      "самолёта",
+      "самолёты",
+      "самолётов"
+    ],
+    "definition": "A keyword for flyers. Aircraft have special movement and targeting rules.",
+    "definition_ru": "Ключевое слово для летательных аппаратов. Самолёты имеют особые правила движения и выбора целей.",
+    "autoLink": true
+  },
+  {
+    "id": "titanic",
+    "term": "Titanic",
+    "term_ru": "Титанический",
+    "aliases": [
+      "TITANIC"
+    ],
+    "aliases_ru": [
+      "титанический",
+      "титанические",
+      "титанических",
+      "титанической"
+    ],
+    "definition": "A keyword for the largest models; Titanic units have special rules and are hard to hide.",
+    "definition_ru": "Ключевое слово для самых больших моделей; титанические отряды имеют особые правила, и их трудно скрыть.",
+    "autoLink": true
+  },
+  {
+    "id": "battleline",
+    "term": "Battleline",
+    "term_ru": "Линейные",
+    "aliases": [
+      "BATTLELINE"
+    ],
+    "aliases_ru": [
+      "линейные",
+      "линейных",
+      "линейный",
+      "линейного"
+    ],
+    "definition": "A keyword for core troops; Battleline units often count for objective control and mission rules.",
+    "definition_ru": "Ключевое слово для основных войск; линейные отряды часто учитываются для контроля целей и правил миссии.",
+    "autoLink": true
+  },
+  {
+    "id": "character",
+    "term": "Character",
+    "term_ru": "Персонаж",
+    "aliases": [
+      "Characters",
+      "CHARACTER"
+    ],
+    "aliases_ru": [
+      "персонаж",
+      "персонажа",
+      "персонажи",
+      "персонажей",
+      "персонажей"
+    ],
+    "definition": "A keyword for leaders and heroes; Characters can often join units and use Enhancements.",
+    "definition_ru": "Ключевое слово для лидеров и героев; персонажи часто могут присоединяться к отрядам и получать улучшения.",
+    "autoLink": true
+  },
+  {
+    "id": "deadly-demise",
+    "term": "Deadly Demise",
+    "term_ru": "Смертоносный конец",
+    "aliases": [
+      "DEADLY DEMISE"
+    ],
+    "aliases_ru": [
+      "смертоносный конец",
+      "смертоносного конца",
+      "смертоносном конце",
+      "смертоносным концом"
+    ],
+    "definition": "A rule that causes mortal wounds when a model is destroyed, determined by a D6 roll.",
+    "definition_ru": "Правило, наносящее смертельные раны при уничтожении модели; результат определяется броском D6.",
+    "autoLink": true
+  },
+  {
+    "id": "adeptus-astartes",
+    "term": "Adeptus Astartes",
+    "term_ru": "Адептус Астартес",
+    "aliases": [
+      "ADEPTUS ASTARTES",
+      "Space Marines"
+    ],
+    "aliases_ru": [
+      "Адептус Астартес",
+      "адептус астартес",
+      "космодесант",
+      "космодесанта"
+    ],
+    "definition": "The Space Marines; the faction keyword shared by Blood Angels units.",
+    "definition_ru": "Космические десантники; фракционное ключевое слово, общее для отрядов Кровавых Ангелов.",
+    "autoLink": true
+  },
+  {
+    "id": "orks",
+    "term": "Orks",
+    "term_ru": "Орки",
+    "aliases": [
+      "Ork",
+      "ORKS",
+      "ORK"
+    ],
+    "aliases_ru": [
+      "орки",
+      "орков",
+      "оркам",
+      "орк",
+      "орка"
+    ],
+    "definition": "The Ork faction: green-skinned warriors who rely on numbers, speed and the Waaagh!.",
+    "definition_ru": "Фракция орков: зеленокожие воины, полагающиеся на численность, скорость и Waaagh!.",
+    "autoLink": true
+  },
+  {
+    "id": "death-company",
+    "term": "Death Company",
+    "term_ru": "Рота смерти",
+    "aliases": [
+      "DEATH COMPANY"
+    ],
+    "aliases_ru": [
+      "рота смерти",
+      "роты смерти",
+      "роте смерти",
+      "роту смерти"
+    ],
+    "definition": "Blood Angels warriors lost to the Black Rage; they gain bonuses and drawbacks in battle.",
+    "definition_ru": "Воины Кровавых Ангелов, охваченные Чёрной яростью; в бою они получают бонусы и ограничения.",
+    "autoLink": true
+  },
+  {
+    "id": "red-thirst",
+    "term": "Red Thirst",
+    "term_ru": "Красная жажда",
+    "aliases": [
+      "RED THIRST"
+    ],
+    "aliases_ru": [
+      "красная жажда",
+      "красной жажды",
+      "красную жажду",
+      "красной жаждой"
+    ],
+    "definition": "A Blood Angels rule representing their fury. Some rules let a unit give in to it for extra power at the cost of becoming Battle-shocked.",
+    "definition_ru": "Правило Кровавых Ангелов, отражающее их ярость. Некоторые правила позволяют отряду поддаться ей ради дополнительной силы ценой боевого шока.",
+    "autoLink": true
+  },
+  {
+    "id": "waaagh",
+    "term": "Waaagh!",
+    "term_ru": "Waaagh!",
+    "aliases": [
+      "Waaagh",
+      "WAAAGH"
+    ],
+    "aliases_ru": [
+      "Waaagh!",
+      "Waaagh",
+      "вааагх",
+      "ВАААГХ"
+    ],
+    "definition": "The Orks' army-wide battle cry. When called, Orks units gain bonuses for that battle round.",
+    "definition_ru": "Боевой клич орков. Когда он объявлен, отряды орков получают бонусы на этот боевой раунд.",
+    "autoLink": true
+  },
+  {
+    "id": "prey",
+    "term": "Prey",
+    "term_ru": "Добыча",
+    "aliases": [
+      "Preys"
+    ],
+    "aliases_ru": [
+      "добыча",
+      "добычи",
+      "добыче",
+      "добычу",
+      "добычей"
+    ],
+    "definition": "An enemy unit selected by the Da Big Hunt detachment; Beast Snagga units gain bonuses against it.",
+    "definition_ru": "Вражеский отряд, выбранный детачментом «Большая охота»; звероловы получают против него бонусы.",
+    "autoLink": true
+  },
+  {
+    "id": "loot-objective",
+    "term": "Loot objective",
+    "term_ru": "Цель-добыча",
+    "aliases": [
+      "Loot objectives"
+    ],
+    "aliases_ru": [
+      "цель-добыча",
+      "цели-добычи",
+      "цель-добычу",
+      "целью-добычей"
+    ],
+    "definition": "An objective marker selected by the Freebooter Krew detachment; Orks gain bonuses while near it.",
+    "definition_ru": "Маркер цели, выбранный детачментом «Команда флибустьеров»; орки получают бонусы, находясь рядом с ним.",
+    "autoLink": true
+  },
+  {
+    "id": "gretchin",
+    "term": "Gretchin / Grots",
+    "term_ru": "Гретчины / гроты",
+    "aliases": [
+      "Gretchin",
+      "Grots",
+      "Grot",
+      "GRETCHIN",
+      "GROTS"
+    ],
+    "aliases_ru": [
+      "гретчины",
+      "гретчинов",
+      "гретчинам",
+      "гроты",
+      "гротов",
+      "гротам"
+    ],
+    "definition": "Small Ork servants. Gretchin units are often excluded from Ork bonuses.",
+    "definition_ru": "Мелкие слуги орков. Отряды гретчинов часто исключаются из бонусов орков.",
+    "autoLink": true
+  },
+  {
+    "id": "speed-freeks",
+    "term": "Speed Freeks",
+    "term_ru": "Скоростные фрики",
+    "aliases": [
+      "Speed Freek",
+      "SPEED FREEKS"
+    ],
+    "aliases_ru": [
+      "скоростные фрики",
+      "скоростных фриков",
+      "скоростным фрикам",
+      "скоростной фрик"
+    ],
+    "definition": "The Orks' fast vehicle and bike units.",
+    "definition_ru": "Быстрые транспортные средства и байки орков.",
+    "autoLink": true
+  },
+  {
+    "id": "beast-snagga",
+    "term": "Beast Snagga",
+    "term_ru": "Звероловы",
+    "aliases": [
+      "Beast Snaggas",
+      "BEAST SNAGGA"
+    ],
+    "aliases_ru": [
+      "звероловы",
+      "звероловов",
+      "звероловам",
+      "зверолов",
+      "звероловы"
+    ],
+    "definition": "Ork beast-hunters mounted on squigs or on foot, specialists at hunting big targets.",
+    "definition_ru": "Орки-охотники на зверей, верхом на сквигах или пешие, специализирующиеся на крупных целях.",
+    "autoLink": true
+  },
+  {
+    "id": "assault",
+    "term": "Assault [ASSAULT]",
+    "term_ru": "Штурм [ASSAULT]",
+    "aliases": [
+      "ASSAULT",
+      "Assault"
+    ],
+    "aliases_ru": [
+      "ASSAULT",
+      "штурм",
+      "штурма"
+    ],
+    "definition": "A weapon ability that lets a unit shoot after Advancing.",
+    "definition_ru": "Способность оружия, позволяющая отряду стрелять после продвижения.",
+    "autoLink": true
+  },
+  {
+    "id": "sustained-hits",
+    "term": "Sustained Hits [SUSTAINED HITS X]",
+    "term_ru": "Устойчивые попадания [SUSTAINED HITS X]",
+    "aliases": [
+      "SUSTAINED HITS",
+      "SUSTAINED HITS 1",
+      "SUSTAINED HITS 2",
+      "Sustained Hits"
+    ],
+    "aliases_ru": [
+      "SUSTAINED HITS",
+      "SUSTAINED HITS 1",
+      "SUSTAINED HITS 2"
+    ],
+    "definition": "A weapon ability: each Critical Hit scores X additional hits.",
+    "definition_ru": "Способность оружия: каждое критическое попадание приносит X дополнительных попаданий.",
+    "autoLink": true
+  },
+  {
+    "id": "lethal-hits",
+    "term": "Lethal Hits [LETHAL HITS]",
+    "term_ru": "Смертельные попадания [LETHAL HITS]",
+    "aliases": [
+      "LETHAL HITS",
+      "Lethal Hits"
+    ],
+    "aliases_ru": [
+      "LETHAL HITS",
+      "смертельные попадания"
+    ],
+    "definition": "A weapon ability: Critical Hits automatically wound.",
+    "definition_ru": "Способность оружия: критические попадания автоматически ранят цель.",
+    "autoLink": true
+  },
+  {
+    "id": "lance",
+    "term": "Lance [LANCE]",
+    "term_ru": "Копьё [LANCE]",
+    "aliases": [
+      "LANCE",
+      "Lance"
+    ],
+    "aliases_ru": [
+      "LANCE"
+    ],
+    "definition": "A weapon ability that improves the Wound roll when the bearer charged.",
+    "definition_ru": "Способность оружия, улучшающая бросок ранения, если носитель совершил заряд.",
+    "autoLink": true
+  },
+  {
+    "id": "hazardous",
+    "term": "Hazardous [HAZARDOUS]",
+    "term_ru": "Опасное [HAZARDOUS]",
+    "aliases": [
+      "HAZARDOUS",
+      "Hazardous"
+    ],
+    "aliases_ru": [
+      "HAZARDOUS",
+      "опасное"
+    ],
+    "definition": "A weapon ability that can cause mortal wounds to the bearer after shooting or fighting.",
+    "definition_ru": "Способность оружия, которая может нанести смертельные раны носителю после стрельбы или боя.",
+    "autoLink": true
+  },
+  {
+    "id": "devastating-wounds",
+    "term": "Devastating Wounds [DEVASTATING WOUNDS]",
+    "term_ru": "Опустошающие ранения [DEVASTATING WOUNDS]",
+    "aliases": [
+      "DEVASTATING WOUNDS",
+      "Devastating Wounds"
+    ],
+    "aliases_ru": [
+      "DEVASTATING WOUNDS",
+      "опустошающие ранения"
+    ],
+    "definition": "A weapon ability: Critical Wounds cause mortal wounds instead of normal damage.",
+    "definition_ru": "Способность оружия: критические ранения наносят смертельные раны вместо обычного урона.",
+    "autoLink": true
+  },
+  {
+    "id": "blast",
+    "term": "Blast [BLAST]",
+    "term_ru": "Взрыв [BLAST]",
+    "aliases": [
+      "BLAST",
+      "Blast"
+    ],
+    "aliases_ru": [
+      "BLAST",
+      "взрыв"
+    ],
+    "definition": "A weapon ability that adds attacks for every 5 models in the target unit.",
+    "definition_ru": "Способность оружия, добавляющая атаки за каждые 5 моделей в отряде-цели.",
+    "autoLink": true
+  },
+  {
+    "id": "anti-vehicle",
+    "term": "Anti-Vehicle [ANTI-VEHICLE X+]",
+    "term_ru": "Антитехника [ANTI-VEHICLE X+]",
+    "aliases": [
+      "ANTI-VEHICLE",
+      "ANTI-VEHICLE 4+",
+      "ANTI-VEHICLE 5+"
+    ],
+    "aliases_ru": [
+      "ANTI-VEHICLE",
+      "ANTI-VEHICLE 4+",
+      "ANTI-VEHICLE 5+"
+    ],
+    "definition": "A weapon ability that scores Critical Wounds against Vehicles on the specified unmodified roll.",
+    "definition_ru": "Способность оружия, засчитывающая критические ранения по технике на указанный натуральный бросок.",
+    "autoLink": true
+  },
+  {
+    "id": "anti-monster",
+    "term": "Anti-Monster [ANTI-MONSTER X+]",
+    "term_ru": "Антимонстр [ANTI-MONSTER X+]",
+    "aliases": [
+      "ANTI-MONSTER",
+      "ANTI-MONSTER 4+",
+      "ANTI-MONSTER 5+"
+    ],
+    "aliases_ru": [
+      "ANTI-MONSTER",
+      "ANTI-MONSTER 4+",
+      "ANTI-MONSTER 5+"
+    ],
+    "definition": "A weapon ability that scores Critical Wounds against Monsters on the specified unmodified roll.",
+    "definition_ru": "Способность оружия, засчитывающая критические ранения по монстрам на указанный натуральный бросок.",
+    "autoLink": true
+  },
+  {
+    "id": "ignores-cover",
+    "term": "Ignores Cover [IGNORES COVER]",
+    "term_ru": "Игнорирует укрытие [IGNORES COVER]",
+    "aliases": [
+      "IGNORES COVER",
+      "Ignores Cover"
+    ],
+    "aliases_ru": [
+      "IGNORES COVER",
+      "игнорирует укрытие"
+    ],
+    "definition": "A weapon ability that prevents the target from gaining Benefit of Cover against the attack.",
+    "definition_ru": "Способность оружия, не позволяющая цели получить укрытие от атаки.",
+    "autoLink": true
+  },
+  {
+    "id": "precision",
+    "term": "Precision [PRECISION]",
+    "term_ru": "Точность [PRECISION]",
+    "aliases": [
+      "PRECISION",
+      "Precision"
+    ],
+    "aliases_ru": [
+      "PRECISION",
+      "точность"
+    ],
+    "definition": "A weapon ability that lets the attacker allocate attacks to Characters in a unit.",
+    "definition_ru": "Способность оружия, позволяющая распределять атаки на персонажей в отряде.",
+    "autoLink": true
+  },
+  {
+    "id": "torrent",
+    "term": "Torrent [TORRENT]",
+    "term_ru": "Поток [TORRENT]",
+    "aliases": [
+      "TORRENT",
+      "Torrent"
+    ],
+    "aliases_ru": [
+      "TORRENT",
+      "поток",
+      "потока"
+    ],
+    "definition": "A weapon ability that automatically hits; no Hit roll is made.",
+    "definition_ru": "Способность оружия, которая автоматически попадает; бросок попадания не делается.",
+    "autoLink": true
+  },
+  {
+    "id": "benefit-of-cover",
+    "term": "Benefit of Cover",
+    "term_ru": "Укрытие",
+    "aliases": [
+      "Benefit of Cover",
+      "Cover"
+    ],
+    "aliases_ru": [
+      "укрытие",
+      "укрытия",
+      "укрытии",
+      "получает укрытие",
+      "получают укрытие"
+    ],
+    "definition": "A bonus to saving throws against ranged attacks when the target is in cover; usually +1 to the save.",
+    "definition_ru": "Бонус к спас-броскам от дистанционных атак, когда цель находится в укрытии; обычно +1 к сейву.",
+    "autoLink": true
+  },
+  {
+    "id": "stealth",
+    "term": "Stealth",
+    "term_ru": "Скрытность",
+    "aliases": [
+      "STEALTH"
+    ],
+    "aliases_ru": [
+      "скрытность",
+      "скрытности",
+      "скрытностью"
+    ],
+    "definition": "A rule that imposes -1 to Hit rolls for ranged attacks targeting the unit.",
+    "definition_ru": "Правило, дающее −1 к броскам попадания дистанционных атак по отряду.",
+    "autoLink": true
+  },
+  {
+    "id": "snap-shooting",
+    "term": "Snap Shooting",
+    "term_ru": "Snap Shooting (внезапная стрельба)",
+    "aliases": [
+      "Snap Shooting",
+      "Snap shot"
+    ],
+    "aliases_ru": [
+      "Snap Shooting",
+      "внезапная стрельба"
+    ],
+    "definition": "A rule that makes a unit hit only on unmodified 6s when firing Overwatch.",
+    "definition_ru": "Правило, по которому отряд попадает только на натуральные 6 при стрельбе в режиме Overwatch.",
+    "autoLink": true
+  }
+]

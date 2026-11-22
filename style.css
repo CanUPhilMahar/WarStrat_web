@@ -20,13 +20,20 @@ header {
     border-radius: 10px;
     margin-bottom: 1.5rem;
     border: 1px solid #3a322a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .7rem 1.5rem;
+    position: relative;
+    z-index: 20;
 }
 header h1 {
     font-size: 1.6rem;
     font-weight: 600;
     letter-spacing: .04em;
 }
-header h1 span {
+header h1 .title-sub {
     font-size: .9rem;
     font-weight: 400;
     color: #8a7a6a;
@@ -543,4 +550,200 @@ footer code {
     padding: .5rem;
     text-align: center;
     font-style: italic;
+}
+
+/* Header controls */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin-left: auto;
+}
+.glossary-btn {
+    background: #1a1614;
+    font-size: .85rem;
+    padding: .35rem .9rem;
+}
+.lang-switch {
+    display: flex;
+    background: #1a1614;
+    border: 1px solid #3a322a;
+    border-radius: 30px;
+    padding: 2px;
+}
+.lang-btn {
+    border: 0;
+    background: transparent;
+    color: #8a7a6a;
+    padding: .25rem .65rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: .8rem;
+    transition: .1s ease;
+}
+.lang-btn:hover {
+    color: #e8d070;
+}
+.lang-btn[aria-pressed="true"] {
+    background: #b8963c;
+    color: #1a1410;
+}
+
+/* Glossary dropdown */
+.glossary-panel {
+    position: absolute;
+    top: calc(100% + .5rem);
+    right: 1rem;
+    width: min(430px, calc(100vw - 2rem));
+    max-height: min(72vh, 620px);
+    background: #221e1a;
+    border: 1px solid #4a3a2e;
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, .65);
+    padding: .9rem;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+.glossary-panel[hidden] {
+    display: none;
+}
+.glossary-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+}
+.glossary-head h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+}
+.glossary-close {
+    background: transparent;
+    border: 0;
+    color: #8a7a6a;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 .2rem;
+}
+.glossary-close:hover {
+    color: #e8d070;
+}
+.glossary-search {
+    width: 100%;
+    background: #14100e;
+    color: #ddd0c0;
+    border: 1px solid #3a322a;
+    border-radius: 8px;
+    padding: .5rem .7rem;
+    font-size: .9rem;
+}
+.glossary-search:focus {
+    outline: 1px solid #b8963c;
+    border-color: #b8963c;
+}
+.glossary-list {
+    overflow-y: auto;
+    max-height: 45vh;
+    display: flex;
+    flex-direction: column;
+    gap: .1rem;
+    padding-right: .2rem;
+}
+.glossary-list[hidden],
+.glossary-detail[hidden] {
+    display: none;
+}
+.glossary-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    color: #d0c0aa;
+    padding: .45rem .6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: .9rem;
+    font-family: inherit;
+}
+.glossary-item::after {
+    content: "›";
+    color: #7a6a5a;
+    font-size: 1rem;
+}
+.glossary-item:hover,
+.glossary-item:focus-visible {
+    background: #2a221c;
+    color: #e8d070;
+    outline: none;
+}
+.glossary-empty {
+    color: #7a6a5a;
+    padding: .8rem .4rem;
+    text-align: center;
+    font-style: italic;
+    font-size: .85rem;
+}
+.glossary-detail {
+    overflow-y: auto;
+    max-height: 50vh;
+}
+.glossary-back {
+    background: transparent;
+    border: 0;
+    color: #c9a84c;
+    cursor: pointer;
+    padding: 0;
+    font-size: .82rem;
+    font-family: inherit;
+}
+.glossary-back:hover {
+    color: #e8d070;
+}
+#glossaryTerm {
+    font-size: 1rem;
+    color: #e8d070;
+    margin: .45rem 0 .35rem;
+}
+#glossaryDefinition {
+    font-size: .86rem;
+    color: #b0a08a;
+    line-height: 1.5;
+}
+
+/* Glossary links inside rules text */
+.glossary-link {
+    color: inherit;
+    text-decoration: underline dotted;
+    text-decoration-color: #b8963c;
+    text-underline-offset: 2px;
+    cursor: pointer;
+}
+.glossary-link:hover,
+.glossary-link:focus-visible {
+    color: #e8d070;
+    text-decoration-color: #e8d070;
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    header {
+        align-items: flex-start;
+    }
+    .header-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    .glossary-panel {
+        left: .5rem;
+        right: .5rem;
+        width: auto;
+    }
 }
