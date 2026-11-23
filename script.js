@@ -298,7 +298,7 @@
             PHASES.forEach(phase => {
                 const items = phaseGroups[phase];
                 if (!items || !items.length) return;
-                html += `<div class="phase-group" data-phase="${phase}"><div class="phase-title">${escapeHtml(formatPhase(phase))}</div><div class="phase-content">`;
+                html += `<div class="phase-group collapsed" data-phase="${phase}"><div class="phase-title">${escapeHtml(formatPhase(phase))}</div><div class="phase-content">`;
                 items.forEach(stratagem => {
                     const tr = localizedStratagem(stratagem);
                     html += `
