@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Codex Discipline",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your Shooting phase or the Fight phase, target one Adeptus Astartes unit from your army that has not been selected to shoot or fight. Until the end of the phase, re-roll Hit rolls of 1; if the target is auspex scanned, also re-roll Wound rolls of 1."
+  },
+  {
+    "name": "Guided Disruption",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your Shooting phase or the Fight phase, just after an Adeptus Astartes Battleline unit has finished its attacks, target it. If an enemy unit becomes auspex scanned from those attacks and is not a Monster or Vehicle, it is pinned until the start of your next turn."
+  },
+  {
+    "name": "Light of Vengeance",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your Shooting phase or the Fight phase, target one Adeptus Astartes unit from your army that has not been selected to shoot or fight. Select [LETHAL HITS] or [SUSTAINED HITS 1]; until the end of the phase its weapons have that ability against auspex scanned units, or always if the unit has the Battleline keyword."
+  },
+  {
+    "name": "Shock Bombardment",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your Shooting phase or the Fight phase, just after an Adeptus Astartes Battleline unit has finished its attacks, target it. If an enemy unit becomes auspex scanned from those attacks, it is suppressed until the start of your next turn (-1 to its Hit rolls)."
+  },
+  {
+    "name": "Angels Defiant",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting phase or the Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes Battleline unit from your army selected as a target. Until the end of the phase, if an attack's Strength is greater than your unit's Toughness, subtract 1 from the Wound roll."
+  },
+  {
+    "name": "Heresy Undone",
+    "cost": 1,
+    "whe": "always",
+    "who": "y",
+    "description": "When your Shooting phase or your Charge phase, target one Adeptus Astartes unit from your army (excluding Battleline units). Until the end of the phase, it can shoot and declare a charge after it Advanced or Fell Back, but every target of those attacks or that charge must be auspex scanned."
+  }
+]

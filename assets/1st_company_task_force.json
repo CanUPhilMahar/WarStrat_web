@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Armour of Contempt",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting phase or the Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army that was selected as the target of one or more of that unit's attacks. Until the attacking unit has finished making its attacks, worsen the Armour Penetration of attacks that target your unit by 1."
+  },
+  {
+    "name": "Heroes of the Chapter",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your Shooting phase or the Fight phase, target one Adeptus Astartes Terminator, Bladeguard Veteran Squad, Sternguard Veteran Squad or Vanguard Veteran Squad unit from your army that has not been selected to shoot or fight. Until the end of the phase, add 1 to its Hit rolls, and also to its Wound rolls if it is Below Half-strength."
+  },
+  {
+    "name": "Terrifying Proficiency",
+    "cost": 1,
+    "whe": "fight",
+    "who": "y",
+    "description": "When your Fight phase, target one of those units that made a Charge move and destroyed one or more enemy units this phase. In your opponent's next Command phase, enemy units within 6\" of it must take a Battle-shock test, subtracting 1 if they are Below Half-strength."
+  },
+  {
+    "name": "Duty and Honour",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, target one of those units within range of an objective marker you control. That objective marker remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of a turn."
+  },
+  {
+    "name": "Orbital Teleportarium",
+    "cost": 1,
+    "whe": "fight",
+    "who": "e",
+    "description": "When the end of your opponent's Fight phase, target one Adeptus Astartes Terminator unit from your army that is not within Engagement Range of enemies. Remove it from the battlefield and place it into Strategic Reserves; it arrives in your next Movement phase using Deep Strike."
+  },
+  {
+    "name": "Legendary Fortitude",
+    "cost": 1,
+    "whe": "charge",
+    "who": "e",
+    "description": "When your opponent's Charge phase, just after an enemy unit ends a Charge move, target one of those units within Engagement Range of that enemy unit. Until the end of the turn, attacks allocated to its models have their Damage characteristic reduced by 1."
+  }
+]

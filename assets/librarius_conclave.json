@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Sensory Assault",
+    "cost": 1,
+    "whe": "command",
+    "who": "a",
+    "description": "When the Command phase, target one Adeptus Astartes Psyker unit from your army. Select one enemy unit within 18\" of and visible to a Psyker model in it; until the start of your next turn it is pinned (-2\" Move and -2 to Charge rolls), and with Telepathy active it must take a Battle-shock test at -1."
+  },
+  {
+    "name": "Armour of Contempt",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting phase or the Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army that was selected as the target of one or more of that unit's attacks. Until the attacking unit has finished making its attacks, worsen the Armour Penetration of attacks that target your unit by 1."
+  },
+  {
+    "name": "Fiery Shield",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes Infantry or Mounted unit within 18\" of a friendly Adeptus Astartes Psyker and selected as a target. Until the end of the phase, attacks targeting it suffer -1 to Hit; with Pyromancy active, those weapons gain [HAZARDOUS]."
+  },
+  {
+    "name": "Iron Arm",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Adeptus Astartes Infantry unit within 18\" of a friendly Adeptus Astartes Psyker that has not been selected to fight. Until the end of the phase, add 1 to the Strength of its melee weapons, or 2 with Biomancy active."
+  },
+  {
+    "name": "Assail",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Adeptus Astartes Psyker unit from your army that is eligible to shoot. Select one enemy unit within 18\" of and visible to a Psyker model (excluding Lone Operatives), roll six D6, adding 1 to each result with Telekinesis active: each 4+ inflicts 1 mortal wound."
+  },
+  {
+    "name": "Prescient Precision",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Adeptus Astartes Psyker unit from your army that has not been selected to shoot. Until the end of the phase, its attacks have [LETHAL HITS], and also [IGNORES COVER] with Divination active."
+  }
+]

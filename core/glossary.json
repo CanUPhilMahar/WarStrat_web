@@ -19,24 +19,6 @@
     "autoLink": false
   },
   {
-    "id": "dp",
-    "term": "DP (Detachment Points)",
-    "term_ru": "DP (очки детачментов)",
-    "aliases": [
-      "DP",
-      "Detachment Points",
-      "Detachment Point"
-    ],
-    "aliases_ru": [
-      "DP",
-      "очки детачментов",
-      "очко детачментов"
-    ],
-    "definition": "A site-specific budget used to limit how many detachments you can select for a game. Each detachment has a DP cost.",
-    "definition_ru": "Бюджет, используемый на этом сайте для ограничения числа выбранных детачментов. У каждого детачмента есть стоимость в DP.",
-    "autoLink": false
-  },
-  {
     "id": "stratagem",
     "term": "Stratagem",
     "term_ru": "Стратагема",
@@ -921,8 +903,8 @@
       "проверку боевого шока",
       "в состоянии боевого шока"
     ],
-    "definition": "A test taken when a unit is below Starting Strength. If failed, the unit is Battle-shocked: its OC drops to 0 and it cannot use Stratagems.",
-    "definition_ru": "Проверка отряда, который ниже начальной численности. При провале отряд получает боевой шок: его OC становится 0, и он не может использовать стратагемы.",
+    "definition": "A test taken in the Battle-shock step of your Command phase for each unit that is Below Half-strength. If failed, the unit is Battle-shocked until the start of your next Command phase: its OC becomes 0 and its controlling player cannot use Stratagems to affect it.",
+    "definition_ru": "Проверка на шаге боевого шока вашей фазы командования для каждого отряда, который ниже половины численности. При провале отряд получает боевой шок до начала вашей следующей фазы командования: его OC становится 0, и игрок не может использовать на нём стратагемы.",
     "autoLink": true
   },
   {
@@ -1685,22 +1667,6 @@
     ],
     "definition": "A rule that imposes -1 to Hit rolls for ranged attacks targeting the unit.",
     "definition_ru": "Правило, дающее −1 к броскам попадания дистанционных атак по отряду.",
-    "autoLink": true
-  },
-  {
-    "id": "snap-shooting",
-    "term": "Snap Shooting",
-    "term_ru": "Snap Shooting (внезапная стрельба)",
-    "aliases": [
-      "Snap Shooting",
-      "Snap shot"
-    ],
-    "aliases_ru": [
-      "Snap Shooting",
-      "внезапная стрельба"
-    ],
-    "definition": "A rule that makes a unit hit only on unmodified 6s when firing Overwatch.",
-    "definition_ru": "Правило, по которому отряд попадает только на натуральные 6 при стрельбе в режиме Overwatch.",
     "autoLink": true
   }
 ]

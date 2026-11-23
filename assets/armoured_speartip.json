@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Machine Wrath",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When any phase, just after a Heavy Transport from your army with the Deadly Demise ability is destroyed and you rolled a 6 for it, it can make a Normal or Fall Back move before its Deadly Demise is resolved, moving through enemy models (excluding Monsters and Vehicles) and automatically passing Desperate Escape tests."
+  },
+  {
+    "name": "Armour of Contempt",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting phase or the Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army that was selected as the target of one or more of that unit's attacks. Until the attacking unit has finished making its attacks, worsen the Armour Penetration of attacks that target your unit by 1."
+  },
+  {
+    "name": "Rapid Embarkation",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the end of the Fight phase, target one Adeptus Astartes Infantry unit not within Engagement Range of enemies and one friendly Heavy Transport it can embark within. If the unit is wholly within 6\" of that Transport, it can embark."
+  },
+  {
+    "name": "Ceramite Sledgehammer",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, target one Adeptus Astartes Transport unit that has not been selected to move. Until the end of the phase, it can move horizontally through terrain features; if it is a Heavy Transport, it can also move through enemy models (excluding Monsters and Vehicles) and automatically passes Desperate Escape tests."
+  },
+  {
+    "name": "Advanced Deployment",
+    "cost": 1,
+    "whe": "movement",
+    "who": "y",
+    "description": "When your Movement phase, target one Adeptus Astartes Transport unit that has not been selected to move. Until the end of the phase, units can disembark from it after it Advances; they count as having made a Normal move and cannot charge (unless it has the Assault Ramp ability)."
+  },
+  {
+    "name": "Purgation Doctrine",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Adeptus Astartes unit from your army that has not been selected to shoot. Until the end of the phase, add 1 to its Hit rolls, and also to its Wound rolls if it disembarked from a Heavy Transport this turn."
+  }
+]

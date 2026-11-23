@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Armour of Contempt",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting phase or the Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army that was selected as the target of one or more of that unit's attacks. Until the attacking unit has finished making its attacks, worsen the Armour Penetration of attacks that target your unit by 1."
+  },
+  {
+    "name": "Target Weak Point",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Tank Ace unit from your army that has not been selected to shoot. Until the end of the phase, its ranged attacks against Monster or Vehicle units improve Armour Penetration by 1. Cannot be used with Kill Shot in the same phase."
+  },
+  {
+    "name": "Kill Shot",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Tank Ace unit from your army that has not been selected to shoot. Until the end of the phase, its attacks against Monster or Vehicle units re-roll Wound rolls of 1, or the whole Wound roll if the target is below Starting Strength. Cannot be used with Target Weak Point in the same phase."
+  },
+  {
+    "name": "Rapid Gunnery",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Adeptus Astartes unit from your army that has not been selected to shoot. Until the end of the phase, it is eligible to shoot in a turn in which it Fell Back."
+  },
+  {
+    "name": "Reactive Repositioning",
+    "cost": 1,
+    "whe": "movement",
+    "who": "e",
+    "description": "When your opponent's Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move, target one Tank Ace unit within 9\" of it (excluding units with a model of 16+ Wounds). It can make a Normal move of up to D6\"."
+  },
+  {
+    "name": "Machine Vengeance",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "e",
+    "description": "When your opponent's Shooting phase, just after an enemy unit has shot, target one Tank Ace unit from your army selected as a target (excluding units with a model of 16+ Wounds). It can shoot as if it were your Shooting phase, but only at that enemy unit."
+  }
+]

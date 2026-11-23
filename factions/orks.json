@@ -2,67 +2,56 @@
   {
     "id": "war_horde",
     "name": "War Horde",
-    "description": "Get Stuck In: Melee weapons equipped by Orks models from your army have the [SUSTAINED HITS 1] ability.",
-    "mission": "Take and Hold"
+    "description": "Get Stuck In: Melee weapons equipped by Orks models from your army have the [SUSTAINED HITS 1] ability."
   },
   {
     "id": "da_big_hunt",
     "name": "Da Big Hunt",
-    "description": "Da Hunt Is On: At the start of your Command phase, select an enemy Monster, Vehicle or Character as your Prey. Beast Snaggas can re-roll charges against it and improve the AP of attacks that target it by 1.",
-    "mission": "Purge the Foe"
+    "description": "Da Hunt Is On: At the start of your Command phase, select an enemy Monster, Vehicle or Character as your Prey. Beast Snaggas can re-roll charges against it and improve the AP of attacks that target it by 1."
   },
   {
     "id": "kult_of_speed",
     "name": "Kult of Speed",
-    "description": "Adrenaline Junkies: Speed Freeks units from your army are eligible to shoot and declare a charge in a turn in which they Advanced or Fell Back.",
-    "mission": "Disruption"
+    "description": "Adrenaline Junkies: Speed Freeks units from your army are eligible to shoot and declare a charge in a turn in which they Advanced or Fell Back."
   },
   {
     "id": "dread_mob",
     "name": "Dread Mob",
-    "description": "Try Dat Button!: When a Mek, Orks Walker or Grots Vehicle unit is selected to shoot or fight, roll a D6 for a random weapon ability, or choose one and gain [HAZARDOUS].",
-    "mission": "Purge the Foe"
+    "description": "Try Dat Button!: When a Mek, Orks Walker or Grots Vehicle unit is selected to shoot or fight, roll a D6 for a random weapon ability, or choose one and gain [HAZARDOUS]."
   },
   {
     "id": "green_tide",
     "name": "Green Tide",
-    "description": "Mob Mentality: Boyz units from your army have a 6+ invulnerable save, or a 5+ invulnerable save if they contain 10 or more models.",
-    "mission": "Take and Hold"
+    "description": "Mob Mentality: Boyz units from your army have a 6+ invulnerable save, or a 5+ invulnerable save if they contain 10 or more models."
   },
   {
     "id": "bully_boyz",
     "name": "Bully Boyz",
-    "description": "Da Boss Is Watchin': At the start of your Command phase, if you have a Warboss on the battlefield, you can call a second Waaagh! for Warboss, Nobz and Meganobz units.",
-    "mission": "Purge the Foe"
+    "description": "Da Boss Is Watchin': At the start of your Command phase, if you have a Warboss on the battlefield, you can call a second Waaagh! for Warboss, Nobz and Meganobz units."
   },
   {
     "id": "taktikal_brigade",
     "name": "Taktikal Brigade",
-    "description": "Lissen 'Ere: Blood Axe leaders can issue Taktiks to nearby Orks units, granting re-rolls to Charge rolls, +1 Strength, Stealth and cover, or +1 to Hit rolls.",
-    "mission": "Disruption"
+    "description": "Lissen 'Ere: Blood Axe leaders can issue Taktiks to nearby Orks units, granting re-rolls to Charge rolls, +1 Strength, Stealth and cover, or +1 to Hit rolls."
   },
   {
     "id": "more_dakka",
     "name": "More Dakka!",
-    "description": "Dakka! Dakka! Dakka!: Ranged weapons equipped by Orks Infantry and Orks Walker models have [ASSAULT], and gain [SUSTAINED HITS 1] during your Shooting phase while the Waaagh! is active.",
-    "mission": "Purge the Foe"
+    "description": "Dakka! Dakka! Dakka!: Ranged weapons equipped by Orks Infantry and Orks Walker models have [ASSAULT], and gain [SUSTAINED HITS 1] during your Shooting phase while the Waaagh! is active."
   },
   {
     "id": "freebooter_krew",
     "name": "Freebooter Krew",
-    "description": "Here Be Loot: At the start of your Command phase, select a loot objective. Orks Infantry, Mounted and Walker attacks have [SUSTAINED HITS 1] while within range of it or when targeting a unit within range of it.",
-    "mission": "Take and Hold"
+    "description": "Here Be Loot: At the start of your Command phase, select a loot objective. Orks Infantry, Mounted and Walker attacks have [SUSTAINED HITS 1] while within range of it or when targeting a unit within range of it."
   },
   {
     "id": "speedwaaagh",
     "name": "Speedwaaagh!",
-    "description": "Turbo Boostas: Speed Freeks and Trukk units can Advance 24\" in a straight line, gaining [ASSAULT] but unable to declare a charge.",
-    "mission": "Reconnaissance"
+    "description": "Turbo Boostas: Speed Freeks and Trukk units can Advance 24\" in a straight line, gaining [ASSAULT] but unable to declare a charge."
   },
   {
     "id": "blitz_brigade",
     "name": "Blitz Brigade",
-    "description": "Eager for the Fight: Orks units that disembark from a Transport can re-roll Advance and Charge rolls until the end of the turn.",
-    "mission": "Reconnaissance"
+    "description": "Eager for the Fight: Orks units that disembark from a Transport can re-roll Advance and Charge rolls until the end of the turn."
   }
 ]

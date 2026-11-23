@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Armour of Contempt",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting phase or the Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army that was selected as the target of one or more of that unit's attacks. Until the attacking unit has finished making its attacks, worsen the Armour Penetration of attacks that target your unit by 1."
+  },
+  {
+    "name": "Only in Death Does Duty End",
+    "cost": 2,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army selected as a target. Until the end of the phase, when a model in your unit is destroyed, if it has not fought this phase, it can fight after the attacking unit has finished its attacks, then is removed."
+  },
+  {
+    "name": "Honour the Chapter",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Adeptus Astartes unit from your army. Until the end of the phase, its melee weapons have [LANCE]; if the unit is under the Assault Doctrine, improve their Armour Penetration by 1 as well."
+  },
+  {
+    "name": "Adaptive Strategy",
+    "cost": 1,
+    "whe": "command",
+    "who": "y",
+    "description": "When your Command phase, target one Adeptus Astartes unit from your army. Select Devastator, Tactical or Assault Doctrine; until the start of your next Command phase it is active for that unit, even if that doctrine was already selected this battle."
+  },
+  {
+    "name": "Storm of Fire",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Adeptus Astartes unit from your army that has not been selected to shoot. Until the end of the phase, its ranged weapons have [IGNORES COVER]; if the unit is under the Devastator Doctrine, improve their Armour Penetration by 1 as well."
+  },
+  {
+    "name": "Squad Tactics",
+    "cost": 1,
+    "whe": "movement",
+    "who": "e",
+    "description": "When your opponent's Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move, target one Adeptus Astartes Infantry or Mounted unit within 9\" of it that is not within Engagement Range of enemies. It can make a Normal move of up to D6\", or up to 6\" if the Tactical Doctrine is active."
+  }
+]

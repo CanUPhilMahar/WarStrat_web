@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Unyielding Might",
+    "cost": 1,
+    "whe": "command",
+    "who": "a",
+    "description": "When the Command phase, target one Adeptus Astartes unit from your army within Engagement Range of enemies. Until the start of your next Command phase, add 1 to the Objective Control of its models."
+  },
+  {
+    "name": "Priority Strike",
+    "cost": 2,
+    "whe": "always",
+    "who": "a",
+    "description": "When your Shooting phase or the Fight phase, target one Adeptus Astartes Infantry or Mounted unit from your army that has not been selected to shoot or fight. Until the end of the phase, its attacks against Character, Monster or Vehicle units can re-roll the Wound roll."
+  },
+  {
+    "name": "Armour of Contempt",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting phase or the Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army that was selected as the target of one or more of that unit's attacks. Until the attacking unit has finished making its attacks, worsen the Armour Penetration of attacks that target your unit by 1."
+  },
+  {
+    "name": "Stand to the End",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army selected as a target. Until the end of the phase, when a model in it is destroyed and has not fought, roll one D6, adding 1 if the unit is Entrenched: on a 4+ it can fight before being removed."
+  },
+  {
+    "name": "Augmented Targeting",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Adeptus Astartes unit from your army that has not been selected to shoot. Select [SUSTAINED HITS 1] or [LETHAL HITS] for its ranged weapons until the end of the phase; if the unit is Entrenched, they have both instead."
+  },
+  {
+    "name": "Evasive Repositioning",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "e",
+    "description": "When your opponent's Shooting phase, just after an enemy unit has shot, target one Adeptus Astartes Infantry or Mounted unit from your army selected as a target. It can make a Normal move of up to D6\", re-rolling the D6 if it is Entrenched."
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Armour of Contempt",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting phase or the Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army that was selected as the target of one or more of that unit's attacks. Until the attacking unit has finished making its attacks, worsen the Armour Penetration of attacks that target your unit by 1."
+  },
+  {
+    "name": "Rigid Discipline",
+    "cost": 1,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the end of the Fight phase, target one Adeptus Astartes unit from your army within Engagement Range of enemies. It can immediately make a Fall Back move of up to 6\", ending wholly within your deployment zone or within range of an objective marker."
+  },
+  {
+    "name": "Not One Backwards Step",
+    "cost": 1,
+    "whe": "command",
+    "who": "y",
+    "description": "When your Command phase, target one Adeptus Astartes Infantry unit within range of an objective marker. Until the end of the turn, double the Objective Control of its models, but it must Remain Stationary this turn."
+  },
+  {
+    "name": "No Threat Too Great",
+    "cost": 2,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Adeptus Astartes unit from your army that has not been selected to shoot. Until the end of the phase, its ranged attacks against Monster or Vehicle units can re-roll the Wound roll."
+  },
+  {
+    "name": "Battle Drill Recall",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Adeptus Astartes unit from your army that has not been selected to shoot. Until the end of the phase, its ranged weapons have [SUSTAINED HITS 1]; if the unit Remained Stationary this turn, unmodified Hit rolls of 5+ are Critical Hits."
+  },
+  {
+    "name": "Hail of Vengeance",
+    "cost": 2,
+    "whe": "shooting",
+    "who": "e",
+    "description": "When your opponent's Shooting phase, just after an enemy unit has resolved its attacks, target one Adeptus Astartes unit from your army that had one or more models destroyed by those attacks. Your unit can shoot as if it were your Shooting phase, but must target only that enemy unit."
+  }
+]

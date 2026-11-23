@@ -1,0 +1,44 @@
+[
+  {
+    "name": "A Deadly Prize",
+    "cost": 1,
+    "whe": "command",
+    "who": "a",
+    "description": "When the start of the Command phase, target one Adeptus Astartes Infantry or Mounted unit within range of an objective marker you control. That objective is Sabotaged and remains under your control until the opponent controls it; enemy units ending a move within range roll one D6, suffering D3 mortal wounds on a 2+."
+  },
+  {
+    "name": "Armour of Contempt",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting phase or the Fight phase, just after an enemy unit has selected its targets, target one Adeptus Astartes unit from your army that was selected as the target of one or more of that unit's attacks. Until the attacking unit has finished making its attacks, worsen the Armour Penetration of attacks that target your unit by 1."
+  },
+  {
+    "name": "Surgical Strikes",
+    "cost": 2,
+    "whe": "fight",
+    "who": "a",
+    "description": "When the Fight phase, target one Adeptus Astartes Infantry unit from your army that has not been selected to fight. Until the end of the phase, its melee weapons have [PRECISION]."
+  },
+  {
+    "name": "Strike from the Shadows",
+    "cost": 1,
+    "whe": "shooting",
+    "who": "y",
+    "description": "When your Shooting phase, target one Adeptus Astartes Infantry unit from your army that has not been selected to shoot. Until the end of the phase, its ranged attacks against units more than 12\" away improve Ballistic Skill and Armour Penetration by 1; if models are destroyed, one destroyed model's unit must take a Battle-shock test."
+  },
+  {
+    "name": "Calculated Feint",
+    "cost": 1,
+    "whe": "charge",
+    "who": "e",
+    "description": "When your opponent's Charge phase, just after an enemy unit declares a charge, target one Adeptus Astartes Infantry unit selected as a target of that charge and not within Engagement Range. It can make a Normal move of up to D6\", or up to 6\" if it is Phobos or Scout Squad."
+  },
+  {
+    "name": "Guerrilla Tactics",
+    "cost": 1,
+    "whe": "fight",
+    "who": "e",
+    "description": "When the end of your opponent's Fight phase, target up to two Phobos and/or Scout Squad units, or one other Adeptus Astartes Infantry unit, each more than 3\" from all enemy models. Remove them and place them into Strategic Reserves."
+  }
+]
