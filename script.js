@@ -13,6 +13,12 @@
     };
     const WHO_KEYS = { y: 'whoYour', e: 'whoEnemy', a: 'whoAny' };
 
+    // Bust the browser and GitHub Pages CDN cache so data edits (new detachments,
+    // stratagems, translations) appear on the next reload instead of waiting for
+    // the 10-minute cache TTL.
+    const DATA_CACHE_BUST = String(Date.now());
+    const fetchData = path => fetch(`${path}?v=${DATA_CACHE_BUST}`, { cache: 'no-store' });
+
     // state
     let cp = 0,
         doubleTap = false,
@@ -362,7 +368,7 @@
         render();
 
         Promise.all(ids.map(id =>
-            fetch(`assets/${id}.json`)
+            fetchData(`assets/${id}.json`)
                 .then(res => {
                     if (!res.ok) throw new Error(`HTTP ${res.status} for ${id}`);
                     return res.json();
@@ -434,7 +440,7 @@
             return Promise.resolve();
         }
 
-        return fetch(`factions/${factionId}.json`)
+        return fetchData(`factions/${factionId}.json`)
             .then(res => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.json();
@@ -476,7 +482,7 @@
     }
 
     function loadFactions() {
-        return fetch('core/list.json')
+        return fetchData('core/list.json')
             .then(res => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.json();
@@ -496,7 +502,7 @@
     }
 
     function loadCoreData() {
-        return fetch('core/core.json')
+        return fetchData('core/core.json')
             .then(res => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.json();
@@ -667,7 +673,7 @@
     }
 
     function loadRuData() {
-        return fetch('lang/ru.json')
+        return fetchData('lang/ru.json')
             .then(res => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.json();
@@ -682,7 +688,7 @@
     }
 
     function loadGlossary() {
-        return fetch('core/glossary.json')
+        return fetchData('core/glossary.json')
             .then(res => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.json();
