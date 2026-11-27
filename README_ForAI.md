@@ -1,0 +1,234 @@
+# WarStrat_web — менеджер стратагем Warhammer 40,000 (10-я редакция)
+
+Веб-приложение для настольного Warhammer 40,000 10th edition: помогает быстро находить стратагемы выбранного детачмента, фильтровать их по фазам и следить за командными очками (CP) прямо во время игры.
+
+Проект полностью статический — HTML, CSS и vanilla JavaScript без сборки, фреймворков и зависимостей. Все игровые данные хранятся в JSON, поэтому контент можно править, не трогая код.
+
+**Живая версия:** <https://canuphilmahar.github.io/WarStrat_web/>
+
+## Возможности
+
+- Выбор фракции и детачмента. Одновременно можно выбрать только один детачмент.
+- 11 базовых стратагем 10-й редакции + 6 стратагем выбранного детачмента — всего 17 на выбор.
+- Разделение на «Ваш ход» и «Ход противника», внутри — фазы: командование, движение, стрельба, заряд, бой.
+- Стратагемы с фазой «любая» (`always`) показываются в каждой фазе, стратагемы «любой ход» (`who: "a"`) — в обеих категориях.
+- Фазовые группы при загрузке свёрнуты; заголовки категорий и фаз кликабельны.
+- Счётчик CP: `+1` за нажатие, режим `+2 CP`, сброс. Кнопка «Использовать» блокируется, если CP не хватает.
+- Глоссарий на 92 термина: поиск, карточка термина и автоматические ссылки из описаний стратагем.
+- Локализация EN/RU с переключателем. Выбранный язык запоминается в `localStorage` (`warstrat_lang`), при первом входе берётся из языка браузера.
+- Тёмная тема и адаптивная вёрстка для телефона.
+- Загрузка JSON с обходом кэша (`?v=<timestamp>` + `cache: "no-store"`), чтобы правки данных появлялись сразу после обновления страницы.
+
+## Быстрый старт
+
+Приложению нужен любой статический HTTP-сервер: `fetch()` не работает при открытии `index.html` напрямую через `file://`.
+
+```bash
+git clone https://github.com/CanUPhilMahar/WarStrat_web.git
+cd WarStrat_web
+python -m http.server 8000
+```
+
+Откройте <http://localhost:8000>.
+
+Подойдёт и любой другой вариант: `npx serve`, расширение Live Server в VS Code и т. п.
+
+## Структура проекта
+
+```text
+WarStrat_web/
+├── index.html              # разметка интерфейса
+├── style.css               # тёмная тема, адаптивная вёрстка
+├── script.js               # загрузка данных, рендер, CP, глоссарий, язык
+├── i18n.js                 # строки интерфейса EN/RU
+├── core/
+│   ├── list.json           # список фракций
+│   ├── core.json           # базовые стратагемы 10-й редакции
+│   └── glossary.json       # термины глоссария
+├── factions/
+│   ├── blood_angels.json   # детачменты Blood Angels
+│   └── orks.json           # детачменты Orks
+├── assets/
+│   ├── <detachment_id>.json  # по 6 стратагем на детачмент
+│   └── ...
+└── lang/
+    └── ru.json             # русские переводы фракций, детачментов и стратагем
+```
+
+## Как это работает
+
+1. При загрузке `script.js` запрашивает `core/list.json`, `core/core.json`, `lang/ru.json` и `core/glossary.json`.
+2. При выборе фракции загружается `factions/<faction_id>.json` и строится список детачментов.
+3. При выборе детачмента загружается `assets/<detachment_id>.json`; к 11 базовым стратагемам добавляются 6 детачментных.
+4. `render()` раскладывает стратагемы по категориям «Ваш ход» / «Ход противника» и по фазам. Все фазовые группы создаются свёрнутыми.
+5. CP хранится только в памяти страницы и сбрасывается при перезагрузке. Бэкенда нет — всё работает в браузере.
+
+## Контент
+
+Проект рассчитан на **10-ю редакцию**. В нём нет выбора размера игры, Detachment Points и контента 11-й редакции.
+
+| Фракция | Детачментов | Стратагем на детачмент |
+| --- | ---: | ---: |
+| Blood Angels | 18 | 6 |
+| Orks | 11 | 6 |
+
+Базовый набор — 11 стратагем: Command Re-roll, Counter-offensive, Epic Challenge, Insane Bravery, Grenade, Tank Shock, Rapid Ingress, Fire Overwatch, Go to Ground, Smokescreen, Heroic Intervention.
+
+<details>
+<summary>Все детачменты Blood Angels</summary>
+
+1st Company Task Force, Angelic Inheritors, Anvil Siege Force, Armoured Speartip, Bastion Task Force, Ceramite Sentinels, Firestorm Assault Force, Gladius Task Force, Headhunter Task Force, Ironstorm Spearhead, Liberator Assault Group, Librarius Conclave, Orbital Assault Force, Rage-cursed Onslaught, Stormlance Task Force, The Angelic Host, The Lost Brethren, Vanguard Spearhead.
+
+</details>
+
+<details>
+<summary>Все детачменты Orks</summary>
+
+War Horde, Da Big Hunt, Kult of Speed, Dread Mob, Green Tide, Bully Boyz, Taktikal Brigade, More Dakka!, Freebooter Krew, Speedwaaagh!, Blitz Brigade.
+
+</details>
+
+## Формат данных
+
+### Фракции — `core/list.json`
+
+```json
+[
+  { "id": "blood_angels", "name": "Blood Angels" },
+  { "id": "orks", "name": "Orks" }
+]
+```
+
+`id` используется в именах файлов: `factions/<id>.json` и `assets/<detachment_id>.json`.
+
+### Детачменты — `factions/<faction_id>.json`
+
+```json
+[
+  {
+    "id": "gladius_task_force",
+    "name": "Gladius Task Force",
+    "description": "Combat Doctrines: At the start of your Command phase, select Devastator, Tactical or Assault..."
+  }
+]
+```
+
+### Стратагемы — `core/core.json` и `assets/<detachment_id>.json`
+
+Оба файла используют один и тот же формат — массив стратагем:
+
+```json
+[
+  {
+    "name": "Armour of Contempt",
+    "cost": 1,
+    "whe": "always",
+    "who": "a",
+    "description": "When your opponent's Shooting phase or the Fight phase, just after an enemy unit has selected its targets..."
+  }
+]
+```
+
+| Поле | Тип | Описание |
+| --- | --- | --- |
+| `name` | string | Английское название. Оно же ключ для перевода в `lang/ru.json`. |
+| `cost` | number | Стоимость в CP. |
+| `whe` | string | Фаза: `always`, `command`, `movement`, `shooting`, `charge`, `fight`. |
+| `who` | string | Чей ход: `y` — ваш, `e` — противника, `a` — любой. |
+| `description` | string | Текст правила. |
+
+Стратагемы с `whe: "always"` дублируются в каждой фазе, а с `who: "a"` — в обеих категориях хода. Поэтому количество карточек на экране больше, чем число стратагем в футере.
+
+### Переводы — `lang/ru.json`
+
+```json
+{
+  "factions": {
+    "blood_angels": "Кровавые Ангелы"
+  },
+  "detachments": {
+    "gladius_task_force": {
+      "name": "Оперативная группа «Гладиус»",
+      "description": "..."
+    }
+  },
+  "stratagems": {
+    "core": {
+      "Command Re-roll": {
+        "name": "Командный переброс",
+        "description": "..."
+      }
+    },
+    "gladius_task_force": {
+      "Armour of Contempt": {
+        "name": "Презрение к броне",
+        "description": "..."
+      }
+    }
+  }
+}
+```
+
+Ключи в `stratagems` должны **точно совпадать** с полем `name` в английских JSON-файлах. Если перевода нет, интерфейс показывает английский текст.
+
+### Глоссарий — `core/glossary.json`
+
+```json
+[
+  {
+    "id": "cp",
+    "term": "CP (Command Points)",
+    "term_ru": "CP (очки командования)",
+    "aliases": ["CP", "Command Points"],
+    "aliases_ru": ["CP", "ОЧ", "очки командования"],
+    "definition": "Command Points are the resource spent to use Stratagems...",
+    "definition_ru": "Очки командования — ресурс, который тратится на использование стратагем...",
+    "autoLink": false
+  }
+]
+```
+
+Если `autoLink: true`, термин автоматически подсвечивается в описаниях стратагем и детачментов и открывает карточку глоссария по клику.
+
+## Как добавить контент
+
+### Новый детачмент
+
+1. Создайте `assets/<detachment_id>.json` с 6 стратагемами.
+2. Добавьте объект `{ id, name, description }` в `factions/<faction_id>.json`.
+3. Добавьте перевод в `lang/ru.json`:
+   - `detachments.<detachment_id>` — название и описание;
+   - `stratagems.<detachment_id>` — по 6 стратагем, ключи — английские названия.
+4. Проверьте JSON и обновите страницу.
+
+### Новая фракция
+
+1. Добавьте `{ id, name }` в `core/list.json`.
+2. Создайте `factions/<faction_id>.json`.
+3. Добавьте `factions.<faction_id>` в `lang/ru.json`.
+4. Создайте файлы детачментов в `assets/` и их переводы.
+
+### Новая базовая стратагема
+
+Добавьте её в `core/core.json` и в `lang/ru.json` → `stratagems.core`.
+
+## Проверка изменений
+
+```bash
+# синтаксис JavaScript
+node --check script.js
+node --check i18n.js
+
+# валидность JSON
+node -e "const fs=require('fs');for(const f of ['core/list.json','core/core.json','core/glossary.json','factions/blood_angels.json','factions/orks.json','lang/ru.json'])JSON.parse(fs.readFileSync(f,'utf8'));console.log('JSON OK')"
+```
+
+После изменений откройте сайт и проверьте: выбор фракции, список детачментов, загрузку стратагем, переключение EN/RU и глоссарий.
+
+## Деплой
+
+Сайт публикуется через **GitHub Pages** из ветки `main` (корень репозитория). Сборка не нужна: достаточно запушить изменения.
+
+## Дисклеймер
+
+Неофициальный фанатский проект. Warhammer 40,000 и связанные названия, правила и термины принадлежат Games Workshop. Проект не связан с Games Workshop и не предназначен для коммерческого использования.
